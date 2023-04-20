@@ -62,7 +62,6 @@ SENTRY_ENVIRONMENT=
 - End-to-end test
 - Authentication
 - CRUD operation
-- Update profile API
 - Authorization: Role-based access control
 - File upload (AWS S3)
 - I18n
