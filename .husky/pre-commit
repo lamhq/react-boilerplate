@@ -1,4 +1,8 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn lint
+# check branch name
+npx git-branch-is -r '^(feature|fix)/[a-z\-\d\.]+$'
+
+# lint stagged files with eslint
+yarn lint-staged
