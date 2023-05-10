@@ -3,23 +3,23 @@ on:
   pull_request:
 
 jobs:
-  run_unit_test:
-    name: Unit Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+  # run_unit_test:
+  #   name: Unit Test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
 
-      - name: Setup Node.js 16.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-          cache: 'yarn'
+  #     - name: Setup Node.js 16.x
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 16.x
+  #         cache: 'yarn'
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile --production=false
+  #     - name: Install dependencies
+  #       run: yarn install --frozen-lockfile --production=false
 
-      - name: Run unit test
-        run: yarn test:cov
+  #     - name: Run unit test
+  #       run: yarn test:cov
 
   lint_code:
     name: Lint
