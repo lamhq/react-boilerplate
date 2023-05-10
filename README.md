@@ -30,7 +30,14 @@ Additionally, there are separate branches for specific features, each containing
 - CI/CD platform: Github Actions
 
 
-## Features
+## Highlights
+
+### Built on Vite
+
+Vite is a modern web development build tool that utilizes modern JavaScript features and native ES modules to provide an optimized web development experience.
+
+It enables a fast and powerful workflow that enhances productivity for developers.
+
 
 ### Automated code checking
 
@@ -84,9 +91,26 @@ SENTRY_ENVIRONMENT=
     # you can access the web page at http://localhost:3001
     ```
 1. Select the **Run and Debug** icon in the **Activity Bar** on the side of VS Code
-![](https://code.visualstudio.com/assets/docs/editor/debugging/run.png)
+    ![](https://code.visualstudio.com/assets/docs/editor/debugging/run.png)
 1. Select the configuration named **Attach debugger to Chrome** using the Configuration dropdown in the **Run and Debug** view.
 1. Once you have your launch configuration set, start your debug session with `F5`.
+
+Note: you can run the command `yarn dev` automatically by adding a Keyboard Shortcut to VS Code. From the Command Palette (`Cmd+Shift+P`), choose `Preferences: Open Keyboard Shortcuts (JSON)`, paste the config here to your key binddings JSON file:
+
+```json
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  {
+    "key": "cmd+alt+u",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "yarn dev\u000D"
+    }
+  }
+]
+```
+
+This will run `yarn dev` in the terminal every time you press `Cmd + Option + U`.
 
 
 ## Run & debug Unit test with VS Code
