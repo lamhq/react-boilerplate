@@ -1,5 +1,7 @@
-import { CacheService } from './CacheService';
+import { injectable } from 'tsyringe';
+import { CacheService } from '../common/CacheService';
 
+@injectable()
 export class ApiService {
   constructor(private readonly cacheService: CacheService) {}
 
@@ -17,5 +19,3 @@ export class ApiService {
     );
   }
 }
-
-export default ApiService;

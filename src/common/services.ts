@@ -1,4 +1,4 @@
-import { ApiService } from './ApiService';
+import { ApiService } from '../api/ApiService';
 import { CacheService } from './CacheService';
 
 export const cacheService = new CacheService();

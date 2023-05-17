@@ -33,5 +33,8 @@ module.exports = {
 
     // allow importing asset with Vite
     'import/no-absolute-path': 'off',
+
+    // Disable the rule that require default exports in a module
+    'import/prefer-default-export': 'off',
   },
 };
