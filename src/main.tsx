@@ -1,21 +1,20 @@
 import 'reflect-metadata';
-import { container } from 'tsyringe';
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import './index.css';
-import { ApiProvider } from './api/ApiProvider';
+import App from './App';
 import { ApiService } from './api/ApiService';
-// import App from './App';
-import Demo from './DemoSuspense';
+import { ApiProvider } from './api/ApiProvider';
+import { CacheService } from './common/CacheService';
 
-const apiService = container.resolve(ApiService);
+const cacheService = new CacheService();
+const apiService = new ApiService(cacheService);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ApiProvider service={apiService}>
-      <Demo />
+      <App />
     </ApiProvider>
   </React.StrictMode>,
 );

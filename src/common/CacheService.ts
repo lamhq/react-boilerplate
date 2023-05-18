@@ -1,7 +1,5 @@
-import { singleton } from 'tsyringe';
 import { AsyncFn, StatefulPromise, isPromise } from './stateful-promise';
 
-@singleton()
 export class CacheService {
   private cache = new Map<string, unknown>();
 
