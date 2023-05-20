@@ -1,19 +1,21 @@
 import { Suspense, useState } from 'react';
 import { ErrorBoundary, FallbackProps, useErrorBoundary } from 'react-error-boundary';
 
-import { suspense } from './common/suspense';
-import { apiService } from './common/services';
+import { suspense } from '../common';
+import { useApi } from '../api';
 
 function Loading() {
   return <h2>🌀 Loading...</h2>;
 }
 
 function Profile() {
+  const apiService = useApi();
   const data = suspense(apiService.getProfile());
   return (<p>{data}</p>);
 }
 
 function Albums() {
+  const apiService = useApi();
   const data = suspense(apiService.getAlbum('abcd'));
   return (<p>{data}</p>);
 }
@@ -51,7 +53,7 @@ function ErrorFallback({ error }: FallbackProps) {
   );
 }
 
-export default function DemoSuspense() {
+export function DataFetchingDemo() {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <Content />

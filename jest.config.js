@@ -24,4 +24,5 @@ module.exports = {
   moduleNameMapper: {
     '^@src/(.*)$': '<rootDir>/$1',
   },
+  testEnvironment: 'jsdom',
 }

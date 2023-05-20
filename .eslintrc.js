@@ -36,5 +36,15 @@ module.exports = {
 
     // Disable the rule that require default exports in a module
     'import/prefer-default-export': 'off',
+
+    // allow `src/common/test-utils.tsx` to import `devDependencies`
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "src/common/test-utils.tsx"
+        ]
+      }
+    ]
   },
 };

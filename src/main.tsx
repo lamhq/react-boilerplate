@@ -1,13 +1,12 @@
-import 'reflect-metadata';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import './index.css';
 import App from './App';
-import { ApiService } from './api/ApiService';
-import { ApiProvider } from './api/ApiProvider';
-import { CacheService } from './common/CacheService';
+import { ApiService, ApiProvider } from './api';
+import { CacheService } from './common';
 
+// init all services
 const cacheService = new CacheService();
 const apiService = new ApiService(cacheService);
 
