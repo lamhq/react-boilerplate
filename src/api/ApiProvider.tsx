@@ -7,9 +7,5 @@ export interface ApiProviderProps {
 }
 
 export function ApiProvider({ service, children }: ApiProviderProps) {
-  return (
-    <ApiContext.Provider value={service}>
-      {children}
-    </ApiContext.Provider>
-  );
+  return <ApiContext.Provider value={service}>{children}</ApiContext.Provider>;
 }

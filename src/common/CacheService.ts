@@ -23,7 +23,7 @@ export class CacheService {
         (reason) => {
           promise.status = 'rejected';
           promise.error = reason;
-        },
+        }
       );
       this.cache.set(key, promise);
     }

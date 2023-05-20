@@ -9,6 +9,7 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
+    'prettier',
   ],
   extends: [
     'eslint:recommended',
@@ -17,6 +18,7 @@ module.exports = {
     'airbnb',
     'airbnb-typescript',
     'airbnb/hooks',
+    "prettier",
   ],
   env: {
     browser: true,
@@ -28,21 +30,24 @@ module.exports = {
 
   // additional rules
   rules: {
+    'prettier/prettier': 'error',
+
     // Vite automatically import React for us, so no need this rule
     'react/react-in-jsx-scope': 'off',
 
-    // allow importing asset with Vite
+    // allow importing asset with Vite using '/'
     'import/no-absolute-path': 'off',
 
     // Disable the rule that require default exports in a module
     'import/prefer-default-export': 'off',
 
-    // allow `src/common/test-utils.tsx` to import `devDependencies`
+    // allow import `devDependencies`
     "import/no-extraneous-dependencies": [
       "error",
       {
         "devDependencies": [
-          "src/common/test-utils.tsx"
+          "src/common/test-utils.tsx",
+          '**/*{.,_}{test,spec}.{ts,tsx}', // tests where the extension or filename suffix denotes that it is a test
         ]
       }
     ]

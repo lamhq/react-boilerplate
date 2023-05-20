@@ -11,13 +11,13 @@ function Loading() {
 function Profile() {
   const apiService = useApi();
   const data = suspense(apiService.getProfile());
-  return (<p>{data}</p>);
+  return <p>{data}</p>;
 }
 
 function Albums() {
   const apiService = useApi();
   const data = suspense(apiService.getAlbum('abcd'));
-  return (<p>{data}</p>);
+  return <p>{data}</p>;
 }
 
 function Content() {
@@ -28,9 +28,7 @@ function Content() {
     <>
       <p>
         <button type="button" onClick={() => setPage(nextPage)}>
-          Show
-          {' '}
-          {nextPage}
+          Show {nextPage}
         </button>
       </p>
       <Suspense fallback={<Loading />}>
@@ -48,7 +46,9 @@ function ErrorFallback({ error }: FallbackProps) {
     <div role="alert">
       <p>Something went wrong:</p>
       <pre style={{ color: 'red' }}>{error.message}</pre>
-      <button onClick={resetBoundary} type="button">Try again</button>
+      <button onClick={resetBoundary} type="button">
+        Try again
+      </button>
     </div>
   );
 }

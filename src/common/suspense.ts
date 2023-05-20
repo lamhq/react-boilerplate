@@ -11,7 +11,9 @@ import { StatefulPromise } from './stateful-promise';
 export function suspense<T>(promise: StatefulPromise<T>) {
   if (promise.status === 'fulfilled') {
     return promise.value;
-  } if (promise.status === 'rejected') {
+  }
+
+  if (promise.status === 'rejected') {
     throw promise.error;
   } else {
     throw promise;

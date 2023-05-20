@@ -15,5 +15,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <ApiProvider service={apiService}>
       <App />
     </ApiProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

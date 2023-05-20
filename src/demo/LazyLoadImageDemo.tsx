@@ -22,21 +22,24 @@ function ImageGallery({ images }: { images: string[] }) {
   }
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach((entry) => {
-        // load the image if it's within 100px from the viewport
-        if (entry.isIntersecting) {
-          const { target } = entry;
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          // load the image if it's within 100px from the viewport
+          if (entry.isIntersecting) {
+            const { target } = entry;
 
-          // use a custom attribute to store the real image source
-          const src = target.getAttribute('data-src') || '';
-          target.setAttribute('src', src);
+            // use a custom attribute to store the real image source
+            const src = target.getAttribute('data-src') || '';
+            target.setAttribute('src', src);
 
-          // unobserve the element because image is loaded
-          obs.unobserve(target);
-        }
-      });
-    }, { rootMargin: '100px' });
+            // unobserve the element because image is loaded
+            obs.unobserve(target);
+          }
+        });
+      },
+      { rootMargin: '100px' }
+    );
 
     refs.current.forEach((element) => observer.observe(element));
 
