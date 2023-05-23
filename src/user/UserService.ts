@@ -1,10 +1,10 @@
-import { CacheService } from '../common/CacheService';
+import { PromiseCache } from '../common/PromiseCache';
 
 export class ApiService {
-  constructor(private readonly cacheService: CacheService) {}
+  constructor(private readonly cacheService: PromiseCache) {}
 
   public getAlbum(albumId: string): Promise<string> {
-    return this.cacheService.getPromise(
+    return this.cacheService.get(
       `albums/${albumId}`,
       () =>
         new Promise<string>((rs, rj) => {
@@ -14,7 +14,7 @@ export class ApiService {
   }
 
   public getProfile(): Promise<string> {
-    return this.cacheService.getPromise(
+    return this.cacheService.get(
       'profile',
       () =>
         new Promise<string>((rs) => {

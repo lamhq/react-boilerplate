@@ -2,20 +2,20 @@ import { Suspense, useState } from 'react';
 import { ErrorBoundary, FallbackProps, useErrorBoundary } from 'react-error-boundary';
 
 import { suspense } from '../common';
-import { useApi } from '../api';
+import { useService } from '../provider';
 
 function Loading() {
   return <h2>🌀 Loading...</h2>;
 }
 
 function Profile() {
-  const apiService = useApi();
+  const { apiService } = useService();
   const data = suspense(apiService.getProfile());
   return <p>{data}</p>;
 }
 
 function Albums() {
-  const apiService = useApi();
+  const { apiService } = useService();
   const data = suspense(apiService.getAlbum('abcd'));
   return <p>{data}</p>;
 }

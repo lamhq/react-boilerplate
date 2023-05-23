@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react';
 import { mock } from 'jest-mock-extended';
 
-import { ApiService } from '../api/ApiService';
+import { ApiService } from '../user/UserService';
 import { useService } from './useService';
 import { ServiceProvider } from '.';
 

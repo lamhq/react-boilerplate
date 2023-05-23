@@ -5,10 +5,12 @@ import './index.css';
 import App from './App';
 import { ServiceProvider } from './provider';
 import { CacheService } from './common';
-import { ApiService } from './api';
+import { ApiService } from './user';
 
 // init all services
-const cacheService = new CacheService();
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const cacheStore = new Map<string, Promise<any>>();
+const cacheService = new CacheService(cacheStore);
 const apiService = new ApiService(cacheService);
 const services = { apiService };
 
