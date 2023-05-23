@@ -137,12 +137,28 @@ Please take a look at the document of release and deploy [here](docs/release-and
 
 ## Reference
 
-Follow these guides to build this codebase:
-
+Create initial code:
 - https://vitejs.dev/guide/
+
+Set up Git hook:
+
 - https://typicode.github.io/husky/#/?id=automatic-recommended
 - https://commitlint.js.org/#/guides-local-setup?id=guide-local-setup
 - https://www.npmjs.com/package/git-branch-is
+
+Set up Linter, Formatter:
 - https://www.npmjs.com/package/eslint-config-airbnb
 - https://www.npmjs.com/package/eslint-config-airbnb-typescript
+- https://prettier.io/docs/en/integrating-with-linters.html
+
+Set up testing:
+- https://jestjs.io/docs/getting-started
+- https://kulshekhar.github.io/ts-jest/docs/
+- https://www.npmjs.com/package/jest-mock-extended
+- https://testing-library.com/docs/react-testing-library/intro/
+- https://github.com/testing-library/react-hooks-testing-library
+- https://jestjs.io/docs/tutorial-jquery
+
+CICD:
+
 - https://github.com/google-github-actions/release-please-action

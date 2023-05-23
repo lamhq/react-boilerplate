@@ -19,5 +19,3 @@ export function suspense<T>(promise: StatefulPromise<T>) {
     throw promise;
   }
 }
-
-export default suspense;

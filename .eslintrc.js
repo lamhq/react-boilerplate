@@ -46,7 +46,6 @@ module.exports = {
       "error",
       {
         "devDependencies": [
-          "src/common/test-utils.tsx",
           '**/*{.,_}{test,spec}.{ts,tsx}', // tests where the extension or filename suffix denotes that it is a test
         ]
       }
