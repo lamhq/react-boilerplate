@@ -9,7 +9,6 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
-    'prettier',
   ],
   extends: [
     'eslint:recommended',
@@ -18,7 +17,7 @@ module.exports = {
     'airbnb',
     'airbnb-typescript',
     'airbnb/hooks',
-    "prettier",
+    "plugin:prettier/recommended",
   ],
   env: {
     browser: true,
@@ -30,8 +29,6 @@ module.exports = {
 
   // additional rules
   rules: {
-    'prettier/prettier': 'error',
-
     // Vite automatically import React for us, so no need this rule
     'react/react-in-jsx-scope': 'off',
 

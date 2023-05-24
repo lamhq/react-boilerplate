@@ -150,6 +150,7 @@ Set up Linter, Formatter:
 - https://www.npmjs.com/package/eslint-config-airbnb
 - https://www.npmjs.com/package/eslint-config-airbnb-typescript
 - https://prettier.io/docs/en/integrating-with-linters.html
+- https://github.com/prettier/eslint-plugin-prettier#recommended-configuration
 
 Set up testing:
 - https://jestjs.io/docs/getting-started
