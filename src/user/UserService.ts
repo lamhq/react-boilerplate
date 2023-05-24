@@ -1,6 +1,6 @@
-import { PromiseCache } from '../common/PromiseCache';
+import { PromiseCache } from 'src/common/PromiseCache';
 
-export class ApiService {
+export class UserService {
   constructor(private readonly cacheService: PromiseCache) {}
 
   public getAlbum(albumId: string): Promise<string> {
