@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ServiceContext } from './context';
-import { IServices } from './service';
+import { IServices } from './types';
 
 export function useService(): IServices {
   const services = useContext(ServiceContext);

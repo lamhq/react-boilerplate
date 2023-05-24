@@ -1,5 +1,5 @@
 import { ServiceContext } from './context';
-import { IServices } from './service';
+import { IServices } from './types';
 
 export interface ServiceProviderProps {
   services: IServices;
