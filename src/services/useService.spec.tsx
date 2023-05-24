@@ -1,13 +1,13 @@
 import { renderHook } from '@testing-library/react';
 import { mock } from 'jest-mock-extended';
 
-import { ApiService } from '../user/UserService';
+import { UserService } from 'src/user';
 import { useService } from './useService';
 import { ServiceProvider } from '.';
 
 describe('useService', () => {
   test('should return service instance', () => {
-    const services = { apiService: mock<ApiService>() };
+    const services = { userService: mock<UserService>() };
     const wrapper = ({ children }: { children: React.ReactElement }) => (
       <ServiceProvider services={services}>{children}</ServiceProvider>
     );

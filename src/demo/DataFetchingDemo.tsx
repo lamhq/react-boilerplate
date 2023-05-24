@@ -1,22 +1,22 @@
 import { Suspense, useState } from 'react';
 import { ErrorBoundary, FallbackProps, useErrorBoundary } from 'react-error-boundary';
 
-import { suspense } from '../common';
-import { useService } from '../provider';
+import { suspense } from 'src/common';
+import { useService } from 'src/services';
 
 function Loading() {
   return <h2>🌀 Loading...</h2>;
 }
 
 function Profile() {
-  const { apiService } = useService();
-  const data = suspense(apiService.getProfile());
+  const { userService } = useService();
+  const data = suspense(userService.getProfile());
   return <p>{data}</p>;
 }
 
 function Albums() {
-  const { apiService } = useService();
-  const data = suspense(apiService.getAlbum('abcd'));
+  const { userService } = useService();
+  const data = suspense(userService.getAlbum('abcd'));
   return <p>{data}</p>;
 }
 
