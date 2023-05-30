@@ -20,6 +20,6 @@
     "baseUrl": "./src",
     "paths": { "src/*": ["*"] }
   },
-  "include": ["src", "cypress"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
