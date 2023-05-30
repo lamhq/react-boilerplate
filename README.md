@@ -147,6 +147,8 @@ Set up Git hook:
 - https://www.npmjs.com/package/git-branch-is
 
 Set up Linter, Formatter:
+
+- https://typescript-eslint.io/getting-started/
 - https://www.npmjs.com/package/eslint-config-airbnb
 - https://www.npmjs.com/package/eslint-config-airbnb-typescript
 - https://prettier.io/docs/en/integrating-with-linters.html
