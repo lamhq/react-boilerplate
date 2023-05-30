@@ -27,10 +27,10 @@ describe('PromiseCache', () => {
       expect(asyncFn).toBeCalled();
     });
 
-    it('should remove cached promise if its status is fulfilled or rejected', () => {
+    it('should remove cached promise if its status is fulfilled or rejected', async () => {
       const promise = Promise.resolve(1);
       asyncFn.mockReturnValueOnce(promise);
-      cacheService.get(key, asyncFn);
+      await cacheService.get(key, asyncFn);
 
       // At this point in time, cache should not be removed
       expect(cacheStore.delete).not.toBeCalled();

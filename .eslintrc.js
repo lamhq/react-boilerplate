@@ -30,6 +30,17 @@ module.exports = {
     browser: true,
     es2021: true,
   },
+  overrides: [
+    // disable `unbound-method` for jest test files
+    {
+      files: ['**/?(*.)+(spec|test).+(ts|tsx|js)'],
+      plugins: ['jest'],
+      rules: {
+        '@typescript-eslint/unbound-method': 'off',
+        'jest/unbound-method': 'error',
+      },
+    },
+  ],
 
   // additional rules
   rules: {
@@ -41,6 +52,9 @@ module.exports = {
 
     // Disable the rule that require default exports in a module
     'import/prefer-default-export': 'off',
+
+    // https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/unbound-method.md
+    '@typescript-eslint/unbound-method': 'error',
 
     // allow import `devDependencies`
     'import/no-extraneous-dependencies': [
