@@ -26,7 +26,7 @@ export function suspense<T>(promise: StatefulPromise<T>) {
         promise.status = 'fulfilled';
         promise.value = result;
       },
-      (reason) => {
+      (reason: Error) => {
         promise.status = 'rejected';
         promise.error = reason;
       }
