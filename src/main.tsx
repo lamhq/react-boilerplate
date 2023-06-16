@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 
 import './index.css';
 import { ServiceProvider, services } from './services';
-import App from './App';
+// import App from './App';
+import { LazyLoadImageDemo2 as App } from './demo/lazy-loading-image';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
