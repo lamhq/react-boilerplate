@@ -90,6 +90,7 @@ export function LazyLoadImageDemo1() {
           `width` and `height` of `&lt;img&gt;` element are set
         </li>
       </ul>
+      <p>Scroll down to see how it works</p>
       <ImageGallery images={images} />;
     </>
   );

@@ -41,9 +41,10 @@ export function LazyLoadImageDemo2() {
         <li>Unloaded images will be displayed as rectangle with gray background</li>
         <li>
           To prevent the surrounding content from reflowing when a lazy-loaded image is downloaded,
-          `width` and `height` of `&lt;img&gt;` element are set
+          `width` and `height` of `&lt;img&gt;` element are set (in css)
         </li>
       </ul>
+      <p>Scroll down to see how it works</p>
       <ImageGallery images={images} />;
     </>
   );
