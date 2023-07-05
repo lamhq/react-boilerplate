@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Layout } from './common/components/Layout';
+import { Layout } from './common/templates/Layout';
 
 export const router = createBrowserRouter([
   {
@@ -16,21 +16,21 @@ export const router = createBrowserRouter([
       {
         path: 'demo/data-fetching',
         async lazy() {
-          const { DataFetchingDemo } = await import('./demo/data-fetching');
+          const { DataFetching: DataFetchingDemo } = await import('./demo/pages/DataFetching');
           return { Component: DataFetchingDemo };
         },
       },
       {
         path: 'demo/lazy-load-image-1',
         async lazy() {
-          const { LazyLoadImageDemo1 } = await import('./demo/lazy-load-image');
+          const { LazyLoadImageDemo1 } = await import('./demo/pages/ImageLazyLoad');
           return { Component: LazyLoadImageDemo1 };
         },
       },
       {
         path: 'demo/lazy-load-image-2',
         async lazy() {
-          const { LazyLoadImageDemo2 } = await import('./demo/lazy-load-image');
+          const { LazyLoadImageDemo2 } = await import('./demo/pages/ImageLazyLoad');
           return { Component: LazyLoadImageDemo2 };
         },
       },

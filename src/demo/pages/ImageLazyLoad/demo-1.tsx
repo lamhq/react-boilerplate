@@ -51,7 +51,7 @@ function ImageGallery({ images }: { images: string[] }) {
   );
 }
 
-export function LazyLoadImageDemo1() {
+export function ImageLazyLoad1() {
   const images = [
     'https://picsum.photos/id/1/300/300',
     'https://picsum.photos/id/2/300/300',
