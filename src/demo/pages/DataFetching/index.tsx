@@ -53,7 +53,7 @@ function ErrorFallback({ error }: FallbackProps) {
   );
 }
 
-export function DataFetchingDemo() {
+export function DataFetching() {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <Content />
