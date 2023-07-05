@@ -37,15 +37,19 @@ export function ImageLazyLoad2() {
     <>
       <p>Lazy load image demo:</p>
       <ul>
-        <li>Lazy load images using the `loading` attribute of `img` html tag (native)</li>
+        <li>
+          Lazy load images using the <code>loading</code> attribute of <code>img</code> html tag
+          (native)
+        </li>
         <li>Unloaded images will be displayed as rectangle with gray background</li>
         <li>
-          To prevent the surrounding content from reflowing when a lazy-loaded image is downloaded,
-          `width` and `height` of `&lt;img&gt;` element are set (in css)
+          To prevent the surrounding content from reflowing when a lazy-loaded image is
+          downloaded,&nbsp;
+          <code>width</code> and <code>height</code> of <code>&lt;img&gt;</code> element are set
         </li>
       </ul>
-      <p>Scroll down to see how it works</p>
-      <ImageGallery images={images} />;
+      <p>Scroll down to see how it works:</p>
+      <ImageGallery images={images} />
     </>
   );
 }

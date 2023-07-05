@@ -78,20 +78,25 @@ export function ImageLazyLoad1() {
     <>
       <p>Lazy load image demo:</p>
       <ul>
-        <li>Lazy load images if they are 100px from the viewport.</li>
-        <li>Position checking is performed using Intersection Observer API</li>
+        <li>
+          Lazy load images if they are within <strong>100px</strong> from the viewport.
+        </li>
+        <li>
+          Position checking is performed using <code>IntersectionObserver</code> API
+        </li>
         <li>Unloaded images will be displayed as rectangle with gray background</li>
         <li>
-          Images are lazy loaded by rendering an `img` tag with no `src` attribute. Then the value
-          will be updated with the real image url (stored in `data-src` attribute)
+          Images are lazy loaded by rendering an <code>img</code> tag with no <code>src</code>&nbsp;
+          attribute. Then the value will be updated with the real image url (stored in&nbsp;
+          <code>data-src</code> attribute)
         </li>
         <li>
           To prevent the surrounding content from reflowing when a lazy-loaded image is downloaded,
-          `width` and `height` of `&lt;img&gt;` element are set
+          <code>width</code> and <code>height</code> of <code>&lt;img&gt;</code> element are set
         </li>
       </ul>
-      <p>Scroll down to see how it works</p>
-      <ImageGallery images={images} />;
+      <p>Scroll down to see how it works:</p>
+      <ImageGallery images={images} />
     </>
   );
 }
