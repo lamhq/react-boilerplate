@@ -138,6 +138,7 @@ Please take a look at the document of release and deploy [here](docs/release-and
 ## Reference
 
 Create initial code:
+
 - https://vitejs.dev/guide/
 
 Set up Git hook:
@@ -155,12 +156,17 @@ Set up Linter, Formatter:
 - https://github.com/prettier/eslint-plugin-prettier#recommended-configuration
 
 Set up testing:
+
 - https://jestjs.io/docs/getting-started
 - https://kulshekhar.github.io/ts-jest/docs/
 - https://www.npmjs.com/package/jest-mock-extended
 - https://testing-library.com/docs/react-testing-library/intro/
 - https://github.com/testing-library/react-hooks-testing-library
 - https://jestjs.io/docs/tutorial-jquery
+
+Setup routing:
+
+- https://reactrouter.com/en/main/start/concepts
 
 CICD:
 

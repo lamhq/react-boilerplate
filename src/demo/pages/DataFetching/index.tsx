@@ -1,7 +1,7 @@
 import { Suspense, useState } from 'react';
 import { ErrorBoundary, FallbackProps, useErrorBoundary } from 'react-error-boundary';
 
-import { suspense } from 'src/common';
+import { lazyData } from 'src/common';
 import { useService } from 'src/services';
 
 function Loading() {
@@ -10,13 +10,13 @@ function Loading() {
 
 function Profile() {
   const { userService } = useService();
-  const data = suspense(userService.getProfile());
+  const data = lazyData(userService.getProfile());
   return <p>{data}</p>;
 }
 
 function Albums() {
   const { userService } = useService();
-  const data = suspense(userService.getAlbum('abcd'));
+  const data = lazyData(userService.getAlbum('abcd'));
   return <p>{data}</p>;
 }
 
