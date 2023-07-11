@@ -1,5 +1,7 @@
 # React Boilerplate
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 ## Overview
 
 This is a starter repository that provides the essential components for React Single Page Application projects. The goal is to keep things simple and include only what is needed for most projects, such as:
