@@ -1,5 +1,7 @@
 # React Boilerplate
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 ## Overview
 
 This is a starter repository that provides the essential components for React Single Page Application projects. The goal is to keep things simple and include only what is needed for most projects, such as:
@@ -30,7 +32,7 @@ Additionally, there are separate branches for specific features, each containing
 - CI/CD platform: Github Actions
 
 
-## Highlights
+## Feature highlights
 
 ### Built on Vite
 
@@ -128,6 +130,19 @@ To run and debug unit tests with VS Code, follow these steps:
 ## How to start coding?
 
 Please take a look at the document of branching strategy and development workflow [here](docs/dev-workflow.md).
+
+
+## Making a git commit
+
+This repo is commitizen friendly, you can just you `git commit` command and you'll be prompted to fill out any required commit fields without worrying about commit message format.
+
+Or you can run the application script:
+
+```bash
+npx cz
+```
+
+Or if you're using VS Code, you can install this [extension](https://marketplace.visualstudio.com/items?itemName=KnisterPeter.vscode-commitizen).
 
 
 ## How to deploy the app?
