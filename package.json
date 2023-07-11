@@ -11,8 +11,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "prepare": "husky install",
-    "cypress:open": "cypress open",
-    "cm": "cz"
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
