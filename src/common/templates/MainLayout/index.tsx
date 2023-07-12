@@ -20,13 +20,13 @@ const appbarStyle = {
   ml: { sm: `${sidebarWidth}px` },
   width: { sm: `calc(100% - ${sidebarWidth}px)` },
 };
+const drawerContent = <Navigation />;
 
 export default function MainLayout() {
   const [isSidebarOpen, setDrawerOpen] = useState<boolean>(false);
   const handleSidebarToggle = useCallback(() => {
     setDrawerOpen((isOpen) => !isOpen);
   }, []);
-  const drawerContent = <Navigation />;
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'row-reverse' }}>

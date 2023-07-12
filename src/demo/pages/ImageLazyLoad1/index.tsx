@@ -1,15 +1,11 @@
-import { useEffect, useRef } from 'react';
-import classes from './styles.module.css';
+import { useCallback, useEffect, useRef } from 'react';
+import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
 
-function ImageGallery({ images }: { images: string[] }) {
-  // the ref that hold a list of img elements
-  const refs = useRef<HTMLImageElement[]>([]);
-  function setRef(ref: HTMLImageElement | null, index: number) {
-    if (ref) {
-      refs.current[index] = ref;
-    }
-  }
-
+/**
+ * Lazy load image on scroll
+ */
+function useIntersectionObserver(images: HTMLImageElement[]) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries, obs) => {
@@ -30,28 +26,42 @@ function ImageGallery({ images }: { images: string[] }) {
       { rootMargin: '100px' }
     );
 
-    refs.current.forEach((element) => observer.observe(element));
+    images.forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
   }, [images]);
+}
+
+const Img = styled('img')({
+  width: 300,
+  height: 300,
+  backgroundColor: 'gray',
+});
+
+/**
+ * Component that display image list
+ */
+function ImageGallery({ images }: { images: string[] }) {
+  // the ref that hold a list of img elements
+  const refs = useRef<HTMLImageElement[]>([]);
+  // function to init ref value at runtime
+  const setRef = useCallback((ref: HTMLImageElement | null, index: number) => {
+    if (ref) {
+      refs.current[index] = ref;
+    }
+  }, []);
+  useIntersectionObserver(refs.current);
 
   return (
-    <div className={classes.container}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
       {images.map((image, index) => (
-        <img
-          key={image}
-          className={classes.item}
-          data-src={image}
-          src=""
-          ref={(ref) => setRef(ref, index)}
-          alt=""
-        />
+        <Img key={image} data-src={image} src="" ref={(ref) => setRef(ref, index)} alt="" />
       ))}
-    </div>
+    </Box>
   );
 }
 
-export function ImageLazyLoad1() {
+export default function ImageLazyLoad1() {
   const images = [
     'https://picsum.photos/id/1/300/300',
     'https://picsum.photos/id/2/300/300',
@@ -95,7 +105,9 @@ export function ImageLazyLoad1() {
           <code>width</code> and <code>height</code> of <code>&lt;img&gt;</code> element are set
         </li>
       </ul>
+
       <p>Scroll down to see how it works:</p>
+
       <ImageGallery images={images} />
     </>
   );

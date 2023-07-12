@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 
-export const theme = createTheme({
+export default createTheme({
   typography: {
     htmlFontSize: 16,
     fontSize: 16,
