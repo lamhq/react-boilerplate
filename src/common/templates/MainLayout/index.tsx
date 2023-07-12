@@ -8,14 +8,15 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Menu as MenuIcon } from '@mui/icons-material';
 
-import Navigation from './Navigation';
+import Navigation from 'src/common/organisms/Navigation';
 
 const sidebarWidth = 256;
-const leftStyle = {
-  width: { sm: sidebarWidth },
-  flexShrink: { sm: 0 },
+const sidebarStyle = {
+  width: sidebarWidth,
+  display: { xs: 'none', sm: 'block' },
+  flexShrink: 0,
 };
-const rightStyle = {
+const appbarStyle = {
   ml: { sm: `${sidebarWidth}px` },
   width: { sm: `calc(100% - ${sidebarWidth}px)` },
 };
@@ -25,16 +26,12 @@ export default function MainLayout() {
   const handleSidebarToggle = useCallback(() => {
     setDrawerOpen((isOpen) => !isOpen);
   }, []);
-  const drawerContent = (
-    <Box sx={leftStyle} aria-label="main links">
-      <Navigation />
-    </Box>
-  );
+  const drawerContent = <Navigation />;
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'row-reverse' }}>
       {/* Header */}
-      <AppBar position="fixed" sx={rightStyle}>
+      <AppBar position="fixed" sx={appbarStyle}>
         <Toolbar variant="dense">
           <IconButton
             size="small"
@@ -52,39 +49,41 @@ export default function MainLayout() {
         </Toolbar>
       </AppBar>
 
-      {/* Mobile navigation */}
-      <Drawer
-        variant="temporary"
-        open={isSidebarOpen}
-        anchor="left"
-        onClose={handleSidebarToggle}
-        ModalProps={{
-          // Better open performance on mobile.
-          keepMounted: true,
-        }}
-        sx={{
-          display: { xs: 'block', sm: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: sidebarWidth },
-        }}
-      >
-        {drawerContent}
-      </Drawer>
-
-      {/* Default navigation */}
-      <Drawer
-        variant="permanent"
-        sx={{
-          display: { xs: 'none', sm: 'block' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: sidebarWidth },
-        }}
-        open
-      >
-        {drawerContent}
-      </Drawer>
-
       {/* Main content */}
-      <Box component="main" sx={{ ...rightStyle, flexGrow: 1, p: 3, pt: '48px' }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 2, pt: 6 }}>
         <Outlet />
+      </Box>
+
+      <Box component="aside" sx={sidebarStyle}>
+        {/* Mobile navigation */}
+        <Drawer
+          variant="temporary"
+          open={isSidebarOpen}
+          anchor="left"
+          onClose={handleSidebarToggle}
+          ModalProps={{
+            // Better open performance on mobile.
+            keepMounted: true,
+          }}
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: sidebarWidth },
+          }}
+        >
+          {drawerContent}
+        </Drawer>
+
+        {/* Default navigation */}
+        <Drawer
+          variant="permanent"
+          sx={{
+            display: { xs: 'none', sm: 'block' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: sidebarWidth },
+          }}
+          open
+        >
+          {drawerContent}
+        </Drawer>
       </Box>
     </Box>
   );

@@ -38,4 +38,5 @@ export const theme = createTheme({
       main: '#e0e0e0',
     },
   },
+  spacing: 8,
 });

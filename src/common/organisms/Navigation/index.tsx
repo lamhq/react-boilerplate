@@ -6,7 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 import ListSubheader from '@mui/material/ListSubheader';
-import NavigationItem from '../NavigationItem';
+import NavigationItem from 'src/common/molecules/NavigationItem';
 
 export default function Navigation() {
   return (
