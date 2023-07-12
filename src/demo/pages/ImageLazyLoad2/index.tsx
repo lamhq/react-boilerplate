@@ -1,16 +1,25 @@
-import classes from './styles.module.css';
+import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
+
+const Img = styled('img')({
+  width: 300,
+  height: 300,
+  backgroundColor: 'gray',
+});
 
 function ImageGallery({ images }: { images: string[] }) {
   return (
-    <div className={classes.container}>
+    <Box
+      sx={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', mt: 50 }}
+    >
       {images.map((image) => (
-        <img key={image} className={classes.item} src={image} loading="lazy" alt="" />
+        <Img key={image} src={image} loading="lazy" alt="" />
       ))}
-    </div>
+    </Box>
   );
 }
 
-export function ImageLazyLoad2() {
+export default function ImageLazyLoad2() {
   const images = [
     'https://picsum.photos/id/1/300/300',
     'https://picsum.photos/id/2/300/300',

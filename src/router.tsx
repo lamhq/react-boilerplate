@@ -1,38 +1,39 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Layout } from './common/templates/Layout';
+import { ComponentType } from 'react';
+import MainLayout from './common/templates/MainLayout';
 
-export const router = createBrowserRouter([
+/**
+ * Convert default export of ES module to React Router lazy import structure
+ *
+ * @param module ES module with default export
+ * @returns object { Component: React.ComponentType }
+ */
+function getReactRouterLazyImport(module: { default: ComponentType }) {
+  return {
+    Component: module.default,
+  };
+}
+
+export default createBrowserRouter([
   {
-    element: <Layout />,
+    element: <MainLayout />,
     path: '/',
     children: [
       {
         index: true,
-        async lazy() {
-          const { Home } = await import('./common/pages/Home');
-          return { Component: Home };
-        },
+        lazy: () => import('./common/pages/Home').then(getReactRouterLazyImport),
       },
       {
         path: 'demo/data-fetching',
-        async lazy() {
-          const { DataFetching: DataFetchingDemo } = await import('./demo/pages/DataFetching');
-          return { Component: DataFetchingDemo };
-        },
+        lazy: () => import('./demo/pages/DataFetching').then(getReactRouterLazyImport),
       },
       {
         path: 'demo/lazy-load-image-1',
-        async lazy() {
-          const { LazyLoadImageDemo1 } = await import('./demo/pages/ImageLazyLoad');
-          return { Component: LazyLoadImageDemo1 };
-        },
+        lazy: () => import('./demo/pages/ImageLazyLoad1').then(getReactRouterLazyImport),
       },
       {
         path: 'demo/lazy-load-image-2',
-        async lazy() {
-          const { LazyLoadImageDemo2 } = await import('./demo/pages/ImageLazyLoad');
-          return { Component: LazyLoadImageDemo2 };
-        },
+        lazy: () => import('./demo/pages/ImageLazyLoad2').then(getReactRouterLazyImport),
       },
     ],
   },
