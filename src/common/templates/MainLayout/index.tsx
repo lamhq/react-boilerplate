@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import { Menu as MenuIcon } from '@mui/icons-material';
 
 import Navigation from 'src/common/organisms/Navigation';
+import NavigationProgress from 'src/common/organisms/NavigationProgress';
 
 const sidebarWidth = 256;
 const sidebarStyle = {
@@ -54,6 +55,7 @@ export default function MainLayout() {
         <Outlet />
       </Box>
 
+      {/* Sidebar */}
       <Box component="aside" sx={sidebarStyle}>
         {/* Mobile navigation */}
         <Drawer
@@ -85,6 +87,8 @@ export default function MainLayout() {
           {drawerContent}
         </Drawer>
       </Box>
+
+      <NavigationProgress />
     </Box>
   );
 }
