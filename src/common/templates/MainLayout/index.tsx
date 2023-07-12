@@ -6,7 +6,7 @@ import AppBar from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Menu as MenuIcon } from '@mui/icons-material';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import Navigation from 'src/common/organisms/Navigation';
 import NavigationProgress from 'src/common/organisms/NavigationProgress';
@@ -51,7 +51,7 @@ export default function MainLayout() {
       </AppBar>
 
       {/* Main content */}
-      <Box component="main" sx={{ flexGrow: 1, p: 2, pt: 6 }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 2, pt: 8 }}>
         <Outlet />
       </Box>
 

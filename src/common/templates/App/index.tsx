@@ -11,6 +11,7 @@ export default function App() {
     <ServiceProvider services={services}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+
         <RouterProvider router={router} />
       </ThemeProvider>
     </ServiceProvider>
