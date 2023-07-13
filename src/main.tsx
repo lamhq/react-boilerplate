@@ -13,8 +13,8 @@ import theme from './theme';
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <CssBaseline />
       <DIProvider container={container}>
+        <CssBaseline />
         <RouterProvider router={router} />
       </DIProvider>
     </ThemeProvider>
