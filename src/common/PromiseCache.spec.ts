@@ -1,6 +1,6 @@
 import { mock } from 'jest-mock-extended';
 import { PromiseCache } from './PromiseCache';
-import { StatefulPromise } from './lazyData';
+import { StatefulPromise } from './asyncData';
 
 jest.useFakeTimers();
 describe('PromiseCache', () => {

@@ -23,16 +23,11 @@ export class PromiseCache {
       promise = factoryFn();
 
       // remove the promise from cache if it is resolved or rejected
-      promise.then(
-        () => {
-          setTimeout(() => {
-            this.store.delete(key);
-          }, 10);
-        },
-        (error) => {
-          throw error;
-        }
-      );
+      promise.finally(() => {
+        setTimeout(() => {
+          this.store.delete(key);
+        }, 10);
+      });
       this.store.set(key, promise);
     } else {
       promise = cacheValue as Promise<T>;
