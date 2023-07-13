@@ -1,4 +1,4 @@
-import { StatefulPromise, asyncData } from './asyncData';
+import { StatefulPromise, asyncData } from './utils';
 
 describe('asyncData', () => {
   it('should throw the promise and set its status to pending if it is not resolved/rejected', () => {
