@@ -1,9 +1,12 @@
+import { singleton } from 'tsyringe';
+
 /**
  * Type of a function that return a Promise
  */
 export type AsyncFn<T> = () => Promise<T>;
 
-export class PromiseCache {
+@singleton()
+export default class CacheService {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public constructor(readonly store: Map<string, Promise<any>>) {}
 
@@ -15,7 +18,7 @@ export class PromiseCache {
    * @param factoryFn the function that return a promise
    * @returns Promise
    */
-  public get<T>(key: string, factoryFn: AsyncFn<T>): Promise<T> {
+  public getPromise<T>(key: string, factoryFn: AsyncFn<T>): Promise<T> {
     let promise: Promise<T>;
     const cacheValue = this.store.get(key);
     if (!cacheValue) {

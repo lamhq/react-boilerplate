@@ -18,7 +18,11 @@
 
     // enable absolute import with path mapping
     "baseUrl": "./src",
-    "paths": { "src/*": ["*"] }
+    "paths": { "src/*": ["*"] },
+
+    // enable decorator for dependency injection
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": [
     // files in `src` folder

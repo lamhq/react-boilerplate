@@ -6,8 +6,9 @@ import Typography from '@mui/material/Typography';
 import React, { Suspense, useCallback, useState } from 'react';
 import { ErrorBoundary, FallbackProps, useErrorBoundary } from 'react-error-boundary';
 
-import { asyncData } from 'src/common';
-import { useService } from 'src/services';
+import asyncData from 'src/common/utils/asyncData';
+import { useService } from 'src/common/di';
+import { ApiService } from './ApiService';
 
 /**
  * React hook to force a component rerender
@@ -78,8 +79,8 @@ function withLoadingFallback<T extends JSX.IntrinsicAttributes>(Component: React
 }
 
 function UserProfile() {
-  const { userService } = useService();
-  const data = asyncData(userService.getProfile());
+  const apiService = useService(ApiService);
+  const data = asyncData(apiService.getData());
   const reload = useRerender();
   return (
     <>
