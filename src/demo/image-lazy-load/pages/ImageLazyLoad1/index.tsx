@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef } from 'react';
 import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
+import Img from '../../atoms/Img';
 
 /**
- * Lazy load image on scroll
+ * React Hook to trigger image load on scroll
  */
 function useIntersectionObserver(images: HTMLImageElement[]) {
   useEffect(() => {
@@ -32,24 +32,20 @@ function useIntersectionObserver(images: HTMLImageElement[]) {
   }, [images]);
 }
 
-const Img = styled('img')({
-  width: 300,
-  height: 300,
-  backgroundColor: 'gray',
-});
-
 /**
  * Component that display image list
  */
 function ImageGallery({ images }: { images: string[] }) {
   // the ref that hold a list of img elements
   const refs = useRef<HTMLImageElement[]>([]);
+
   // function to init ref value at runtime
   const setRef = useCallback((ref: HTMLImageElement | null, index: number) => {
     if (ref) {
       refs.current[index] = ref;
     }
   }, []);
+
   useIntersectionObserver(refs.current);
 
   return (

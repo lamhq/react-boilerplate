@@ -5,11 +5,11 @@ import { asyncData } from 'src/common/utils';
 import { useService } from 'src/di';
 import { useRerender } from 'src/common/hooks';
 import { withLoadingFallback } from 'src/common/hocs';
-import { ApiService } from './ApiService';
+import { DataService } from '../../services/DataService';
 
 function UserProfile() {
-  const apiService = useService(ApiService);
-  const data = asyncData(apiService.getData());
+  const dataService = useService(DataService);
+  const data = asyncData(dataService.getData());
   const reload = useRerender();
   return (
     <>

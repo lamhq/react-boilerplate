@@ -2,7 +2,7 @@ import { singleton } from 'tsyringe';
 import CacheService from 'src/common/services/CacheService';
 
 @singleton()
-export class ApiService {
+export class DataService {
   constructor(private readonly cacheService: CacheService) {}
 
   public getData(): Promise<string> {

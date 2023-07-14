@@ -35,15 +35,16 @@ export default createBrowserRouter([
           },
           {
             path: 'demo/data-fetching',
-            lazy: () => import('./demo/pages/DataFetching').then(getReactRouterLazyImport),
+            lazy: () =>
+              import('./demo/data-fetching/pages/DataFetching').then(getReactRouterLazyImport),
           },
           {
             path: 'demo/lazy-load-image-1',
-            lazy: () => import('./demo/pages/ImageLazyLoad1').then(getReactRouterLazyImport),
+            lazy: () => import('./demo/image-lazy-load/pages/ImageLazyLoad1').then(getReactRouterLazyImport),
           },
           {
             path: 'demo/lazy-load-image-2',
-            lazy: () => import('./demo/pages/ImageLazyLoad2').then(getReactRouterLazyImport),
+            lazy: () => import('./demo/image-lazy-load/pages/ImageLazyLoad2').then(getReactRouterLazyImport),
           },
           {
             path: '*',

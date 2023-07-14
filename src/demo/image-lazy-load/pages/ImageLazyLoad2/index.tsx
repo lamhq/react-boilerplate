@@ -1,11 +1,5 @@
 import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
-
-const Img = styled('img')({
-  width: 300,
-  height: 300,
-  backgroundColor: 'gray',
-});
+import Img from '../../atoms/Img';
 
 function ImageGallery({ images }: { images: string[] }) {
   return (
