@@ -2,7 +2,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import { asyncData } from 'src/common/utils';
-import { useService } from 'src/common/di';
+import { useService } from 'src/di';
 import { useRerender } from 'src/common/hooks';
 import { withLoadingFallback } from 'src/common/hocs';
 import { ApiService } from './ApiService';

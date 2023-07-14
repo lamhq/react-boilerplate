@@ -6,7 +6,7 @@ import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { container } from 'tsyringe';
 
-import { DIProvider } from './common/di';
+import { DIProvider } from './di';
 import router from './router';
 import theme from './theme';
 
