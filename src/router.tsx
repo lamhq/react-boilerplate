@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import MainLayout from './common/templates/MainLayout';
 import ErrorPage from './common/pages/ErrorPage';
+import BlankLayout from './common/templates/BlankLayout';
 
 /**
  * Convert default export of ES module to React Router lazy import structure
@@ -22,8 +23,7 @@ export default createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
-    // display error page in case layout has error
-    errorElement: ErrorUI,
+    errorElement: ErrorUI, // display error page in case layout has error
     children: [
       {
         // display error page in case sub pages can not be loaded
@@ -55,6 +55,18 @@ export default createBrowserRouter([
             ),
           },
         ],
+      },
+    ],
+  },
+  {
+    path: '/auth/login',
+    element: <BlankLayout />, // display error page in case layout has error
+    errorElement: ErrorUI,
+    children: [
+      {
+        index: true,
+        lazy: () => import('./auth/pages/LoginPage').then(getReactRouterLazyImport),
+        errorElement: ErrorUI,
       },
     ],
   },
