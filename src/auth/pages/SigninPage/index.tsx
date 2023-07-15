@@ -1,8 +1,8 @@
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import yup from 'yup';
+import * as yup from 'yup';
 import Avatar from '@mui/material/Avatar';
-import SaveIcon from '@mui/icons-material/Save';
+import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
 import LoadingButton from '@mui/lab/LoadingButton';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -97,7 +97,7 @@ export default function SigninPage() {
         <LoadingButton
           loading={isSubmitting}
           loadingPosition="start"
-          startIcon={<SaveIcon />}
+          startIcon={<ChevronRightOutlinedIcon />}
           fullWidth
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
