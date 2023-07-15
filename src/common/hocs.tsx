@@ -16,10 +16,11 @@ export function withLoadingFallback<T extends JSX.IntrinsicAttributes>(
     return (
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Suspense fallback={<LoadingFallback />}>
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <Component {...props} />
         </Suspense>
       </ErrorBoundary>
     );
   };
 }
+
+export default null;

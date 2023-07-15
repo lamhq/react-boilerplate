@@ -50,8 +50,18 @@ module.exports = {
     // allow importing asset with Vite using '/'
     'import/no-absolute-path': 'off',
 
-    // Disable the rule that require default exports in a module
-    'import/prefer-default-export': 'off',
+    // Props spreading for `control` function of react-hook-form
+    'react/jsx-props-no-spreading': 'off',
+
+    // fix typescript error of react-hook-form `handleSubmit`
+    '@typescript-eslint/no-misused-promises': [
+      2,
+      {
+        checksVoidReturn: {
+          attributes: false,
+        },
+      },
+    ],
 
     // https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/unbound-method.md
     '@typescript-eslint/unbound-method': 'error',

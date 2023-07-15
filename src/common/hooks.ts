@@ -7,3 +7,5 @@ export function useRerender() {
   const [, setRerender] = useState(false);
   return useCallback(() => setRerender((isReload) => !isReload), []);
 }
+
+export default null;

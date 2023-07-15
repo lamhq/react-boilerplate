@@ -40,11 +40,13 @@ export default createBrowserRouter([
           },
           {
             path: 'demo/lazy-load-image-1',
-            lazy: () => import('./demo/image-lazy-load/pages/ImageLazyLoad1').then(getReactRouterLazyImport),
+            lazy: () =>
+              import('./demo/image-lazy-load/pages/ImageLazyLoad1').then(getReactRouterLazyImport),
           },
           {
             path: 'demo/lazy-load-image-2',
-            lazy: () => import('./demo/image-lazy-load/pages/ImageLazyLoad2').then(getReactRouterLazyImport),
+            lazy: () =>
+              import('./demo/image-lazy-load/pages/ImageLazyLoad2').then(getReactRouterLazyImport),
           },
           {
             path: '*',
@@ -66,7 +68,7 @@ export default createBrowserRouter([
     children: [
       {
         index: true,
-        lazy: () => import('./auth/pages/LoginPage').then(getReactRouterLazyImport),
+        lazy: () => import('./auth/pages/SigninPage').then(getReactRouterLazyImport),
         errorElement: ErrorUI,
       },
     ],

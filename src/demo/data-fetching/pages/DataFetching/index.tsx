@@ -5,7 +5,7 @@ import { asyncData } from 'src/common/utils';
 import { useService } from 'src/di';
 import { useRerender } from 'src/common/hooks';
 import { withLoadingFallback } from 'src/common/hocs';
-import { DataService } from '../../services/DataService';
+import DataService from '../../services/DataService';
 
 function UserProfile() {
   const dataService = useService(DataService);
