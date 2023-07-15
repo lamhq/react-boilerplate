@@ -10,6 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import Navigation from 'src/common/organisms/Navigation';
 import NavigationProgress from 'src/common/organisms/NavigationProgress';
+import UserMenu from 'src/common/organisms/UserMenu';
 
 const sidebarWidth = 256;
 const sidebarStyle = {
@@ -33,7 +34,7 @@ export default function MainLayout() {
     <Box sx={{ display: 'flex', flexDirection: 'row-reverse' }}>
       {/* Header */}
       <AppBar position="fixed" sx={appbarStyle}>
-        <Toolbar variant="dense">
+        <Toolbar variant="dense" sx={{ justifyContent: 'space-between' }}>
           <IconButton
             size="small"
             edge="start"
@@ -44,9 +45,12 @@ export default function MainLayout() {
           >
             <MenuIcon />
           </IconButton>
+
           <Typography variant="h1" align="center" component="h1">
             React Boilerplate
           </Typography>
+
+          <UserMenu />
         </Toolbar>
       </AppBar>
 

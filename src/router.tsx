@@ -62,7 +62,7 @@ export default createBrowserRouter([
     ],
   },
   {
-    path: '/auth/login',
+    path: '/auth/signin',
     element: <BlankLayout />, // display error page in case layout has error
     errorElement: ErrorUI,
     children: [
