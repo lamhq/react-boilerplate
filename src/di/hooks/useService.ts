@@ -1,7 +1,7 @@
 import { InjectionToken } from 'tsyringe';
 import { useContext } from 'react';
 
-import DIContext from './context';
+import DIContext from '../contexts/DIContext';
 
 export default function useService<T>(token: InjectionToken<T>) {
   const container = useContext(DIContext);

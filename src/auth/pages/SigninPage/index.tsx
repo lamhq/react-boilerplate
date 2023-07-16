@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography';
 export interface SigninFormModel {
   email: string;
   password: string;
+  remember: boolean;
 }
 
 const signinFormSchema = yup.object().shape({
@@ -22,6 +23,7 @@ const signinFormSchema = yup.object().shape({
     .string()
     .min(3, 'A minimum of 3 characters is required')
     .required('This field is required'),
+  remember: yup.boolean().required(),
 });
 
 export default function SigninPage() {
@@ -33,12 +35,11 @@ export default function SigninPage() {
     defaultValues: {
       email: '',
       password: '',
+      remember: true,
     },
     resolver: yupResolver(signinFormSchema),
   });
-  const signin: SubmitHandler<SigninFormModel> = async (data) => {
-    console.log(data);
-  };
+  const signin: SubmitHandler<SigninFormModel> = async () => {};
 
   return (
     <>
@@ -89,9 +90,16 @@ export default function SigninPage() {
           )}
         />
 
-        <FormControlLabel
-          control={<Checkbox value="remember" color="primary" />}
-          label="Remember me"
+        <Controller
+          name="remember"
+          control={control}
+          defaultValue={false}
+          render={({ field }) => (
+            <FormControlLabel
+              control={<Checkbox color="primary" {...field} />}
+              label="Remember me"
+            />
+          )}
         />
 
         <LoadingButton

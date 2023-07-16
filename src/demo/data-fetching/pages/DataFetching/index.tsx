@@ -1,10 +1,10 @@
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-import { asyncData } from 'src/common/utils';
+import asyncData from 'src/common/utils/asyncData';
+import useRerender from 'src/common/hooks/useRerender';
+import withLoadingFallback from 'src/common/hocs/withLoadingFallback';
 import { useService } from 'src/di';
-import { useRerender } from 'src/common/hooks';
-import { withLoadingFallback } from 'src/common/hocs';
 import DataService from '../../services/DataService';
 
 function UserProfile() {

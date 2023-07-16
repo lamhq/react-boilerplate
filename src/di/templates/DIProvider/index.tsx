@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 
 import { DependencyContainer } from 'tsyringe';
-import DIContext from './context';
+import DIContext from '../../contexts/DIContext';
 
 export interface DIProviderProps extends PropsWithChildren {
   container: DependencyContainer;

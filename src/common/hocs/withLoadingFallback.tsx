@@ -9,7 +9,7 @@ import LoadingFallback from 'src/common/atoms/LoadingFallback';
  * @param Component React.ComponentType
  * @returns React.ReactNode
  */
-export function withLoadingFallback<T extends JSX.IntrinsicAttributes>(
+export default function withLoadingFallback<T extends JSX.IntrinsicAttributes>(
   Component: React.ComponentType<T>
 ) {
   return function WithLoading(props: T) {
@@ -22,5 +22,3 @@ export function withLoadingFallback<T extends JSX.IntrinsicAttributes>(
     );
   };
 }
-
-export default null;

@@ -1,2 +1,2 @@
-export { default as DIProvider } from './DIProvider';
-export { default as useService } from './useService';
+export { default as DIProvider } from './templates/DIProvider';
+export { default as useService } from './hooks/useService';
