@@ -9,13 +9,16 @@ import { container } from 'tsyringe';
 import { DIProvider } from './di';
 import router from './router';
 import theme from './theme';
+import { AuthProvider } from './auth';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <DIProvider container={container}>
-        <CssBaseline />
-        <RouterProvider router={router} />
+        <AuthProvider>
+          <CssBaseline />
+          <RouterProvider router={router} />
+        </AuthProvider>
       </DIProvider>
     </ThemeProvider>
   </React.StrictMode>

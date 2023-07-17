@@ -7,7 +7,7 @@ import withLoadingFallback from 'src/common/hocs/withLoadingFallback';
 import { useService } from 'src/di';
 import DataService from '../../services/DataService';
 
-function UserProfile() {
+function DataFetchingPage() {
   const dataService = useService(DataService);
   const data = asyncData(dataService.getData());
   const reload = useRerender();
@@ -23,4 +23,4 @@ function UserProfile() {
   );
 }
 
-export default withLoadingFallback(UserProfile);
+export default withLoadingFallback(DataFetchingPage);

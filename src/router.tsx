@@ -4,6 +4,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import MainLayout from './common/templates/MainLayout';
 import ErrorPage from './common/pages/ErrorPage';
 import BlankLayout from './common/templates/BlankLayout';
+import { withAuth } from './auth';
 
 /**
  * Convert default export of ES module to React Router lazy import structure
@@ -11,9 +12,18 @@ import BlankLayout from './common/templates/BlankLayout';
  * @param module ES module with default export
  * @returns object { Component: React.ComponentType }
  */
-function getReactRouterLazyImport(module: { default: ComponentType }) {
+function getImportedComponent(module: { default: ComponentType }) {
   return {
     Component: module.default,
+  };
+}
+
+/**
+ * Require user be authenticated before rendering
+ */
+function getProtectedComponent(module: { default: ComponentType }) {
+  return {
+    Component: withAuth(module.default),
   };
 }
 
@@ -31,22 +41,22 @@ export default createBrowserRouter([
         children: [
           {
             index: true,
-            lazy: () => import('./common/pages/Home').then(getReactRouterLazyImport),
+            lazy: () => import('./common/pages/HomePage').then(getProtectedComponent),
           },
           {
             path: 'demo/data-fetching',
             lazy: () =>
-              import('./demo/data-fetching/pages/DataFetching').then(getReactRouterLazyImport),
+              import('./demo/data-fetching/pages/DataFetching').then(getProtectedComponent),
           },
           {
             path: 'demo/lazy-load-image-1',
             lazy: () =>
-              import('./demo/image-lazy-load/pages/ImageLazyLoad1').then(getReactRouterLazyImport),
+              import('./demo/image-lazy-load/pages/ImageLazyLoad1').then(getProtectedComponent),
           },
           {
             path: 'demo/lazy-load-image-2',
             lazy: () =>
-              import('./demo/image-lazy-load/pages/ImageLazyLoad2').then(getReactRouterLazyImport),
+              import('./demo/image-lazy-load/pages/ImageLazyLoad2').then(getProtectedComponent),
           },
           {
             path: '*',
@@ -68,7 +78,7 @@ export default createBrowserRouter([
     children: [
       {
         index: true,
-        lazy: () => import('./auth/pages/SigninPage').then(getReactRouterLazyImport),
+        lazy: () => import('./auth/pages/SigninPage').then(getImportedComponent),
         errorElement: ErrorUI,
       },
     ],

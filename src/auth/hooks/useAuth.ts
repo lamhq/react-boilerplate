@@ -1,15 +1,10 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import AuthContext, { AuthContextInterface } from '../contexts/AuthContext';
 
-export default function useAuth() {
-  const [authenticated, setAuthenticated] = useState(false);
-
-  function login() {
-    setAuthenticated(true);
+export default function useAuth(): AuthContextInterface {
+  const authUtils = useContext(AuthContext);
+  if (!authUtils) {
+    throw new Error('Missing AuthProvider in React tree');
   }
-
-  function logout() {
-    setAuthenticated(false);
-  }
-
-  return { authenticated, login, logout };
+  return authUtils;
 }

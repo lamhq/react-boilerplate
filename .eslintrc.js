@@ -53,6 +53,9 @@ module.exports = {
     // Props spreading for `control` function of react-hook-form
     'react/jsx-props-no-spreading': 'off',
 
+    // for service classes
+    'class-methods-use-this': 'off',
+
     // fix typescript error of react-hook-form `handleSubmit`
     '@typescript-eslint/no-misused-promises': [
       2,
