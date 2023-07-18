@@ -1,6 +1,6 @@
 import { mock } from 'jest-mock-extended';
 import CacheService from './CacheService';
-import { StatefulPromise } from '../utils';
+import { StatefulPromise } from '../utils/asyncData';
 
 jest.useFakeTimers();
 describe('CacheService', () => {
