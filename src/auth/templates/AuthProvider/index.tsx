@@ -6,7 +6,7 @@ import User from 'src/auth/types/User';
 import AuthContext from '../../contexts/AuthContext';
 
 export default function AuthProvider({ children }: PropsWithChildren) {
-  const [user, setUser] = useState<User | undefined>(undefined);
+  const [user, setUser] = useState<User | undefined>();
   const authService = useService(AuthService);
 
   const login = async (email: string, password: string) => {

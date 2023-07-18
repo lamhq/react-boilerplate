@@ -11,6 +11,11 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from 'src/auth';
+import { LocationState } from 'src/common/types/LocationState';
+import { useCallback } from 'react';
+
 export interface SigninFormModel {
   email: string;
   password: string;
@@ -39,7 +44,18 @@ export default function SigninPage() {
     },
     resolver: yupResolver(signinFormSchema),
   });
-  const signin: SubmitHandler<SigninFormModel> = async () => {};
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = (location.state as LocationState).from?.pathname || '/';
+  const { login } = useAuth();
+  const signin: SubmitHandler<SigninFormModel> = useCallback(
+    async (data) => {
+      await login(data.email, data.password);
+      navigate(from, { replace: true });
+    },
+    [login, from, navigate]
+  );
 
   return (
     <>

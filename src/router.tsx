@@ -1,43 +1,21 @@
-import { ComponentType } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
 import MainLayout from './common/templates/MainLayout';
 import ErrorPage from './common/pages/ErrorPage';
 import BlankLayout from './common/templates/BlankLayout';
-import { withAuth } from './auth';
-
-/**
- * Convert default export of ES module to React Router lazy import structure
- *
- * @param module ES module with default export
- * @returns object { Component: React.ComponentType }
- */
-function getImportedComponent(module: { default: ComponentType }) {
-  return {
-    Component: module.default,
-  };
-}
-
-/**
- * Require user be authenticated before rendering
- */
-function getProtectedComponent(module: { default: ComponentType }) {
-  return {
-    Component: withAuth(module.default),
-  };
-}
-
-const ErrorUI = <ErrorPage title="Something went wrong" message="Please try again later" />;
+import getProtectedComponent from './common/utils/getProtectedComponent';
+import getImportedComponent from './common/utils/getImportedComponent';
+import ErrorHandler from './common/templates/ErrorBoundary';
 
 export default createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
-    errorElement: ErrorUI, // display error page in case layout has error
+    ErrorBoundary: ErrorHandler,
     children: [
       {
         // display error page in case sub pages can not be loaded
-        errorElement: ErrorUI,
+        ErrorBoundary: ErrorHandler,
         children: [
           {
             index: true,
@@ -74,12 +52,12 @@ export default createBrowserRouter([
   {
     path: '/auth/signin',
     element: <BlankLayout />,
-    errorElement: ErrorUI, // display error page in case layout has error
+    ErrorBoundary: ErrorHandler,
     children: [
       {
         index: true,
         lazy: () => import('./auth/pages/SigninPage').then(getImportedComponent),
-        errorElement: ErrorUI,
+        ErrorBoundary: ErrorHandler,
       },
     ],
   },

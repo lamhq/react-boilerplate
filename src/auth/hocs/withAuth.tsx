@@ -1,4 +1,5 @@
 import { ComponentType } from 'react';
+import UnauthenticatedError from 'src/common/types/UnauthenticatedError';
 import useAuth from '../hooks/useAuth';
 
 /**
@@ -10,7 +11,7 @@ export default function withAuth<T extends JSX.IntrinsicAttributes>(Component: C
   function ProtectedComponent(props: T) {
     const { isAuthenticated } = useAuth();
     if (!isAuthenticated) {
-      throw new Error('Unauthenticated');
+      throw new UnauthenticatedError('You have to login to continue.');
     }
     return <Component {...props} />;
   }
