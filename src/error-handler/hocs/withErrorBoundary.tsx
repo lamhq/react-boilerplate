@@ -1,15 +1,15 @@
 import React, { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
-import ErrorFallback from 'src/common/atoms/ErrorFallback';
+import ErrorFallback from 'src/error-handler/components/ErrorFallback';
 import LoadingFallback from 'src/common/atoms/LoadingFallback';
 
 /**
- * HOC that wrap a component with Loading Fallback
+ * HOC that wrap a component with React Suspense and ErrorBoundary
  * @param Component React.ComponentType
  * @returns React.ReactNode
  */
-export default function withLoadingFallback<T extends JSX.IntrinsicAttributes>(
+export default function withErrorBoundary<T extends JSX.IntrinsicAttributes>(
   Component: React.ComponentType<T>
 ) {
   return function WithLoading(props: T) {

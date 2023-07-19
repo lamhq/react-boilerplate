@@ -5,17 +5,17 @@ import ErrorPage from './common/pages/ErrorPage';
 import BlankLayout from './common/templates/BlankLayout';
 import getProtectedComponent from './common/utils/getProtectedComponent';
 import getImportedComponent from './common/utils/getImportedComponent';
-import ErrorHandler from './common/templates/ErrorBoundary';
+import RouteErrorBoundary from './error-handler/components/RouteErrorBoundary';
 
 export default createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
-    ErrorBoundary: ErrorHandler,
+    ErrorBoundary: RouteErrorBoundary,
     children: [
       {
         // display error page in case sub pages can not be loaded
-        ErrorBoundary: ErrorHandler,
+        ErrorBoundary: RouteErrorBoundary,
         children: [
           {
             index: true,
@@ -52,12 +52,12 @@ export default createBrowserRouter([
   {
     path: '/auth/signin',
     element: <BlankLayout />,
-    ErrorBoundary: ErrorHandler,
+    ErrorBoundary: RouteErrorBoundary,
     children: [
       {
         index: true,
         lazy: () => import('./auth/pages/SigninPage').then(getImportedComponent),
-        ErrorBoundary: ErrorHandler,
+        ErrorBoundary: RouteErrorBoundary,
       },
     ],
   },

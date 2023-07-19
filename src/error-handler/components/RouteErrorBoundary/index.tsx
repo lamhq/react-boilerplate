@@ -2,7 +2,7 @@ import { Navigate, useRouteError } from 'react-router-dom';
 import { useConfig } from 'src/configuration';
 import UnauthenticatedError from 'src/common/types/UnauthenticatedError';
 
-export default function ErrorHandler() {
+export default function RouteErrorBoundary() {
   const error = useRouteError();
   const { signinRoute } = useConfig();
 

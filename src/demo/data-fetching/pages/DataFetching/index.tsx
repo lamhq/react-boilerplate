@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 
 import asyncData from 'src/common/utils/asyncData';
 import useRerender from 'src/common/hooks/useRerender';
-import withLoadingFallback from 'src/common/hocs/withLoadingFallback';
+import withErrorBoundary from 'src/error-handler/hocs/withErrorBoundary';
 import { useService } from 'src/di';
 import DataService from '../../services/DataService';
 
@@ -23,4 +23,4 @@ function DataFetchingPage() {
   );
 }
 
-export default withLoadingFallback(DataFetchingPage);
+export default withErrorBoundary(DataFetchingPage);
