@@ -1,3 +1,4 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useCallback, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -8,6 +9,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 
+import { ErrorFallback } from 'src/error-handler';
 import Navigation from 'src/common/organisms/Navigation';
 import NavigationProgress from 'src/common/organisms/NavigationProgress';
 import UserMenu from 'src/common/organisms/UserMenu';
@@ -56,7 +58,9 @@ export default function MainLayout() {
 
       {/* Main content */}
       <Box component="main" sx={{ flexGrow: 1, p: 2, pt: 8 }}>
-        <Outlet />
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <Outlet />
+        </ErrorBoundary>
       </Box>
 
       {/* Sidebar */}
