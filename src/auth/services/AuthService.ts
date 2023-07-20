@@ -13,7 +13,10 @@ export default class AuthService {
       };
     }
 
-    throw new RequestError('Invalid login credential');
+    throw new RequestError('Invalid login credential', {
+      email: 'Email is wrong.',
+      password: 'Password is wrong.',
+    });
   }
 
   public async logout(): Promise<void> {

@@ -1,6 +1,9 @@
+import { Outlet } from 'react-router-dom';
+import { ErrorBoundary } from 'react-error-boundary';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import { Outlet } from 'react-router-dom';
+
+import { ErrorFallback } from 'src/error-handler';
 
 export default function GuestLayout() {
   return (
@@ -13,7 +16,9 @@ export default function GuestLayout() {
           alignItems: 'center',
         }}
       >
-        <Outlet />
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <Outlet />
+        </ErrorBoundary>
       </Box>
     </Container>
   );

@@ -15,7 +15,7 @@ import Typography from '@mui/material/Typography';
 
 import { useAuth } from 'src/auth';
 import { LocationState } from 'src/common/types/LocationState';
-import { useErrorHandler } from 'src/error-handler';
+import { RequestError, useErrorHandler } from 'src/error-handler';
 
 export interface SigninFormModel {
   email: string;
@@ -37,6 +37,7 @@ export default function SigninPage() {
     control,
     handleSubmit,
     formState: { isSubmitting, errors },
+    setError,
   } = useForm<SigninFormModel>({
     defaultValues: {
       email: 'admin@example.com',
@@ -53,10 +54,25 @@ export default function SigninPage() {
   const signin = useErrorHandler(
     useCallback(
       async (data: SigninFormModel) => {
-        await login(data.email, data.password);
-        navigate(from, { replace: true });
+        try {
+          await login(data.email, data.password);
+          navigate(from, { replace: true });
+        } catch (error) {
+          // set form field errors
+          if (error instanceof RequestError && error.details) {
+            Object.entries(error.details).forEach(([field, msg]) => {
+              setError(
+                field as keyof SigninFormModel,
+                { message: msg as string },
+                { shouldFocus: true }
+              );
+            });
+          }
+
+          throw error;
+        }
       },
-      [login, from, navigate]
+      [login, from, navigate, setError]
     )
   );
 
@@ -102,8 +118,8 @@ export default function SigninPage() {
               label="Password"
               type="password"
               autoComplete="current-password"
-              error={!!errors.email}
-              helperText={errors.email?.message}
+              error={!!errors.password}
+              helperText={errors.password?.message}
               {...field}
             />
           )}
