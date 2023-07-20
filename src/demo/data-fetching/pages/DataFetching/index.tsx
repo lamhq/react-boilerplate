@@ -1,10 +1,10 @@
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+import { withErrorBoundary } from 'src/error-handler';
+import { useService } from 'src/di';
 import asyncData from 'src/common/utils/asyncData';
 import useRerender from 'src/common/hooks/useRerender';
-import withErrorBoundary from 'src/error-handler/hocs/withErrorBoundary';
-import { useService } from 'src/di';
 import DataService from '../../services/DataService';
 
 function DataFetchingPage() {

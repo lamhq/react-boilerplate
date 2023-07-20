@@ -1,5 +1,5 @@
 import { ComponentType } from 'react';
-import UnauthenticatedError from 'src/common/types/UnauthenticatedError';
+import { UnauthenticatedError } from 'src/error-handler';
 import useAuth from '../hooks/useAuth';
 
 /**

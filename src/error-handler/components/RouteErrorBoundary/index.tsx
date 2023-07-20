@@ -1,6 +1,6 @@
 import { Navigate, useRouteError } from 'react-router-dom';
 import { useConfig } from 'src/configuration';
-import UnauthenticatedError from 'src/common/types/UnauthenticatedError';
+import { UnauthenticatedError } from 'src/error-handler';
 
 export default function RouteErrorBoundary() {
   const error = useRouteError();

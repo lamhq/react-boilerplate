@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
-import ErrorFallback from 'src/error-handler/components/ErrorFallback';
+import { ErrorFallback } from 'src/error-handler';
 import LoadingFallback from 'src/common/atoms/LoadingFallback';
 
 /**
@@ -12,7 +12,7 @@ import LoadingFallback from 'src/common/atoms/LoadingFallback';
 export default function withErrorBoundary<T extends JSX.IntrinsicAttributes>(
   Component: React.ComponentType<T>
 ) {
-  return function WithLoading(props: T) {
+  return function WithErrorBoundary(props: T) {
     return (
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Suspense fallback={<LoadingFallback />}>

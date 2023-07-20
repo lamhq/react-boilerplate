@@ -1,4 +1,6 @@
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import { useCallback } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Avatar from '@mui/material/Avatar';
@@ -11,10 +13,9 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 
-import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from 'src/auth';
 import { LocationState } from 'src/common/types/LocationState';
-import { useCallback } from 'react';
+import { useErrorHandler } from 'src/error-handler';
 
 export interface SigninFormModel {
   email: string;
@@ -38,23 +39,25 @@ export default function SigninPage() {
     formState: { isSubmitting, errors },
   } = useForm<SigninFormModel>({
     defaultValues: {
-      email: '',
-      password: '',
+      email: 'admin@example.com',
+      password: '123123',
       remember: true,
     },
     resolver: yupResolver(signinFormSchema),
   });
   const location = useLocation();
   const navigate = useNavigate();
-
-  const from = (location.state as LocationState).from?.pathname || '/';
+  const from = (location.state as LocationState)?.from?.pathname ?? '/';
   const { login } = useAuth();
-  const signin: SubmitHandler<SigninFormModel> = useCallback(
-    async (data) => {
-      await login(data.email, data.password);
-      navigate(from, { replace: true });
-    },
-    [login, from, navigate]
+
+  const signin = useErrorHandler(
+    useCallback(
+      async (data: SigninFormModel) => {
+        await login(data.email, data.password);
+        navigate(from, { replace: true });
+      },
+      [login, from, navigate]
+    )
   );
 
   return (
@@ -119,6 +122,7 @@ export default function SigninPage() {
         />
 
         <LoadingButton
+          type="submit"
           loading={isSubmitting}
           loadingPosition="start"
           startIcon={<ChevronRightOutlinedIcon />}
