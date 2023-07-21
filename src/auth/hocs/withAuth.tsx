@@ -4,7 +4,7 @@ import { UnauthenticatedError } from 'src/error-handler';
 import useAuth from '../hooks/useAuth';
 
 /**
- * HOC that wrap a component with Loading Fallback
+ * HOC that protect component from unauthenticated access
  * @param Component React.ComponentType
  * @returns React.ReactNode
  */

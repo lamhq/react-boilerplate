@@ -20,6 +20,7 @@ export default function AuthProvider({ children }: PropsWithChildren) {
 
   const logout = async () => {
     await authService.logout();
+    reset();
   };
 
   const contextValue = useMemo(
