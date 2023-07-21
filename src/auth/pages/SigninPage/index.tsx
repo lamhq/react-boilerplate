@@ -23,17 +23,23 @@ import {
 } from 'src/error-handler';
 import { useSnackbar } from 'notistack';
 
+/**
+ * Get the previous url from current location's state
+ */
 function getPreviousPath(location: Location) {
   const state = location.state as LocationState;
   return state?.from?.pathname;
 }
 
+/**
+ * A hook that check if users are redirected from a protected page,
+ * show a message to remind them to signin
+ * @param prevPath string | undefined
+ */
 function useLoginReminderMessage(prevPath?: string) {
   const { enqueueSnackbar } = useSnackbar();
   const msg = getErrorMessage(new UnauthenticatedError());
 
-  // if user are redirected from a protected page
-  // show a message to remind them to signin
   useEffect(() => {
     if (prevPath) {
       enqueueSnackbar(msg);
