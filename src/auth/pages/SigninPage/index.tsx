@@ -1,5 +1,5 @@
-import { useCallback } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useCallback, useEffect } from 'react';
+import { Location, useLocation, useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -15,7 +15,31 @@ import Typography from '@mui/material/Typography';
 
 import { useAuth } from 'src/auth';
 import { LocationState } from 'src/common/types/LocationState';
-import { RequestError, useErrorHandler } from 'src/error-handler';
+import {
+  RequestError,
+  UnauthenticatedError,
+  getErrorMessage,
+  useErrorHandler,
+} from 'src/error-handler';
+import { useSnackbar } from 'notistack';
+
+function getPreviousPath(location: Location) {
+  const state = location.state as LocationState;
+  return state?.from?.pathname;
+}
+
+function useLoginReminderMessage(prevPath?: string) {
+  const { enqueueSnackbar } = useSnackbar();
+  const msg = getErrorMessage(new UnauthenticatedError());
+
+  // if user are redirected from a protected page
+  // show a message to remind them to signin
+  useEffect(() => {
+    if (prevPath) {
+      enqueueSnackbar(msg);
+    }
+  });
+}
 
 export interface SigninFormModel {
   email: string;
@@ -48,15 +72,16 @@ export default function SigninPage() {
   });
   const location = useLocation();
   const navigate = useNavigate();
-  const from = (location.state as LocationState)?.from?.pathname ?? '/';
+  const from = getPreviousPath(location);
   const { login } = useAuth();
+  useLoginReminderMessage(from);
 
   const signin = useErrorHandler(
     useCallback(
       async (data: SigninFormModel) => {
         try {
           await login(data.email, data.password);
-          navigate(from, { replace: true });
+          navigate(from ?? '/', { replace: true });
         } catch (error) {
           // set form field errors
           if (error instanceof RequestError && error.details) {

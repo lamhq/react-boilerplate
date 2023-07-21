@@ -20,11 +20,12 @@ export default function useErrorHandler<T extends CallBack>(callBack: T) {
     try {
       await callBack(...args);
     } catch (error) {
-      const message = getErrorMessage(error);
-      enqueueSnackbar(message, { variant: 'error' });
       if (error instanceof UnauthenticatedError) {
         navigate(signinRoute, { state: { from: error.location }, replace: true });
+        return;
       }
+      const message = getErrorMessage(error);
+      enqueueSnackbar(message, { variant: 'error' });
     }
   };
 }

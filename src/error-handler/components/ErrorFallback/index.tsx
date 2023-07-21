@@ -1,17 +1,10 @@
-import { useSnackbar } from 'notistack';
 import { FallbackProps, useErrorBoundary } from 'react-error-boundary';
 import { Navigate, Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 import { useConfig } from 'src/configuration';
-import {
-  NetworkError,
-  UnauthenticatedError,
-  UnauthorizedError,
-  getErrorMessage,
-} from 'src/error-handler';
-import { useEffect } from 'react';
+import { NetworkError, UnauthenticatedError, UnauthorizedError } from 'src/error-handler';
 
 /**
  * Fallback UI to show when error occured
@@ -20,7 +13,6 @@ import { useEffect } from 'react';
  */
 export default function ErrorFallback({ error }: FallbackProps) {
   const { resetBoundary } = useErrorBoundary();
-  const { enqueueSnackbar } = useSnackbar();
   const { signinRoute } = useConfig();
   let title = 'Something went wrong';
   let content = 'Please try again later';
@@ -29,13 +21,6 @@ export default function ErrorFallback({ error }: FallbackProps) {
       Retry
     </Button>
   );
-
-  // show a message to remind user to signin
-  useEffect(() => {
-    if (error instanceof UnauthenticatedError) {
-      enqueueSnackbar(getErrorMessage(error));
-    }
-  }, [error, enqueueSnackbar]);
 
   if (error instanceof UnauthenticatedError) {
     return <Navigate to={signinRoute} state={{ from: error.location }} replace />;
