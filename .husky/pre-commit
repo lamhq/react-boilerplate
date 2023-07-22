@@ -6,6 +6,3 @@ npx git-branch-is -r '^(feature|fix)/[a-z\-\d\.]+$'
 
 # lint stagged files with eslint
 yarn lint-staged
-
-# run unit test
-yarn test

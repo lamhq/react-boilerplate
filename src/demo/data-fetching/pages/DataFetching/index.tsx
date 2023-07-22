@@ -1,10 +1,10 @@
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+import { useService } from 'src/di';
 import asyncData from 'src/common/utils/asyncData';
 import useRerender from 'src/common/hooks/useRerender';
-import withLoadingFallback from 'src/common/hocs/withLoadingFallback';
-import { useService } from 'src/di';
+import withSuspense from 'src/common/hocs/withSuspense';
 import DataService from '../../services/DataService';
 
 function DataFetchingPage() {
@@ -23,4 +23,4 @@ function DataFetchingPage() {
   );
 }
 
-export default withLoadingFallback(DataFetchingPage);
+export default withSuspense(DataFetchingPage);

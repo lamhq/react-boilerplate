@@ -2,20 +2,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
-export interface ErrorPageProps {
-  title: string;
-  message: string;
-}
-
-export default function ErrorPage({ title, message }: ErrorPageProps) {
+export default function NotfoundPage() {
   return (
     <>
       <Typography variant="h1" gutterBottom>
-        {title}
+        Page not found
       </Typography>
 
       <Typography variant="body1" paragraph>
-        {message}
+        We couldn&apos;t find what you were looking for.
       </Typography>
 
       <Button variant="contained" component={Link} to="/">

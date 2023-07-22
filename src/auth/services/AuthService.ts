@@ -1,18 +1,22 @@
 import { singleton } from 'tsyringe';
+import { RequestError } from 'src/error-handler';
 import AccessToken from '../types/AccessToken';
 
 @singleton()
 export default class AuthService {
   public async login(email: string, password: string): Promise<AccessToken> {
-    if (email === 'test@admin.com' && password === '1234') {
+    if (email === 'admin@example.com' && password === '123123') {
       return {
-        id: '1234',
-        email: 'test@admin.com',
+        id: '1',
+        email: 'admin@example.com',
         accessToken: 'ABCDEF',
       };
     }
 
-    throw new Error('Invalid login credential');
+    throw new RequestError('Invalid login credential', {
+      email: 'Email is wrong.',
+      password: 'Password is wrong.',
+    });
   }
 
   public async logout(): Promise<void> {

@@ -1,4 +1,6 @@
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import { useCallback, useEffect } from 'react';
+import { Location, useLocation, useNavigate } from 'react-router-dom';
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Avatar from '@mui/material/Avatar';
@@ -11,10 +13,39 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 
-import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from 'src/auth';
 import { LocationState } from 'src/common/types/LocationState';
-import { useCallback } from 'react';
+import {
+  RequestError,
+  UnauthenticatedError,
+  getErrorMessage,
+  useErrorHandler,
+} from 'src/error-handler';
+import { useSnackbar } from 'notistack';
+
+/**
+ * Get the previous url from current location's state
+ */
+function getPreviousPath(location: Location) {
+  const state = location.state as LocationState;
+  return state?.from?.pathname;
+}
+
+/**
+ * A hook that check if users are redirected from a protected page,
+ * show a message to remind them to signin
+ * @param prevPath string | undefined
+ */
+function useLoginReminderMessage(prevPath?: string) {
+  const { enqueueSnackbar } = useSnackbar();
+  const msg = getErrorMessage(new UnauthenticatedError());
+
+  useEffect(() => {
+    if (prevPath) {
+      enqueueSnackbar(msg);
+    }
+  }, [prevPath, enqueueSnackbar, msg]);
+}
 
 export interface SigninFormModel {
   email: string;
@@ -36,25 +67,44 @@ export default function SigninPage() {
     control,
     handleSubmit,
     formState: { isSubmitting, errors },
+    setError,
   } = useForm<SigninFormModel>({
     defaultValues: {
-      email: '',
-      password: '',
+      email: 'admin@example.com',
+      password: '123123',
       remember: true,
     },
     resolver: yupResolver(signinFormSchema),
   });
   const location = useLocation();
   const navigate = useNavigate();
-
-  const from = (location.state as LocationState).from?.pathname || '/';
+  const from = getPreviousPath(location);
   const { login } = useAuth();
-  const signin: SubmitHandler<SigninFormModel> = useCallback(
-    async (data) => {
-      await login(data.email, data.password);
-      navigate(from, { replace: true });
-    },
-    [login, from, navigate]
+  useLoginReminderMessage(from);
+
+  const signin = useErrorHandler(
+    useCallback(
+      async (data: SigninFormModel) => {
+        try {
+          await login(data.email, data.password);
+          navigate(from ?? '/', { replace: true });
+        } catch (error) {
+          // set form field errors
+          if (error instanceof RequestError && error.details) {
+            Object.entries(error.details).forEach(([field, msg]) => {
+              setError(
+                field as keyof SigninFormModel,
+                { message: msg as string },
+                { shouldFocus: true }
+              );
+            });
+          }
+
+          throw error;
+        }
+      },
+      [login, from, navigate, setError]
+    )
   );
 
   return (
@@ -99,8 +149,8 @@ export default function SigninPage() {
               label="Password"
               type="password"
               autoComplete="current-password"
-              error={!!errors.email}
-              helperText={errors.email?.message}
+              error={!!errors.password}
+              helperText={errors.password?.message}
               {...field}
             />
           )}
@@ -119,6 +169,7 @@ export default function SigninPage() {
         />
 
         <LoadingButton
+          type="submit"
           loading={isSubmitting}
           loadingPosition="start"
           startIcon={<ChevronRightOutlinedIcon />}
