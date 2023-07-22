@@ -42,18 +42,9 @@ module.exports = {
     },
   ],
 
-  // additional rules
+  // additional rules for this repo
   rules: {
-    // Vite automatically import React for us, so no need this rule
-    'react/react-in-jsx-scope': 'off',
-
-    // allow importing asset with Vite using '/'
-    'import/no-absolute-path': 'off',
-
-    // https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/unbound-method.md
-    '@typescript-eslint/unbound-method': 'error',
-
-    // allow import `devDependencies`
+    // allow import `devDependencies` in some files
     'import/no-extraneous-dependencies': [
       'error',
       {
@@ -67,12 +58,6 @@ module.exports = {
       },
     ],
 
-    // props spreading for `control` function of react-hook-form
-    'react/jsx-props-no-spreading': 'off',
-
-    // for service classes
-    'class-methods-use-this': 'off',
-
     // fix typescript error of react-hook-form `handleSubmit`
     '@typescript-eslint/no-misused-promises': [
       2,
@@ -82,5 +67,23 @@ module.exports = {
         },
       },
     ],
+
+    // Vite automatically import React for us, so no need this rule
+    'react/react-in-jsx-scope': 'off',
+
+    // allow importing asset with Vite using '/'
+    'import/no-absolute-path': 'off',
+
+    // https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/unbound-method.md
+    '@typescript-eslint/unbound-method': 'error',
+
+    // props spreading for `control` function of react-hook-form
+    'react/jsx-props-no-spreading': 'off',
+
+    // for service classes
+    'class-methods-use-this': 'off',
+
+    // since we're using typescript, so no need this rule
+    'react/require-default-props': 'off',
   },
 };

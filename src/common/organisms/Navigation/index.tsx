@@ -2,6 +2,7 @@ import ImageIcon from '@mui/icons-material/Image';
 import LandscapeIcon from '@mui/icons-material/Landscape';
 import SyncIcon from '@mui/icons-material/Sync';
 import HomeIcon from '@mui/icons-material/Home';
+import BorderColorIcon from '@mui/icons-material/BorderColor';
 import Toolbar from '@mui/material/Toolbar';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
@@ -33,6 +34,11 @@ export default function Navigation() {
           to="/demo/data-fetching"
           label="Data Fetching"
           icon={<SyncIcon fontSize="small" />}
+        />
+        <NavigationItem
+          to="/demo/data-mutation"
+          label="Data Mutation"
+          icon={<BorderColorIcon fontSize="small" />}
         />
         <NavigationItem
           to="/demo/lazy-load-image-1"

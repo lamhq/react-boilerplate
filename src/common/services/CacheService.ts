@@ -3,7 +3,7 @@ import { singleton } from 'tsyringe';
 /**
  * Type of a function that return a Promise
  */
-export type AsyncFn<T> = () => Promise<T>;
+export type FactoryFn<T> = () => Promise<T>;
 
 @singleton()
 export default class CacheService {
@@ -15,15 +15,15 @@ export default class CacheService {
    * if there's no value in cache, call the factory function to create a new promise
    * if the promise is resolved/rejected, remove it from cache
    * @param key cache key
-   * @param factoryFn the function that return a promise
+   * @param promiseFactory the function that return a promise
    * @returns Promise
    */
-  public getPromise<T>(key: string, factoryFn: AsyncFn<T>): Promise<T> {
+  public getPromise<T>(key: string, promiseFactory: FactoryFn<T>): Promise<T> {
     let promise: Promise<T>;
     const cacheValue = this.store.get(key);
     if (!cacheValue) {
       // call the callback function to get a new promise
-      promise = factoryFn();
+      promise = promiseFactory();
 
       // remove the promise from cache if it is resolved or rejected
       promise.finally(() => {
