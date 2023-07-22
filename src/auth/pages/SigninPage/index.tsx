@@ -44,7 +44,7 @@ function useLoginReminderMessage(prevPath?: string) {
     if (prevPath) {
       enqueueSnackbar(msg);
     }
-  });
+  }, [prevPath, enqueueSnackbar, msg]);
 }
 
 export interface SigninFormModel {
