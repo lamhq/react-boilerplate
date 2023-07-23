@@ -13,14 +13,14 @@ export default function useLoadingState<P extends any[], R>(
   asyncFn: AsyncFn<P, R>
 ): [boolean, AsyncFn<P, R>] {
   const [isLoading, setLoading] = useState(false);
-  const unmounted = useRef(false);
+  const unmountedRef = useRef(false);
   const act: typeof asyncFn = useCallback(
     async (...args: P) => {
       try {
         setLoading(true);
         return await asyncFn(...args);
       } finally {
-        if (!unmounted.current) {
+        if (!unmountedRef.current) {
           setLoading(false);
         }
       }
@@ -29,9 +29,9 @@ export default function useLoadingState<P extends any[], R>(
   );
 
   useEffect(() => {
-    unmounted.current = false;
+    unmountedRef.current = false;
     return () => {
-      unmounted.current = true;
+      unmountedRef.current = true;
     };
   });
 
