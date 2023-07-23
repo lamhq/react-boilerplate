@@ -33,6 +33,11 @@ export default createBrowserRouter([
               import('./demo/data-fetching/pages/DataFetching').then(getProtectedComponent),
           },
           {
+            path: '/demo/data-mutation',
+            lazy: () =>
+              import('./demo/data-fetching/pages/DataMutation').then(getImportedComponent),
+          },
+          {
             path: '/demo/lazy-load-image-1',
             lazy: () =>
               import('./demo/image-lazy-load/pages/ImageLazyLoad1').then(getProtectedComponent),
