@@ -1,12 +1,17 @@
-import { PropsWithChildren, useMemo, useState } from 'react';
+import { PropsWithChildren, useEffect, useMemo, useState } from 'react';
 
 import { useService } from 'src/di';
+import { useConfig } from 'src/configuration';
 import AuthService from 'src/auth/services/AuthService';
 import AuthState from 'src/auth/types/AuthState';
+import getAuthStateFromLocalStorage from 'src/auth/utils/getAuthState';
 import AuthContext from '../../contexts/AuthContext';
 
 export default function AuthProvider({ children }: PropsWithChildren) {
-  const [authState, setAuthState] = useState<AuthState | undefined>();
+  const { authStateName } = useConfig();
+  const [authState, setAuthState] = useState<AuthState | undefined>(() =>
+    getAuthStateFromLocalStorage(authStateName)
+  );
   const authService = useService(AuthService);
 
   const login = async (email: string, password: string) => {
@@ -22,6 +27,15 @@ export default function AuthProvider({ children }: PropsWithChildren) {
     await authService.logout();
     reset();
   };
+
+  // persist auth state to local storage
+  useEffect(() => {
+    if (authState) {
+      localStorage.setItem(authStateName, JSON.stringify(authState));
+    } else {
+      localStorage.removeItem(authStateName);
+    }
+  }, [authState, authStateName]);
 
   const contextValue = useMemo(
     () => ({
