@@ -10,11 +10,16 @@ import LoadingFallback from 'src/common/atoms/LoadingFallback';
 export default function withSuspense<T extends JSX.IntrinsicAttributes>(
   Component: React.ComponentType<T>
 ) {
-  return function WithSuspense(props: T) {
+  function WithSuspense(props: T) {
     return (
       <Suspense fallback={<LoadingFallback />}>
         <Component {...props} />
       </Suspense>
     );
-  };
+  }
+  // set friendly component name in devtools
+  WithSuspense.displayName = `withSuspense(${
+    Component.displayName || Component.name || 'Component'
+  })`;
+  return WithSuspense;
 }

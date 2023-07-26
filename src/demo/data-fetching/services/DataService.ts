@@ -6,7 +6,7 @@ import wait from 'src/common/utils/wait';
 export default class DataService {
   constructor(private readonly cacheService: CacheService) {}
 
-  public async getData(): Promise<string> {
+  public getData(): Promise<string> {
     return this.cacheService.getPromise('profile', async () => {
       await wait(1500);
       if (Math.random() >= 0.5) {
