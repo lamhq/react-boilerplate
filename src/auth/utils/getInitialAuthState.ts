@@ -1,6 +1,11 @@
 import isAuthState from './isAuthState';
 
-export default function getAuthStateFromLocalStorage(authStateName: string) {
+/**
+ * Get Auth State from Local Storage
+ * @param authStateName
+ * @returns
+ */
+export default function getInitialAuthState(authStateName: string) {
   const sjson = localStorage.getItem(authStateName);
   if (!sjson) return undefined;
   try {

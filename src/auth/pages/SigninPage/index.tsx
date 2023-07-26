@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { Location, useLocation, useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -15,13 +15,7 @@ import Typography from '@mui/material/Typography';
 
 import { useAuth } from 'src/auth';
 import { LocationState } from 'src/common/types/LocationState';
-import {
-  RequestError,
-  UnauthenticatedError,
-  getErrorMessage,
-  useErrorHandler,
-} from 'src/error-handler';
-import { useSnackbar } from 'notistack';
+import { RequestError, useAsyncErrorHandler } from 'src/error-handler';
 
 /**
  * Get the previous url from current location's state
@@ -29,22 +23,6 @@ import { useSnackbar } from 'notistack';
 function getPreviousPath(location: Location) {
   const state = location.state as LocationState;
   return state?.from?.pathname;
-}
-
-/**
- * A hook that check if users are redirected from a protected page,
- * show a message to remind them to signin
- * @param prevPath string | undefined
- */
-function useLoginReminderMessage(prevPath?: string) {
-  const { enqueueSnackbar } = useSnackbar();
-  const msg = getErrorMessage(new UnauthenticatedError());
-
-  useEffect(() => {
-    if (prevPath) {
-      enqueueSnackbar(msg);
-    }
-  }, [prevPath, enqueueSnackbar, msg]);
 }
 
 export interface SigninFormModel {
@@ -80,9 +58,8 @@ export default function SigninPage() {
   const navigate = useNavigate();
   const from = getPreviousPath(location);
   const { login } = useAuth();
-  useLoginReminderMessage(from);
 
-  const signin = useErrorHandler(
+  const signin = useAsyncErrorHandler(
     useCallback(
       async (data: SigninFormModel) => {
         try {

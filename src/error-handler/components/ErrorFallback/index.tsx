@@ -1,10 +1,17 @@
+import { useEffect } from 'react';
 import { FallbackProps, useErrorBoundary } from 'react-error-boundary';
-import { Navigate, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { useSnackbar } from 'notistack';
 
 import { useConfig } from 'src/configuration';
-import { NetworkError, UnauthenticatedError, UnauthorizedError } from 'src/error-handler';
+import {
+  NetworkError,
+  UnauthenticatedError,
+  UnauthorizedError,
+  getErrorMessage,
+} from 'src/error-handler';
 
 /**
  * Fallback UI to show when error occured
@@ -12,10 +19,13 @@ import { NetworkError, UnauthenticatedError, UnauthorizedError } from 'src/error
  * <ErrorBoundary FallbackComponent={ErrorFallback}>
  */
 export default function ErrorFallback({ error }: FallbackProps) {
+  const navigate = useNavigate();
   const { resetBoundary } = useErrorBoundary();
-  const { signinRoute } = useConfig();
-  let title = 'Something went wrong';
-  let content = 'Please try again later';
+  const { enqueueSnackbar } = useSnackbar();
+  const { auth } = useConfig();
+
+  let title = 'Oops!';
+  let content = getErrorMessage(error);
   let button = (
     <Button variant="contained" onClick={resetBoundary}>
       Retry
@@ -23,7 +33,12 @@ export default function ErrorFallback({ error }: FallbackProps) {
   );
 
   if (error instanceof UnauthenticatedError) {
-    return <Navigate to={signinRoute} state={{ from: error.location }} replace />;
+    title = 'Unauthenticated';
+    button = (
+      <Button variant="contained" component={Link} to={auth.signinRoute}>
+        Sign in
+      </Button>
+    );
   }
 
   if (error instanceof UnauthorizedError) {
@@ -38,8 +53,19 @@ export default function ErrorFallback({ error }: FallbackProps) {
 
   if (error instanceof NetworkError) {
     title = 'Network Error';
-    content = 'Please check your internet connection';
   }
+
+  // show login reminder message and redirect user to sign-in page
+  useEffect(() => {
+    const notiTimeoutId = setTimeout(() => {
+      if (error instanceof UnauthenticatedError) {
+        enqueueSnackbar(content, { variant: 'error' });
+        navigate(auth.signinRoute, { state: { from: error.location }, replace: true });
+      }
+    }, 100);
+
+    return () => clearTimeout(notiTimeoutId);
+  }, [error, auth.signinRoute, content, enqueueSnackbar, navigate]);
 
   return (
     <>

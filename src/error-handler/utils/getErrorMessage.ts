@@ -16,7 +16,7 @@ export default function getErrorMessage(error: unknown) {
   }
 
   if (error instanceof NetworkError) {
-    return 'Network error. Please check your internet connection.';
+    return 'Please check your internet connection.';
   }
 
   if (error instanceof RequestError && error.details) {

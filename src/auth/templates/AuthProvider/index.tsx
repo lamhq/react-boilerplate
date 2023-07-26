@@ -4,13 +4,14 @@ import { useService } from 'src/di';
 import { useConfig } from 'src/configuration';
 import AuthService from 'src/auth/services/AuthService';
 import AuthState from 'src/auth/types/AuthState';
-import getAuthStateFromLocalStorage from 'src/auth/utils/getAuthState';
+import getInitialAuthState from 'src/auth/utils/getInitialAuthState';
 import AuthContext from '../../contexts/AuthContext';
 
 export default function AuthProvider({ children }: PropsWithChildren) {
-  const { authStateName } = useConfig();
+  // prettier-ignore
+  const { auth: { authStateName } } = useConfig();
   const [authState, setAuthState] = useState<AuthState | undefined>(() =>
-    getAuthStateFromLocalStorage(authStateName)
+    getInitialAuthState(authStateName)
   );
   const authService = useService(AuthService);
 
@@ -28,7 +29,9 @@ export default function AuthProvider({ children }: PropsWithChildren) {
     reset();
   };
 
-  // persist auth state to local storage
+  /**
+   * persist auth state to local storage
+   */
   useEffect(() => {
     if (authState) {
       localStorage.setItem(authStateName, JSON.stringify(authState));
