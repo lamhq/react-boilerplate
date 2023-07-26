@@ -7,6 +7,6 @@ export interface DIProviderProps extends PropsWithChildren {
   container: DependencyContainer;
 }
 
-export default function ServiceProvider({ container, children }: DIProviderProps) {
+export default function DIProvider({ container, children }: DIProviderProps) {
   return <DIContext.Provider value={container}>{children}</DIContext.Provider>;
 }
