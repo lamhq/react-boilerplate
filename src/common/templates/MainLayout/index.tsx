@@ -10,9 +10,9 @@ import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 
 import { ErrorFallback } from 'src/error-handler';
-import Navigation from 'src/common/organisms/Navigation';
-import NavigationProgress from 'src/common/organisms/NavigationProgress';
-import UserMenu from 'src/common/organisms/UserMenu';
+import Navigation from '../../organisms/Navigation';
+import NavigationProgress from '../../organisms/NavigationProgress';
+import UserMenu from '../../organisms/UserMenu';
 
 const sidebarWidth = 256;
 const sidebarStyle = {

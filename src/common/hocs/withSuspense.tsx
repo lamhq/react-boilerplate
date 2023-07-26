@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 
-import LoadingFallback from 'src/common/atoms/LoadingFallback';
+import LoadingFallback from '../atoms/LoadingFallback';
 
 /**
  * HOC that wrap a component with React Suspense

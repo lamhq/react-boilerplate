@@ -13,9 +13,9 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 
-import { useAuth } from 'src/auth';
 import { LocationState } from 'src/common/types/LocationState';
 import { RequestError, useAsyncErrorHandler } from 'src/error-handler';
+import useAuth from '../../hooks/useAuth';
 
 /**
  * Get the previous url from current location's state

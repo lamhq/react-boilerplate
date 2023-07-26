@@ -2,9 +2,9 @@ import { PropsWithChildren, useEffect, useMemo, useState } from 'react';
 
 import { useService } from 'src/di';
 import { useConfig } from 'src/configuration';
-import AuthService from 'src/auth/services/AuthService';
-import AuthState from 'src/auth/types/AuthState';
-import getInitialAuthState from 'src/auth/utils/getInitialAuthState';
+import getInitialAuthState from '../../utils/getInitialAuthState';
+import AuthState from '../../types/AuthState';
+import AuthService from '../../services/AuthService';
 import AuthContext from '../../contexts/AuthContext';
 
 export default function AuthProvider({ children }: PropsWithChildren) {
