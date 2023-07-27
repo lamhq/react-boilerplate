@@ -15,7 +15,7 @@ export default class AuthService {
    * @throw RequestError to indicate login failed
    */
   public async login(email: string, password: string, remember = false): Promise<AccessToken> {
-    await wait(15);
+    await wait(1500);
     if (email === 'admin@example.com' && password === '123123') {
       // when `remember` is `true`,
       //  the server should return a http cookie
