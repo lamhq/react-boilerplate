@@ -1,5 +1,5 @@
 import { ComponentType } from 'react';
-import { withAuth } from 'src/auth';
+import withAuth from '../hocs/withAuth';
 
 /**
  * Require user be authenticated before rendering

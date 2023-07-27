@@ -6,12 +6,10 @@ import Button from '@mui/material/Button';
 import { useSnackbar } from 'notistack';
 
 import { useConfig } from 'src/configuration';
-import {
-  NetworkError,
-  UnauthenticatedError,
-  UnauthorizedError,
-  getErrorMessage,
-} from 'src/error-handler';
+import getErrorMessage from '../../utils/getErrorMessage';
+import UnauthenticatedError from '../../types/UnauthenticatedError';
+import UnauthorizedError from '../../types/UnauthorizedError';
+import NetworkError from '../../types/NetworkError';
 
 /**
  * Fallback UI to show when error occured

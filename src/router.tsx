@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import MainLayout from './common/templates/MainLayout';
 import NotfoundPage from './common/pages/NotfoundPage';
 import GuestLayout from './common/templates/GuestLayout';
-import getProtectedComponent from './common/utils/getProtectedComponent';
+import getProtectedComponent from './auth/utils/getProtectedComponent';
 import getImportedComponent from './common/utils/getImportedComponent';
 import { RouteErrorBoundary } from './error-handler';
 

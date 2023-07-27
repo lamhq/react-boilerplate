@@ -13,9 +13,9 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 
-import { useAuth } from 'src/auth';
 import { LocationState } from 'src/common/types/LocationState';
 import { RequestError, useAsyncErrorHandler } from 'src/error-handler';
+import useAuthActions from '../../hooks/useAuthActions';
 
 /**
  * Get the previous url from current location's state
@@ -56,8 +56,8 @@ export default function SigninPage() {
   });
   const location = useLocation();
   const navigate = useNavigate();
+  const { login } = useAuthActions();
   const from = getPreviousPath(location);
-  const { login } = useAuth();
 
   const signin = useAsyncErrorHandler(
     useCallback(
