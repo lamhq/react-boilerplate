@@ -6,10 +6,10 @@ import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import MenuItem from '@mui/material/MenuItem';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { useAuth } from 'src/auth';
+import { useAuthActions } from 'src/auth';
 
 export default function UserMenu() {
-  const { logout } = useAuth();
+  const { logout } = useAuthActions();
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
   const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {

@@ -1,11 +1,13 @@
-import { PropsWithChildren, useEffect, useMemo, useState } from 'react';
+import { PropsWithChildren, useMemo, useState } from 'react';
 
 import { useService } from 'src/di';
 import { useConfig } from 'src/configuration';
 import getInitialAuthState from '../../utils/getInitialAuthState';
 import AuthState from '../../types/AuthState';
 import AuthService from '../../services/AuthService';
-import AuthContext from '../../contexts/AuthContext';
+import AuthStateContext from '../../contexts/AuthStateContext';
+import AuthActionsContext from '../../contexts/AuthActionsContext';
+import useSyncLocalStorage from '../../hooks/useSyncLocalStorage';
 
 export default function AuthProvider({ children }: PropsWithChildren) {
   // prettier-ignore
@@ -14,43 +16,42 @@ export default function AuthProvider({ children }: PropsWithChildren) {
     getInitialAuthState(authStateName)
   );
   const authService = useService(AuthService);
+  useSyncLocalStorage(authStateName, authState);
 
-  const login = async (email: string, password: string) => {
-    const loginData = await authService.login(email, password);
-    setAuthState({ id: loginData.id, email: loginData.email });
-  };
-
-  const reset = () => {
-    setAuthState(undefined);
-  };
-
-  const logout = async () => {
-    await authService.logout();
-    reset();
-  };
-
-  /**
-   * persist auth state to local storage
-   */
-  useEffect(() => {
-    if (authState) {
-      localStorage.setItem(authStateName, JSON.stringify(authState));
-    } else {
-      localStorage.removeItem(authStateName);
-    }
-  }, [authState, authStateName]);
-
-  const contextValue = useMemo(
+  const authStateContextValue = useMemo(
     () => ({
       user: authState,
       isAuthenticated: !!authState,
-      login,
-      logout,
-      reset,
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [authState]
   );
 
-  return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
+  const authActionsContextValue = useMemo(() => {
+    const login = async (email: string, password: string) => {
+      const loginData = await authService.login(email, password);
+      setAuthState({ id: loginData.id, email: loginData.email });
+    };
+
+    const reset = () => {
+      setAuthState(undefined);
+    };
+
+    const logout = async () => {
+      await authService.logout();
+      reset();
+    };
+    return {
+      login,
+      logout,
+      reset,
+    };
+  }, [authService]);
+
+  return (
+    <AuthStateContext.Provider value={authStateContextValue}>
+      <AuthActionsContext.Provider value={authActionsContextValue}>
+        {children}
+      </AuthActionsContext.Provider>
+    </AuthStateContext.Provider>
+  );
 }
