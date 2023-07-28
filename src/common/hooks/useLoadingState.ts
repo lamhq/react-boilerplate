@@ -4,7 +4,7 @@ import AsyncFn from '../types/AsyncFn';
 /**
  * React hook that return loading flag for async action
  */
-export default function useLoadingState<R>(asyncFn: AsyncFn<R>): [boolean, AsyncFn<R>] {
+export default function useLoadingState<P extends unknown[], R>(asyncFn: AsyncFn<P, R>) {
   const [isLoading, setLoading] = useState(false);
   const unmountedRef = useRef(false);
   const act: typeof asyncFn = useCallback(
@@ -28,5 +28,6 @@ export default function useLoadingState<R>(asyncFn: AsyncFn<R>): [boolean, Async
     };
   });
 
-  return [isLoading, act];
+  // infers [boolean, AsyncFn<P, R>)] instead of (boolean | AsyncFn<P, R>)[]
+  return [isLoading, act] as const;
 }

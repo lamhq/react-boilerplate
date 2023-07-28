@@ -9,7 +9,7 @@ import getErrorMessage from '../utils/getErrorMessage';
 /**
  * Attach error handler for async functions
  */
-export default function useAsyncErrorHandler<R>(callBack: AsyncFn<R>) {
+export default function useAsyncErrorHandler<P extends unknown[], R>(callBack: AsyncFn<P, R>) {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const { auth } = useConfig();
