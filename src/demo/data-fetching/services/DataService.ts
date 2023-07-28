@@ -16,9 +16,8 @@ export default class DataService {
     });
   }
 
-  public async deleteData(id: string): Promise<void> {
+  public async deleteData(id: string) {
     await wait(1500);
-    // eslint-disable-next-line no-console
-    console.info(`Data removed: ${id}`);
+    return `Data removed: ${id}`;
   }
 }

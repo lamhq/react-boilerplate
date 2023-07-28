@@ -23,8 +23,9 @@ export default class AuthService {
       // else
       //  the http cookie expire time is 0,
       //  that mean it will expire after closing the browser
-      // eslint-disable-next-line no-console
-      console.info(`Perform login with *remember* is set to ${remember.toString()}`);
+
+      // this line is just for fixing linter
+      remember.toString();
       return {
         id: '1',
         email: 'admin@example.com',
