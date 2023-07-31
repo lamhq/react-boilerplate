@@ -2,21 +2,19 @@ import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
 import { useConfig } from 'src/configuration';
+import AsyncFn from 'src/common/types/AsyncFn';
 import UnauthenticatedError from '../types/UnauthenticatedError';
 import getErrorMessage from '../utils/getErrorMessage';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AsyncFn = (...args: any[]) => Promise<void>;
 
 /**
  * Attach error handler for async functions
  */
-export default function useAsyncErrorHandler<T extends AsyncFn>(callBack: T) {
+export default function useAsyncErrorHandler<P extends unknown[], R>(callBack: AsyncFn<P, R>) {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const { auth } = useConfig();
 
-  return async (...args: Parameters<T>) => {
+  return async (...args: Parameters<typeof callBack>) => {
     try {
       await callBack(...args);
     } catch (error) {

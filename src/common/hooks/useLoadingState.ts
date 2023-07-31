@@ -1,21 +1,14 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useRef, useState } from 'react';
-
-/**
- * Type of async function
- */
-export type AsyncFn<P extends any[], R> = (...args: P) => Promise<R>;
+import AsyncFn from '../types/AsyncFn';
 
 /**
  * React hook that return loading flag for async action
  */
-export default function useLoadingState<P extends any[], R>(
-  asyncFn: AsyncFn<P, R>
-): [boolean, AsyncFn<P, R>] {
+export default function useLoadingState<P extends unknown[], R>(asyncFn: AsyncFn<P, R>) {
   const [isLoading, setLoading] = useState(false);
   const unmountedRef = useRef(false);
   const act: typeof asyncFn = useCallback(
-    async (...args: P) => {
+    async (...args: Parameters<typeof asyncFn>) => {
       try {
         setLoading(true);
         return await asyncFn(...args);
@@ -35,5 +28,6 @@ export default function useLoadingState<P extends any[], R>(
     };
   });
 
-  return [isLoading, act];
+  // infers [boolean, AsyncFn<P, R>)] instead of (boolean | AsyncFn<P, R>)[]
+  return [isLoading, act] as const;
 }

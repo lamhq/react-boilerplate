@@ -5,8 +5,7 @@ import { StatefulPromise } from '../utils/asyncData';
 jest.useFakeTimers();
 describe('CacheService', () => {
   let cacheService: CacheService;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const cacheStore = mock<Map<string, Promise<any>>>();
+  const cacheStore = mock<Map<string, Promise<unknown>>>();
   const key = 'key';
   const asyncFn = jest.fn();
 

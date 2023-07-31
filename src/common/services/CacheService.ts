@@ -7,8 +7,7 @@ export type FactoryFn<T> = () => Promise<T>;
 
 @singleton()
 export default class CacheService {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public constructor(readonly store: Map<string, Promise<any>>) {}
+  public constructor(readonly store: Map<string, Promise<unknown>>) {}
 
   /**
    * Retrieve a promise from the cache by a key
