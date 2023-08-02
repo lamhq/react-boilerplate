@@ -2,7 +2,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
-export default function NotfoundPage() {
+export default function NotFoundPage() {
   return (
     <>
       <Typography variant="h1" gutterBottom>

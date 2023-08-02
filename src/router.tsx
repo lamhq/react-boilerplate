@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import MainLayout from './common/templates/MainLayout';
-import NotfoundPage from './common/pages/NotfoundPage';
+import NotFoundPage from './common/pages/NotfoundPage';
 import GuestLayout from './common/templates/GuestLayout';
 import getProtectedComponent from './auth/utils/getProtectedComponent';
 import getImportedComponent from './common/utils/getImportedComponent';
@@ -51,7 +51,7 @@ export default createBrowserRouter([
       },
       {
         path: '*',
-        element: <NotfoundPage />,
+        element: <NotFoundPage />,
       },
     ],
   },

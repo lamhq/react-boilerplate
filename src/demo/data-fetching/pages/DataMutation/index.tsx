@@ -1,22 +1,21 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import { useService } from 'src/di';
-import { useConfirm } from 'src/confirm';
+import { ConfirmProvider, useConfirm } from 'src/confirm';
 import useLoadingState from 'src/common/hooks/useLoadingState';
 import LoadingButton from '@mui/lab/LoadingButton';
 import DataService from '../../services/DataService';
 
-export default function DataMutationPage() {
+function DeleteButton({ itemId }: { itemId: string }) {
   const dataService = useService(DataService);
   const showConfirm = useConfirm();
-  const [isLoading, deleteData] = useLoadingState(() => dataService.deleteData('1'));
+  const [isLoading, deleteData] = useLoadingState(() => dataService.deleteData(itemId));
   const handleDelete = async () => {
     const shouldDelete = await showConfirm();
     if (shouldDelete) {
       await deleteData();
     }
   };
-
   return (
     <LoadingButton
       loading={isLoading}
@@ -28,5 +27,13 @@ export default function DataMutationPage() {
     >
       Delete
     </LoadingButton>
+  );
+}
+
+export default function DataMutationPage() {
+  return (
+    <ConfirmProvider>
+      <DeleteButton itemId="123" />
+    </ConfirmProvider>
   );
 }

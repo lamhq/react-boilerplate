@@ -15,7 +15,6 @@ import { DIProvider } from './di';
 import { AuthProvider } from './auth';
 import { ConfigProvider } from './configuration';
 import { ErrorFallback } from './error-handler';
-import { ConfirmProvider } from './confirm';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -29,11 +28,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <DIProvider container={container}>
           <ConfigProvider config={config}>
             <AuthProvider>
-              <ConfirmProvider>
-                <ErrorBoundary FallbackComponent={ErrorFallback}>
-                  <RouterProvider router={router} />
-                </ErrorBoundary>
-              </ConfirmProvider>
+              <ErrorBoundary FallbackComponent={ErrorFallback}>
+                <RouterProvider router={router} />
+              </ErrorBoundary>
             </AuthProvider>
           </ConfigProvider>
         </DIProvider>

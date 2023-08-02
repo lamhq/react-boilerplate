@@ -17,7 +17,7 @@ module.exports = {
     },
   },
   moduleNameMapper: {
-    '^@src/(.*)$': '<rootDir>/$1',
+    '^src/(.*)$': '<rootDir>/src/$1',
   },
   testEnvironment: 'jsdom',
   // A list of paths to modules that run some code to configure or set up the testing framework before each test

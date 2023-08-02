@@ -1,23 +1,19 @@
 import { useState, MouseEvent } from 'react';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
-import MenuItem from '@mui/material/MenuItem';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { useAuthActions } from 'src/auth';
+import SignoutMenuItem from 'src/common/molecules/SignoutMenuItem';
 
 export default function UserMenu() {
-  const { logout } = useAuthActions();
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
   const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseUserMenu = async () => {
-    await logout();
+  const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
 
@@ -41,11 +37,9 @@ export default function UserMenu() {
           horizontal: 'right',
         }}
         open={Boolean(anchorElUser)}
-        onClose={handleCloseUserMenu}
+        onClick={handleCloseUserMenu}
       >
-        <MenuItem onClick={handleCloseUserMenu}>
-          <Typography textAlign="center">Sign out</Typography>
-        </MenuItem>
+        <SignoutMenuItem />
       </Menu>
     </Box>
   );

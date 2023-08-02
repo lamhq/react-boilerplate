@@ -17,7 +17,7 @@ const MyNavLink = styled(NavLink)({
 
 export default function NavigationItem({ to, icon, label }: NavigationItemProps) {
   return (
-    <MyNavLink to={to}>
+    <MyNavLink to={to} title={label}>
       {({ isActive }) => (
         <ListItemButton selected={isActive}>
           <ListItemIcon sx={{ minWidth: 36 }}>{icon}</ListItemIcon>
