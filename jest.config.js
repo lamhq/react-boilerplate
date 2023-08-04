@@ -16,6 +16,8 @@ module.exports = {
       statements: 80,
     },
   },
+  // gradually adding unit test for modules
+  collectCoverageFrom: ['src/common/**/*.ts[x]'],
   moduleNameMapper: {
     '^src/(.*)$': '<rootDir>/src/$1',
   },

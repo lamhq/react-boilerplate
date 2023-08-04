@@ -1,29 +1,80 @@
 import asyncData, { StatefulPromise } from './asyncData';
 
 describe('asyncData', () => {
-  it('should throw the promise and set its status to pending if it is not resolved/rejected', () => {
-    const p = new Promise(() => {});
-    p.then = jest.fn();
-    const cb = () => asyncData(p);
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
 
-    expect(cb).toThrow();
-    expect(p.then).toBeCalled();
+  afterEach(() => {
+    jest.runOnlyPendingTimers();
+    jest.useRealTimers();
+  });
+
+  it('should set value and status after promise is resolved', () => {
+    const resolveVal = 'success';
+    const p: StatefulPromise<string> = Promise.resolve(resolveVal);
+
+    // should throw a promise if status is `pending`
+    expect(() => asyncData(p)).toThrow();
+
+    // should set status to `pending` if status is missing
+    expect(p.status).toBe('pending');
+
+    p.finally(() => {
+      // should set value and status after promise is resolved
+      expect(p.status).toBe('fulfilled');
+      expect(p.value).toBe(resolveVal);
+    });
+  });
+
+  it('should set error and status after promise is rejected', () => {
+    const err = new Error('Rejected');
+    const p: StatefulPromise<string> = new Promise((rs, rj) => {
+      setTimeout(() => rj(err), 10000);
+    });
+
+    // should throw a promise if status is `pending`
+    expect(() => asyncData(p)).toThrow();
+
+    // should set status to `pending` if status is missing
+    expect(p.status).toBe('pending');
+
+    // fast-forward timer in promise
+    jest.runAllTimers();
+
+    p.catch((reason) => {
+      // should set value and status after promise is rejected
+      expect(p.status).toBe('rejected');
+      expect(p.error).toBe(err);
+      expect(reason).toBe(err);
+    });
+  });
+
+  it('should throw pending promise', () => {
+    const p: StatefulPromise<string> = new Promise(() => {});
+    p.status = 'pending';
+
     try {
-      cb();
+      asyncData(p);
     } catch (error) {
-      expect(error).toMatchObject({ status: 'pending' });
+      expect(error).toBe(p);
     }
   });
 
-  it('should throw rejected value if the promise is rejected', () => {
-    const er = new Error('Rejected');
-    const p = { status: 'rejected', error: er } as StatefulPromise<string>;
-    const cb = () => asyncData(p);
-    expect(cb).toThrow(er);
+  it('should return resolved value if promise is resolved', () => {
+    const val = 'success';
+    const p: StatefulPromise<string> = Promise.resolve(val);
+    p.status = 'fulfilled';
+    p.value = val;
+    expect(asyncData(p)).toBe(val);
   });
 
-  it('should return resolved value if promise is resolved', () => {
-    const p = { status: 'fulfilled', value: 'data' } as StatefulPromise<string>;
-    expect(asyncData(p)).toBe('data');
+  it('should throw rejected value if the promise is rejected', () => {
+    const err = new Error('Rejected');
+    const p: StatefulPromise<string> = new Promise(() => {});
+    p.status = 'rejected';
+    p.error = err;
+
+    expect(() => asyncData(p)).toThrow(err);
   });
 });
