@@ -1,10 +1,10 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { Outlet, createBrowserRouter } from 'react-router-dom';
 
 import MainLayout from './common/templates/MainLayout';
-import NotfoundPage from './common/pages/NotfoundPage';
+import NotFoundPage from './common/pages/NotfoundPage';
 import GuestLayout from './common/templates/GuestLayout';
-import getProtectedComponent from './auth/utils/getProtectedComponent';
-import getImportedComponent from './common/utils/getImportedComponent';
+import getProtectedModule from './auth/utils/getProtectedModule';
+import getLazyModule from './common/utils/getLazyModule';
 import { RouteErrorBoundary } from './error-handler';
 
 export default createBrowserRouter([
@@ -12,46 +12,52 @@ export default createBrowserRouter([
     ErrorBoundary: RouteErrorBoundary,
     children: [
       {
-        element: <GuestLayout />,
+        element: (
+          <GuestLayout>
+            <Outlet />
+          </GuestLayout>
+        ),
         children: [
           {
             path: '/auth/signin',
-            lazy: () => import('./auth/pages/SigninPage').then(getImportedComponent),
+            lazy: () => import('./auth/pages/SigninPage').then(getLazyModule),
           },
         ],
       },
       {
-        element: <MainLayout />,
+        element: (
+          <MainLayout>
+            <Outlet />
+          </MainLayout>
+        ),
         children: [
           {
             path: '/',
-            lazy: () => import('./common/pages/HomePage').then(getProtectedComponent),
+            lazy: () => import('./common/pages/HomePage').then(getProtectedModule),
           },
           {
             path: '/demo/data-fetching',
-            lazy: () =>
-              import('./demo/data-fetching/pages/DataFetching').then(getProtectedComponent),
+            lazy: () => import('./demo/data-fetching/pages/DataFetching').then(getProtectedModule),
           },
           {
             path: '/demo/data-mutation',
-            lazy: () =>
-              import('./demo/data-fetching/pages/DataMutation').then(getProtectedComponent),
+            lazy: () => import('./demo/data-fetching/pages/DataMutation').then(getProtectedModule),
           },
           {
             path: '/demo/lazy-load-image-1',
             lazy: () =>
-              import('./demo/image-lazy-load/pages/ImageLazyLoad1').then(getProtectedComponent),
+              import('./demo/image-lazy-load/pages/ImageLazyLoad1').then(getProtectedModule),
           },
           {
             path: '/demo/lazy-load-image-2',
             lazy: () =>
-              import('./demo/image-lazy-load/pages/ImageLazyLoad2').then(getProtectedComponent),
+              import('./demo/image-lazy-load/pages/ImageLazyLoad2').then(getProtectedModule),
           },
         ],
       },
       {
         path: '*',
-        element: <NotfoundPage />,
+        element: <NotFoundPage />,
       },
     ],
   },

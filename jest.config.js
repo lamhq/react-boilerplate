@@ -16,8 +16,10 @@ module.exports = {
       statements: 80,
     },
   },
+  // gradually adding unit test for modules
+  collectCoverageFrom: ['src/common/**/*.ts[x]'],
   moduleNameMapper: {
-    '^@src/(.*)$': '<rootDir>/$1',
+    '^src/(.*)$': '<rootDir>/src/$1',
   },
   testEnvironment: 'jsdom',
   // A list of paths to modules that run some code to configure or set up the testing framework before each test

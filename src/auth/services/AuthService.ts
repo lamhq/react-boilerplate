@@ -40,7 +40,7 @@ export default class AuthService {
   }
 
   public async logout(): Promise<void> {
-    await wait(1000);
+    await wait(500);
     return Promise.resolve();
   }
 }

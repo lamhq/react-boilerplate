@@ -18,8 +18,6 @@ export default function withSuspense<T extends JSX.IntrinsicAttributes>(
     );
   }
   // set friendly component name in devtools
-  WithSuspense.displayName = `withSuspense(${
-    Component.displayName || Component.name || 'Component'
-  })`;
+  WithSuspense.displayName = `withSuspense(${Component.displayName || 'Component'})`;
   return WithSuspense;
 }

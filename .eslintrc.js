@@ -54,6 +54,8 @@ module.exports = {
 
           // root js, ts files
           '*.{j,t}s',
+
+          'src/common/utils/test-utils.tsx',
         ],
       },
     ],
