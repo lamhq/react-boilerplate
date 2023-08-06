@@ -1,6 +1,5 @@
 import { Outlet, RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
-import { RouteErrorBoundary } from 'src/error-handler';
 import GuestLayout from '.';
 
 jest.mock('src/error-handler', () => ({
@@ -51,7 +50,6 @@ describe('GuestLayout', () => {
             {
               path: '/home',
               Component: FakeComponent,
-              ErrorBoundary: RouteErrorBoundary,
             },
           ],
         },

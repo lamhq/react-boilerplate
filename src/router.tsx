@@ -1,11 +1,10 @@
 import { Outlet, createBrowserRouter } from 'react-router-dom';
 
 import MainLayout from './common/templates/MainLayout';
-import NotFoundPage from './common/pages/NotfoundPage';
 import GuestLayout from './common/templates/GuestLayout';
 import getProtectedModule from './auth/utils/getProtectedModule';
 import getLazyModule from './common/utils/getLazyModule';
-import { RouteErrorBoundary } from './error-handler';
+import { NotFoundPage, RouteErrorBoundary } from './error-handler';
 
 export default createBrowserRouter([
   {
