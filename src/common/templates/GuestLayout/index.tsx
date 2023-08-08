@@ -1,8 +1,6 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
-import { ErrorFallback } from 'src/error-handler';
 import { PropsWithChildren } from 'react';
 
 export default function GuestLayout({ children }: PropsWithChildren) {
@@ -16,7 +14,7 @@ export default function GuestLayout({ children }: PropsWithChildren) {
           alignItems: 'center',
         }}
       >
-        <ErrorBoundary FallbackComponent={ErrorFallback}>{children}</ErrorBoundary>
+        {children}
       </Box>
     </Container>
   );

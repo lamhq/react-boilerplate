@@ -4,11 +4,15 @@ import MainLayout from './common/templates/MainLayout';
 import GuestLayout from './common/templates/GuestLayout';
 import getProtectedModule from './auth/utils/getProtectedModule';
 import getLazyModule from './common/utils/getLazyModule';
-import { NotFoundPage, RouteErrorBoundary } from './error-handler';
+import { ErrorBoundary, NotFoundPage } from './error-handler';
 
 export default createBrowserRouter([
   {
-    ErrorBoundary: RouteErrorBoundary,
+    element: (
+      <ErrorBoundary>
+        <Outlet />
+      </ErrorBoundary>
+    ),
     children: [
       {
         element: (
@@ -26,7 +30,9 @@ export default createBrowserRouter([
       {
         element: (
           <MainLayout>
-            <Outlet />
+            <ErrorBoundary>
+              <Outlet />
+            </ErrorBoundary>
           </MainLayout>
         ),
         children: [

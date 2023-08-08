@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 export interface ErrorUIProps {
@@ -11,7 +12,14 @@ export interface ErrorUIProps {
  */
 export default function ErrorUI({ title, content, action }: ErrorUIProps) {
   return (
-    <>
+    <Box
+      sx={{
+        marginTop: 8,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
       <Typography variant="h1" role="alert" gutterBottom>
         {title}
       </Typography>
@@ -21,6 +29,6 @@ export default function ErrorUI({ title, content, action }: ErrorUIProps) {
       </Typography>
 
       {action}
-    </>
+    </Box>
   );
 }

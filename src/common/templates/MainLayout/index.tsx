@@ -1,6 +1,4 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import { PropsWithChildren, useCallback, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
@@ -9,7 +7,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import { ErrorFallback } from 'src/error-handler';
 import Navigation from '../../organisms/Navigation';
 import NavigationProgress from '../../organisms/NavigationProgress';
 import UserMenu from '../../organisms/UserMenu';
@@ -27,7 +24,6 @@ const appbarStyle = {
 const drawerContent = <Navigation />;
 
 export default function MainLayout({ children }: PropsWithChildren) {
-  const location = useLocation();
   const [isSidebarOpen, setDrawerOpen] = useState<boolean>(false);
   const handleSidebarToggle = useCallback(() => {
     setDrawerOpen((isOpen) => !isOpen);
@@ -59,9 +55,7 @@ export default function MainLayout({ children }: PropsWithChildren) {
 
       {/* Main content */}
       <Box component="main" sx={{ flexGrow: 1, p: 2, pt: 9 }}>
-        <ErrorBoundary FallbackComponent={ErrorFallback} key={location.pathname}>
-          {children}
-        </ErrorBoundary>
+        {children}
       </Box>
 
       {/* Sidebar */}
