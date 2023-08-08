@@ -18,7 +18,7 @@
 
     // enable absolute import with path mapping
     "baseUrl": "./src",
-    "paths": { "src/*": ["*"] },
+    "paths": { "@/*": ["*"] },
 
     // enable decorator for dependency injection
     "experimentalDecorators": true,

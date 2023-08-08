@@ -1,8 +1,8 @@
 import { RouterProvider, createMemoryRouter, Outlet } from 'react-router-dom';
-import { render, fireEvent } from 'src/common/utils/test-utils';
+import { render, fireEvent } from '@/common/utils/test-utils';
 import MainLayout from '.';
 
-jest.mock('src/error-handler', () => ({
+jest.mock('@/error-handler', () => ({
   ErrorFallback: () => <h1>Error occured</h1>,
 }));
 

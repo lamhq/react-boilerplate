@@ -12,7 +12,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react', '@typescript-eslint', 'import'],
   extends: [
     // ESLint's inbuilt "recommended" config, well-known best-practices.
     'eslint:recommended',
@@ -41,6 +41,17 @@ module.exports = {
       },
     },
   ],
+  // allow using paths defined in tsconfig.json
+  settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+      },
+    },
+  },
 
   // additional rules for this repo
   rules: {

@@ -13,8 +13,8 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 
-import { LocationState } from 'src/common/types/LocationState';
-import { RequestError, useAsyncErrorHandler } from 'src/error-handler';
+import { LocationState } from '@/common/types/LocationState';
+import { RequestError, useAsyncErrorHandler } from '@/error-handler';
 import useAuthActions from '../../hooks/useAuthActions';
 
 /**

@@ -1,6 +1,6 @@
 import { ComponentType } from 'react';
 import { useLocation } from 'react-router-dom';
-import { UnauthenticatedError } from 'src/error-handler';
+import { UnauthenticatedError } from '@/error-handler';
 import useAuthState from '../hooks/useAuthState';
 
 /**

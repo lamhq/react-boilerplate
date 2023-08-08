@@ -1,6 +1,6 @@
 import { singleton } from 'tsyringe';
-import { RequestError } from 'src/error-handler';
-import wait from 'src/common/utils/wait';
+import { RequestError } from '@/error-handler';
+import wait from '@/common/utils/wait';
 import AccessToken from '../types/AccessToken';
 
 /**
