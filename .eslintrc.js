@@ -41,7 +41,7 @@ module.exports = {
       },
     },
   ],
-  // allow using paths defined in tsconfig.json
+  // allow using path alias defined in tsconfig.json
   settings: {
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
