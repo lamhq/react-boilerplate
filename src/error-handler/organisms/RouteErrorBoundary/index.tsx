@@ -1,4 +1,5 @@
-import { useRouteError, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useRouteError, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
 import { useConfig } from 'src/configuration';
@@ -22,6 +23,7 @@ import ErrorUI from '../ErrorUI';
 export default function RouteErrorBoundary() {
   const { auth } = useConfig();
   const error = useRouteError();
+  const navigate = useNavigate();
   let title = 'Oops!';
   let content = getErrorMessage(error);
   const action = (
@@ -32,9 +34,12 @@ export default function RouteErrorBoundary() {
 
   useLoginReminder(error);
 
-  if (error instanceof UnauthenticatedError) {
-    return <Navigate to={auth.signinRoute} replace state={{ from: error.location }} />;
-  }
+  // navigate to signin page if unauthenticated error
+  useEffect(() => {
+    if (error instanceof UnauthenticatedError) {
+      navigate(auth.signinRoute, { state: { from: error.location }, replace: true });
+    }
+  });
 
   if (error instanceof UnauthorizedError) {
     title = 'Unauthorized';
