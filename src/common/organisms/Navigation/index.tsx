@@ -26,29 +26,81 @@ export default function Navigation() {
         component="nav"
         subheader={
           <ListSubheader component="div" id="nested-list-subheader">
-            Demo
+            Lazy Loading
+          </ListSubheader>
+        }
+      >
+        <NavigationItem
+          to="/demo/lazy-load-image-1"
+          label="Intersection API"
+          icon={<ImageIcon fontSize="small" />}
+        />
+        <NavigationItem
+          to="/demo/lazy-load-image-2"
+          label="Lazy Attribute"
+          icon={<LandscapeIcon fontSize="small" />}
+        />
+      </List>
+      <List
+        component="nav"
+        subheader={
+          <ListSubheader component="div" id="nested-list-subheader">
+            Data Fetching
           </ListSubheader>
         }
       >
         <NavigationItem
           to="/demo/data-fetching"
-          label="Data Fetching"
+          label="Single Item"
           icon={<SyncIcon fontSize="small" />}
         />
         <NavigationItem
+          to="/demo/data-fetching"
+          label="Pagination"
+          icon={<SyncIcon fontSize="small" />}
+        />
+        <NavigationItem
+          to="/demo/data-fetching"
+          label="Infinite Scrolling"
+          icon={<SyncIcon fontSize="small" />}
+        />
+      </List>
+      <List
+        component="nav"
+        subheader={
+          <ListSubheader component="div" id="nested-list-subheader">
+            Data Mutation
+          </ListSubheader>
+        }
+      >
+        <NavigationItem
           to="/demo/data-mutation"
-          label="Data Mutation"
+          label="Delete Operation"
           icon={<BorderColorIcon fontSize="small" />}
         />
         <NavigationItem
-          to="/demo/lazy-load-image-1"
-          label="Image Lazy Loading (1)"
-          icon={<ImageIcon fontSize="small" />}
+          to="/demo/data-mutation"
+          label="Add to Cart"
+          icon={<BorderColorIcon fontSize="small" />}
+        />
+      </List>
+      <List
+        component="nav"
+        subheader={
+          <ListSubheader component="div" id="nested-list-subheader">
+            Form Handling
+          </ListSubheader>
+        }
+      >
+        <NavigationItem
+          to="/demo/data-mutation"
+          label="Validation"
+          icon={<BorderColorIcon fontSize="small" />}
         />
         <NavigationItem
-          to="/demo/lazy-load-image-2"
-          label="Image Lazy Loading (2)"
-          icon={<LandscapeIcon fontSize="small" />}
+          to="/demo/data-mutation"
+          label="Form Array"
+          icon={<BorderColorIcon fontSize="small" />}
         />
       </List>
     </>

@@ -6,16 +6,18 @@ describe('NavigationItem', () => {
   const to = '/home';
   const icon = <svg />;
   const label = 'Home';
-  const routes = [
+  const router = createMemoryRouter(
+    [
+      {
+        path: '*',
+        element: <NavigationItem to={to} icon={icon} label={label} />,
+      },
+    ],
     {
-      path: '*',
-      element: <NavigationItem to={to} icon={icon} label={label} />,
-    },
-  ];
-  const router = createMemoryRouter(routes, {
-    initialEntries: ['/', '/home'],
-    initialIndex: 1, // start at "/home"
-  });
+      initialEntries: ['/', '/home'],
+      initialIndex: 1, // start at "/home"
+    }
+  );
 
   it('should render navigation item', () => {
     const { getByRole } = render(<RouterProvider router={router} />);
