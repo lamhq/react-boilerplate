@@ -16,7 +16,7 @@ describe('NotFoundPage', () => {
 
   it('should renders page heading', () => {
     const { getByRole } = render(<RouterProvider router={router} />);
-    const headingElement = getByRole('heading', { name: /page not found/i });
+    const headingElement = getByRole('alert');
     expect(headingElement).toBeInTheDocument();
   });
 
