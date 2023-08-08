@@ -4,7 +4,7 @@ import SignoutMenuItem from '.';
 // Mock the useAuthActions hook
 const logoutMock = jest.fn();
 
-jest.mock('src/auth', () => ({
+jest.mock('@/auth', () => ({
   useAuthActions: () => ({
     logout: logoutMock,
   }),

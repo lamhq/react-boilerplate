@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
-import { useConfig } from 'src/configuration';
-import AsyncFn from 'src/common/types/AsyncFn';
+import { useConfig } from '@/configuration';
+import AsyncFn from '@/common/types/AsyncFn';
 import UnauthenticatedError from '../types/UnauthenticatedError';
 import getErrorMessage from '../utils/getErrorMessage';
 

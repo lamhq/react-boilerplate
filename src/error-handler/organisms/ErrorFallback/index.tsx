@@ -2,7 +2,7 @@ import { FallbackProps, useErrorBoundary } from 'react-error-boundary';
 import { Link, Navigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
-import { useConfig } from 'src/configuration';
+import { useConfig } from '@/configuration';
 import getErrorMessage from '../../utils/getErrorMessage';
 import UnauthenticatedError from '../../types/UnauthenticatedError';
 import UnauthorizedError from '../../types/UnauthorizedError';

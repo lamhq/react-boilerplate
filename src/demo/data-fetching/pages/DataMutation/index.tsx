@@ -1,9 +1,9 @@
 import DeleteIcon from '@mui/icons-material/Delete';
-
-import { useService } from 'src/di';
-import { ConfirmProvider, useConfirm } from 'src/confirm';
-import useLoadingState from 'src/common/hooks/useLoadingState';
 import LoadingButton from '@mui/lab/LoadingButton';
+
+import { useService } from '@/di';
+import { ConfirmProvider, useConfirm } from '@/confirm';
+import useLoadingState from '@/common/hooks/useLoadingState';
 import DataService from '../../services/DataService';
 
 function DeleteButton({ itemId }: { itemId: string }) {

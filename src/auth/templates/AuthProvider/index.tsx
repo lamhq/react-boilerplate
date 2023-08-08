@@ -1,7 +1,7 @@
 import { PropsWithChildren, useMemo, useState } from 'react';
 
-import { useService } from 'src/di';
-import { useConfig } from 'src/configuration';
+import { useService } from '@/di';
+import { useConfig } from '@/configuration';
 import getInitialAuthState from '../../utils/getInitialAuthState';
 import AuthState from '../../types/AuthState';
 import AuthService from '../../services/AuthService';

@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import SignoutMenuItem from 'src/common/molecules/SignoutMenuItem';
+import SignoutMenuItem from '@/common/molecules/SignoutMenuItem';
 
 export default function UserMenu() {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);

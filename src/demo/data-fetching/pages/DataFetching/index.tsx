@@ -1,10 +1,10 @@
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-import { useService } from 'src/di';
-import asyncData from 'src/common/utils/asyncData';
-import useRerender from 'src/common/hooks/useRerender';
-import withSuspense from 'src/common/hocs/withSuspense';
+import { useService } from '@/di';
+import asyncData from '@/common/utils/asyncData';
+import useRerender from '@/common/hooks/useRerender';
+import withSuspense from '@/common/hocs/withSuspense';
 import DataService from '../../services/DataService';
 
 function DataFetchingPage() {

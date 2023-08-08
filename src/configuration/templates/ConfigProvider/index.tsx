@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 
-import appConfig from 'src/config';
+import appConfig from '@/config';
 import ConfigContext from '../../contexts/ConfigContext';
 
 export interface ConfigProviderProps extends PropsWithChildren {

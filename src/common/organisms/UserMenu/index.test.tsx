@@ -1,4 +1,4 @@
-import { render, fireEvent } from 'src/common/utils/test-utils';
+import { render, fireEvent } from '@/common/utils/test-utils';
 import UserMenu from '.';
 
 describe('UserMenu', () => {

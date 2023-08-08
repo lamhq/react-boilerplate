@@ -2,7 +2,7 @@ import { Outlet, RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import GuestLayout from '.';
 
-jest.mock('src/error-handler', () => ({
+jest.mock('@/error-handler', () => ({
   ErrorFallback: () => <h1>Error occured</h1>,
 }));
 

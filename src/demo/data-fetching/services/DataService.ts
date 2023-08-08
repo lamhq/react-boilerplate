@@ -1,6 +1,6 @@
 import { singleton } from 'tsyringe';
-import CacheService from 'src/common/services/CacheService';
-import wait from 'src/common/utils/wait';
+import CacheService from '@/common/services/CacheService';
+import wait from '@/common/utils/wait';
 
 @singleton()
 export default class DataService {

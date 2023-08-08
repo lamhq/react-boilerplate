@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
-import { useAuthActions } from 'src/auth';
+import { useAuthActions } from '@/auth';
 
 export default function SignoutMenuItem() {
   const { logout } = useAuthActions();

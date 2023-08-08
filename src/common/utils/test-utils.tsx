@@ -1,9 +1,9 @@
+import { PropsWithChildren, ReactElement } from 'react';
 import { render, RenderOptions } from '@testing-library/react';
 import { container } from 'tsyringe';
-import { AuthProvider } from 'src/auth';
-import { ConfigProvider } from 'src/configuration';
-import { DIProvider } from 'src/di';
-import { PropsWithChildren, ReactElement } from 'react';
+import { AuthProvider } from '@/auth';
+import { ConfigProvider } from '@/configuration';
+import { DIProvider } from '@/di';
 
 const mockConfig = {
   auth: {
