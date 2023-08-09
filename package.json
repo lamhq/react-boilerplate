@@ -43,7 +43,7 @@
     "@vitejs/plugin-react": "^3.1.0",
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
     "commitizen": "^4.3.0",
-    "cypress": "^12.13.0",
+    "cypress": "^12.17.3",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "19.0.4",
