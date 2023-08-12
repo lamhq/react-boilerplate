@@ -1,0 +1,18 @@
+{
+  "index": {
+    "title": "Getting Started",
+    "type": "page"
+  },
+  "frameworks": {
+    "title": "Development",
+    "type": "page"
+  },
+  "fruits": {
+    "title": "Testing",
+    "type": "page"
+  },
+  "about": {
+    "title": "Deployment",
+    "type": "page"
+  }
+}
