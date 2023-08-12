@@ -1,7 +1,7 @@
 export default {
-  logo: <span>My Nextra Documentation</span>,
+  logo: <span>React Boilerplate Documentation</span>,
   project: {
-    link: 'https://github.com/shuding/nextra'
+    link: 'https://github.com/lamhq/react-boilerplate'
   }
   // ...
 }
