@@ -58,6 +58,10 @@ export default createBrowserRouter([
             lazy: () =>
               import('./demo/image-lazy-load/pages/ImageLazyLoad2').then(getProtectedModule),
           },
+          {
+            path: '/demo/dialog',
+            lazy: () => import('./demo/dialog/pages/DialogDemo').then(getProtectedModule),
+          },
         ],
       },
       {
