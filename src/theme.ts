@@ -5,12 +5,11 @@ export default createTheme({
     htmlFontSize: 16,
     fontSize: 16,
     h1: {
-      fontSize: '1.3125rem',
+      fontSize: '1.375rem',
       fontWeight: 'bold',
     },
     h2: {
-      fontSize: '1.375rem',
-      marginBottom: '1.5625rem',
+      fontSize: '1.3125rem',
       fontWeight: 'bold',
     },
     h3: {
