@@ -22,14 +22,7 @@ export default function Navigation() {
 
       <Divider />
 
-      <List
-        component="nav"
-        subheader={
-          <ListSubheader component="div" id="nested-list-subheader">
-            Lazy Loading
-          </ListSubheader>
-        }
-      >
+      <List component="nav" subheader={<ListSubheader component="div">Lazy Loading</ListSubheader>}>
         <NavigationItem
           to="/demo/lazy-load-image-1"
           label="Intersection API"
@@ -43,11 +36,7 @@ export default function Navigation() {
       </List>
       <List
         component="nav"
-        subheader={
-          <ListSubheader component="div" id="nested-list-subheader">
-            Data Fetching
-          </ListSubheader>
-        }
+        subheader={<ListSubheader component="div">Data Fetching</ListSubheader>}
       >
         <NavigationItem
           to="/demo/data-fetching"
@@ -67,11 +56,7 @@ export default function Navigation() {
       </List>
       <List
         component="nav"
-        subheader={
-          <ListSubheader component="div" id="nested-list-subheader">
-            Data Mutation
-          </ListSubheader>
-        }
+        subheader={<ListSubheader component="div">Data Mutation</ListSubheader>}
       >
         <NavigationItem
           to="/demo/data-mutation"
@@ -86,11 +71,7 @@ export default function Navigation() {
       </List>
       <List
         component="nav"
-        subheader={
-          <ListSubheader component="div" id="nested-list-subheader">
-            Form Handling
-          </ListSubheader>
-        }
+        subheader={<ListSubheader component="div">Form Handling</ListSubheader>}
       >
         <NavigationItem
           to="/demo/data-mutation"
@@ -100,6 +81,13 @@ export default function Navigation() {
         <NavigationItem
           to="/demo/data-mutation"
           label="Form Array"
+          icon={<BorderColorIcon fontSize="small" />}
+        />
+      </List>
+      <List component="nav" subheader={<ListSubheader component="div">Other</ListSubheader>}>
+        <NavigationItem
+          to="/demo/dialog"
+          label="Dialog"
           icon={<BorderColorIcon fontSize="small" />}
         />
       </List>
