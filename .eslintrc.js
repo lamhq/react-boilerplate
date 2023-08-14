@@ -52,6 +52,8 @@ module.exports = {
       },
     },
   },
+  // ignore `docs` foler
+  ignorePatterns: ['docs/'],
 
   // additional rules for this repo
   rules: {
