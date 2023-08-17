@@ -1,5 +1,9 @@
 {
   "index": {
+    "title": "Overview",
+    "type": "page"
+  },
+  "getting-started": {
     "title": "Getting Started",
     "type": "page"
   },

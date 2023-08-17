@@ -1,9 +1,6 @@
 {
   "name": "react-boilerplate",
   "version": "0.0.0",
-  "bugs": {
-    "url": "https://github.com/lamhq/react-boilerplate/issues"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/lamhq/react-boilerplate"
@@ -15,7 +12,7 @@
     "build": "tsc && vite build",
     "preview": "yarn build && vite preview",
     "lint": "eslint \"src/**/*.ts?(x)\" && tsc --noemit",
-    "test": "jest",
+    "test": "jest --watch",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "prepare": "husky install",

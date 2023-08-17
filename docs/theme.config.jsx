@@ -28,6 +28,10 @@ export default {
     return {
       titleTemplate: '%s – React Boilerplate'
     }
+  },
+  navigation: {
+    prev: true,
+    next: true
   }
   // ...
 }
