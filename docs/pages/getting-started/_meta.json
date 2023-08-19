@@ -1,6 +1,12 @@
 {
-  "index": {
-    "title": "Set up"
+  "overview": {
+    "title": "Overview"
+  },
+  "features": {
+    "title": "Features"
+  },
+  "setup": {
+    "title": "Setup"
   },
   "folder-structure": {
     "title": "Folder Structure"

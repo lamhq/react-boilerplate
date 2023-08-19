@@ -1,22 +1,23 @@
 {
-  "index": {
-    "title": "Overview",
+  "*": {
     "type": "page"
+  },
+  "index": {
+    "display": "hidden",
+    "theme": {
+      "typesetting": "article"
+    }
   },
   "getting-started": {
-    "title": "Getting Started",
-    "type": "page"
+    "title": "Getting Started"
   },
-  "frameworks": {
-    "title": "Development",
-    "type": "page"
+  "development": {
+    "title": "Development"
   },
-  "fruits": {
-    "title": "Testing",
-    "type": "page"
+  "testing": {
+    "title": "Testing"
   },
-  "about": {
-    "title": "Deployment",
-    "type": "page"
+  "deployment": {
+    "title": "Deployment"
   }
 }

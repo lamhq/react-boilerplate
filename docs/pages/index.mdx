@@ -1,7 +1,19 @@
-# Overview
+---
+title: Template for React Web
+---
 
-This is a starter repository that provides the essential setup
+import Link from 'next/link'
+import styles from './index.module.css'
+
+
+# React Boilerplate
+
+## Overview
+
+A starter repository that provides the essential setup
 and code snippets for React Single Page Application projects.
+
+<Link className={styles.cta} href="/getting-started">Get started <span>→</span></Link>
 
 
 ## Why another React Boilerplate?
@@ -24,52 +36,23 @@ and assists developers in quickly jumping in and starting work
 without worrying about standards, workflow processes, or principles.
 
 
-## Feature highlights
+## Features
 
-### Optimize for development experience
-
-This codebase is built up from Vite which has a faster build time,
-a dev server with extremely fast Hot Module Replacement, and
-many other great [benefits](https://vitejs.dev/guide/features.html).
-
-Furthermore, it also comes with:
-
-- Typescript support with path alias, dependency injection pattern
-using decorator.
-- A pre-configured linter (ESLint) for React Typescript code standard.
-- IDE settings and instructions for running and debugging
-the application inside VSCode.
-- Configured test runner (Jest) and end-to-end test framework (cypress).
-
-
-### Automated commit check
-
-- Source code is automatically checked on commit by ESLint to
-ensure code follow [Airbnb's style guide](https://www.npmjs.com/package/eslint-config-airbnb-typescript).
-- Committed messages are automatically checked to conform to
-[Conventional Commit format](https://conventionalcommits.org/).
-- Upon commit, the branch name is also verified automatically to
-ensure compliance with application's [branching strategy](dev-workflow.md).
-
-
-### CI/CD setup
-
-- A Github Action is configured to run unit tests and
-check code style for each open pull request.
-- Release and deployment tasks become easy by accessing Github
-and approving deployment, no need to manually checkout the code
-or run any commands.
-
-
-### Demo and example codes
-
-- Unit test (with mocking)
-- End-to-end test
-- Authentication
-- Data fetching
-- Data mutation
-- Image lazy loading
-- and more...
+- Built up from **[Vite](https://vitejs.dev/)** which has a faster build time, a dev server with extremely fast Hot Module Replacement, and many other great [benefits](https://vitejs.dev/guide/features.html).
+- **TypeScript** ready.
+- Configured **path alias** for clean import path.
+- **Well-organized** and extendable code structure.
+- Support **dependency injection** that bings easy testing with mocking, loose coupling, flexibility, reusability.
+- Lightweight and reusable **data fetching** pattern with React Suspense.
+- Pre-configured **linter** (ESLint) for React Typescript code standard.
+- **IDE** (VS Code) configuration for easy running and debugging the application.
+- Configured **unit test** runner (Jest) and **end-to-end test** framework (cypress).
+- Contains **example codes** for common web development techniques: lazy loading, authentication, data fetching, data mutation, pagination, unit test, end-to-end test...
+- **Automated check** for commit message and branch name on commit.
+- Include **CI/CD** setup using GitHub Actions that automatically runs unit tests, end-to-end tests, and linter checks on pull requests.
+- Manage software releases with **semantic versioning**, including auto-generated version numbers and changelogs.
+- **Deploy** to runtime environments by approval in the GitHub UI.
+- Lean **development workflow** and **branching strategy** for agile development (base on trunk-based development).
 
 
 ## Requirements
@@ -81,11 +64,11 @@ or run any commands.
 
 ## Tech stack
 
-- Application type: Single Page Application
+- Application type: Single-page web application
 - Language: React v18 with Typescript v4
 - UI Framework: Material UI v5
 - Routing: React Router v6
-- Form library: React hook-form
+- Form library: React Hook Form
 - Unit test runner: Jest v29
 - End-to-end test framework: cypress v12
 - Linter: ESLint
@@ -94,7 +77,7 @@ or run any commands.
 
 ## Reference
 
-If you wondering how to setup the codebase from scratch,
+If you're curious about how to setup the codebase from scratch,
 here're some guides to follow:
 
 Create initial code:

@@ -1,4 +1,28 @@
-# Github Repository Setup
+# Set up
+
+## Set up local development environment
+
+### Install required softwares
+
+1. Install Node.js 16(using nvm)
+1. Install yarn v1
+
+
+### Set up your IDE
+
+This project is shipped with a pre-defined setting and
+launch configuration for VS Code. All are stored in directory `.vscode`.
+
+1. Install [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension for VS Code
+1. Install [Visual Studio Code Commitizen Support](https://marketplace.visualstudio.com/items?itemName=KnisterPeter.vscode-commitizen)
+extension for VS Code, it provide a user friendly interface for
+making git commits in conventional commit format.
+1. Install [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
+extension for VS Code, it helps you create & review pull requests
+without leaving VS Code.
+
+
+# Repository Setup
 
 If you decide to host your code to Github. There are recommended settings to maximise your development experience.
 
@@ -65,3 +89,17 @@ First, create a [personal access token](https://docs.github.com/en/authenticatio
 ![](https://docs.github.com/assets/cb-139735/mw-1000/images/help/settings/userbar-account-settings.webp)
 
 Copy the token. Then, create a **repository secret** named `RELEASE_TOKEN` with the value is the personal access token created above.
+
+## Committing code
+
+There are three ways to commit code:
+1. If you already installed the extension [Visual Studio Code Commitizen Support](https://marketplace.visualstudio.com/items?itemName=KnisterPeter.vscode-commitizen),
+Open the command panel (`ctrl+shift+p` or `command+shift+p`) and type 'conventional commit'.
+Select the command and answer the questions afterwards (type, scope, subject, body, breaking changes, closed issues).
+1. Run `git commit` command and you'll be prompted to fill out
+any required commit fields (since this repo is commitizen friendly)
+1. Run this command:
+  ```bash
+  npx cz
+  ```
+
