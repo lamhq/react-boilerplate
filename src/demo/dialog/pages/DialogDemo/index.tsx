@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -5,11 +6,11 @@ import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import Button from '@mui/material/Button';
-import { useState } from 'react';
+
 import Dialog from '../../molecules/Dialog';
 
 export default function DialogDemo() {
-  const [isDialogOpen, setDialogOpen] = useState(true);
+  const [isDialogOpen, setDialogOpen] = useState(false);
 
   const handleOpenDialog = () => {
     setDialogOpen(true);
