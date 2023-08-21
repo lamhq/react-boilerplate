@@ -3,43 +3,39 @@ import { Callout } from 'nextra/components'
 # Quick Start
 
 To start a new project from this repository, you can follow these steps:
-1. [Fork](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template)
-the [template repository](https://github.com/lamhq/react-boilerplate).
-2. Open `package.json`, modify the following fields: `name`, `version`,
+1. [Create your repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template)
+from this [template](https://github.com/lamhq/react-boilerplate).
+2. Open `package.json`, update the fields: `name`, `version`,
 `repository`, `author`
 3. Open `README.md`, update the project name and description,
 documentation link
 4. Remove the file `CHANGELOG.md`
-5. Replace the logo in `public/logo.png`
-6. Open `docs/package.json`, modify the following fields: `name`,
+5. Replace the logo in `public/logo.svg`, `docs/public/logo.svg`
+6. Open `docs/package.json`, update the fields: `name`,
 `version`, `description`
+7. Open `docs/theme.config.jsx`, update the fields: `logo`,
+`head`, `project`, `docsRepositoryBase`, `useNextSeoProps`
 
 
 ## Install project's dependencies
 
-1. Run this command to install project's dependencies:
-    ```bash
-    yarn install
-    ```
+Run this command to install project's dependencies:
+```sh npm2yarn
+npm i
+```
 
 
-## Run & debug Application
+## Run the application locally
 
-1. Run this command in terminal to start the dev server:
-    ```bash
-    yarn dev
-    # you can access the web page at http://localhost:3001
-    ```
-1. Select the **Run and Debug** icon in the **Activity Bar** on the side
- of VS Code
-    ![](https://code.visualstudio.com/assets/docs/editor/debugging/run.png)
-1. Select the configuration named **Attach debugger to Chrome** using
-the Configuration dropdown in the **Run and Debug** view.
-1. Once you have your launch configuration set, start your debug session
- with `F5`.
+Run this command in terminal to start the dev server:
 
-<Callout type="info" emoji="ℹ️">
-You can run the command `yarn dev` automatically by adding
+```sh npm2yarn
+npm run dev
+```
+You can access the web page at http://localhost:3001
+
+<Callout type="info">
+You can run the start command automatically by adding
 a Keyboard Shortcut to VS Code.
 
 From the Command Palette (`Cmd+Shift+P`), choose `Preferences: Open Keyboard Shortcuts (JSON)`,
@@ -59,3 +55,16 @@ paste the config here to your key binddings JSON file:
 ```
 This will run `yarn dev` in the terminal every time you press `Cmd + Option + U`.
 </Callout>
+
+
+## Debug the application with VS Code
+
+1. Select the **Run and Debug** icon in the **Activity Bar** on the side
+ of VS Code
+    ![](https://code.visualstudio.com/assets/docs/editor/debugging/run.png)
+1. Select the configuration named **Attach debugger to Chrome** using
+the Configuration dropdown in the **Run and Debug** view.
+1. Once you have your launch configuration set, start your debug session
+ with `F5`.
+
+With this, you can set breakpoints and debug the web page inside VS Code.

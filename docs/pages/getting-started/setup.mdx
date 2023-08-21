@@ -1,0 +1,123 @@
+import { Callout } from 'nextra/components'
+
+# Setup
+
+## Set up development environment
+
+### Install required softwares
+
+1. Install Node.js 16(using [nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
+1. Install yarn v1
+
+
+### Set up your IDE
+
+This project is shipped with a pre-defined setting and
+launch configuration for VS Code. All are stored in `.vscode` directory.
+
+Here are recommended setup for VSCode:
+1. Install [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension.
+1. Install [Visual Studio Code Commitizen Support](https://marketplace.visualstudio.com/items?itemName=KnisterPeter.vscode-commitizen)
+extension, it provide a user friendly interface for
+making git commits in conventional commit format.
+1. Install [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
+extension, it helps you create & review pull requests
+without leaving VS Code.
+
+
+## Set up Github Repository (optional)
+
+If you decide to host your code to Github. This section lists some recommended settings to make this project work nicely with Github.
+
+First, go to your Github repository setting page:
+
+![](https://docs.github.com/assets/cb-28266/mw-1440/images/help/repository/repo-actions-settings.webp)
+
+
+### General
+
+#### Default branch
+
+Set to *your main branch*.
+
+#### Pull Requests
+
+Uncheck **Allow merge commits**.
+
+<Callout type="info">
+Merge commits typically contain a larger and more complex set of changes,
+reviewing these changes may be less straightforward.
+</Callout>
+
+Check **Allow squash merging**, **Default to pull request title and description**
+<Callout type="info">
+Use squash merging to have a lean commit history.
+</Callout>
+
+Uncheck **Allow rebase merging**.
+<Callout type="info">
+Rebase merging can introduce complex merge conflicts, especially when
+ multiple developers are working on the same branch or when there have been
+  many changes since the branch was created. By disallowing rebase merging,
+  it simplifies the merging process for users who might be
+  less experienced with resolving these conflicts.
+</Callout>
+
+Check **Allow auto-merge** (optional).
+
+Check **Automatically delete head branches**.
+
+
+### Branches
+
+#### Branch protection rules
+
+Add a rule with following settings:
+
+- **Branch name pattern**: set to *your main branch*
+- Check **Require a pull request before merging**
+  - Check **Require approvals**
+  - Check **Dismiss stale pull request approvals when new commits are pushed**
+- Check **Require status checks to pass before merging**
+  - Check **Require branches to be up to date before merging**
+  - Search for status checks: **Lint** and **Unit test** from the search box
+- Check **Require linear history**.
+
+<Callout type="info">
+Linear and lean history help reviewing changes easily, especially when finding issues related to code changes.
+</Callout>
+
+
+### Environments
+
+Create 3 environments:
+
+- `dev`: for development team to test
+- `staging`: for QA team to test before releasing
+- `production`: for customers to use
+
+#### `production`
+
+- Check **Required reviewers**. Add people to review when deploying to this environment.
+- In **Deployment branches**. Change to **Selected Branches**. Add deployment branch rule: `v?.?.?` (only release tags can be deployed to this environment)
+
+
+#### `dev` and `staging`
+
+Configure as you want. It may not need to be strict as `production`.
+
+
+### Secrets and variables
+
+#### Actions (Actions secrets and variables)
+
+##### Create a Github Token for deployment
+
+You can skip this step if you don't want to use the [release strategy](release-and-deploy.md) defined in this codebase.
+
+First, create a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with scopes: `repo` and `workflow`.
+
+![](https://docs.github.com/assets/cb-139735/mw-1000/images/help/settings/userbar-account-settings.webp)
+
+Copy the token. Then, create a **repository secret** named `RELEASE_TOKEN` with the value is the personal access token created above.
+

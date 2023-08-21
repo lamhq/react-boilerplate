@@ -12,7 +12,7 @@
 Your branch name is automatically checked when committing by [git-branch-is](https://github.com/kevinoid/git-branch-is).
 
 
-![](branching-strategy.svg)
+![](./branching-strategy.svg)
 
 ## 1. Start a new sprint
 

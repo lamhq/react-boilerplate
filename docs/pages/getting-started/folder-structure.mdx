@@ -1,0 +1,59 @@
+import { FileTree } from 'nextra/components'
+
+# Folder Structure
+
+Your project should look like this:
+
+<FileTree>
+  <FileTree.Folder name=".github"/>
+  <FileTree.Folder name=".vscode"/>
+  <FileTree.Folder name="cypress"/>
+  <FileTree.Folder name="docs"/>
+  <FileTree.Folder name="node_modules"/>
+  <FileTree.Folder name="public">
+    <FileTree.File name="logo.svg" />
+  </FileTree.Folder>
+  <FileTree.Folder name="src" defaultOpen>
+    <FileTree.Folder name="common" defaultOpen>
+      <FileTree.Folder name="atoms" defaultOpen>
+        <FileTree.Folder name="LoadingFallback" defaultOpen>
+          <FileTree.File name="index.test.tsx" />
+          <FileTree.File name="index.tsx" />
+        </FileTree.Folder>
+      </FileTree.Folder>
+      <FileTree.Folder name="molecules"/>
+      <FileTree.Folder name="organisms"/>
+      <FileTree.Folder name="templates"/>
+      <FileTree.Folder name="pages"/>
+      <FileTree.Folder name="hocs" defaultOpen>
+        <FileTree.File name="withSuspense.test.tsx" />
+        <FileTree.File name="withSuspense.tsx" />
+      </FileTree.Folder>
+      <FileTree.Folder name="services" defaultOpen>
+        <FileTree.File name="CacheService.test.ts" />
+        <FileTree.File name="CacheService.ts" />
+      </FileTree.Folder>
+      <FileTree.Folder name="hooks"/>
+    </FileTree.Folder>
+    <FileTree.Folder name="auth"/>
+    <FileTree.Folder name="configuration"/>
+    <FileTree.Folder name="demo"/>
+    <FileTree.Folder name="di"/>
+    <FileTree.Folder name="error-handler"/>
+    <FileTree.File name="config.ts" />
+    <FileTree.File name="main.tsx" />
+    <FileTree.File name="router.tsx" />
+    <FileTree.File name="theme.tsx" />
+  </FileTree.Folder>
+  <FileTree.File name="index.html" />
+  <FileTree.File name="package.md" />
+  <FileTree.File name="README.md" />
+  <FileTree.File name="vite.config.ts" />
+</FileTree>
+
+The most important files and directories in the root directory are:
+
+- `index.html`: the main HTML file that acts as the [entry point](https://vitejs.dev/guide/#index-html-and-project-root) for your application.
+- `vite.config.ts`: [configuration file](https://vitejs.dev/config/#configuring-vite) for Vite project.
+- `.github/`: contain Github Workflow configuration files and pull request template for this project.
+- `.vscode/`: contain VS Code's setting and launch configuration to run & debug the project.

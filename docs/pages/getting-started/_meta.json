@@ -1,12 +1,9 @@
 {
-  "overview": {
-    "title": "Overview"
-  },
-  "features": {
-    "title": "Features"
-  },
   "setup": {
     "title": "Setup"
+  },
+  "quick-start": {
+    "title": "Quick Start"
   },
   "folder-structure": {
     "title": "Folder Structure"

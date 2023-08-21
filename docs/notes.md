@@ -1,7 +1,16 @@
+### Committing code
 
-## Available Scripts
+There are three ways to commit code:
+1. If you already installed the extension [Visual Studio Code Commitizen Support](https://marketplace.visualstudio.com/items?itemName=KnisterPeter.vscode-commitizen),
+Open the command panel (`ctrl+shift+p` or `command+shift+p`) and type 'conventional commit'.
+Select the command and answer the questions afterwards (type, scope, subject, body, breaking changes, closed issues).
+1. Run `git commit` command and you'll be prompted to fill out
+any required commit fields (since this repo is commitizen friendly)
+1. Run this command:
+  ```bash
+  npx cz
+  ```
 
-## Folder structure
 
 
 

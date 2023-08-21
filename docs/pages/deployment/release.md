@@ -30,7 +30,7 @@ To publish a new production version, follow these simple steps:
 That's it! With this automated process, you can easily keep track of all your releases and deploy them to production without any hassle.
 
 
-## Create an alpha release (not support yet)
+## Create an alpha release (WIP)
 
 Typically during development, we need to deploy the application to the test environment to verify its functioning before releasing it.
 
