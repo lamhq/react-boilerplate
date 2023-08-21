@@ -2,6 +2,7 @@ import ImageIcon from '@mui/icons-material/Image';
 import LandscapeIcon from '@mui/icons-material/Landscape';
 import SyncIcon from '@mui/icons-material/Sync';
 import HomeIcon from '@mui/icons-material/Home';
+import DeleteIcon from '@mui/icons-material/Delete';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import Toolbar from '@mui/material/Toolbar';
 import Divider from '@mui/material/Divider';
@@ -30,7 +31,7 @@ export default function Navigation() {
         />
         <NavigationItem
           to="/demo/lazy-load-image-2"
-          label="Lazy Attribute"
+          label="HTML Lazy Attribute"
           icon={<LandscapeIcon fontSize="small" />}
         />
       </List>
@@ -43,7 +44,7 @@ export default function Navigation() {
           label="Single Item"
           icon={<SyncIcon fontSize="small" />}
         />
-        <NavigationItem
+        {/* <NavigationItem
           to="/demo/data-fetching"
           label="Pagination"
           icon={<SyncIcon fontSize="small" />}
@@ -52,7 +53,7 @@ export default function Navigation() {
           to="/demo/data-fetching"
           label="Infinite Scrolling"
           icon={<SyncIcon fontSize="small" />}
-        />
+        /> */}
       </List>
       <List
         component="nav"
@@ -61,15 +62,15 @@ export default function Navigation() {
         <NavigationItem
           to="/demo/data-mutation"
           label="Delete Operation"
-          icon={<BorderColorIcon fontSize="small" />}
+          icon={<DeleteIcon fontSize="small" />}
         />
-        <NavigationItem
+        {/* <NavigationItem
           to="/demo/data-mutation"
           label="Add to Cart"
           icon={<BorderColorIcon fontSize="small" />}
-        />
+        /> */}
       </List>
-      <List
+      {/* <List
         component="nav"
         subheader={<ListSubheader component="div">Form Handling</ListSubheader>}
       >
@@ -83,11 +84,11 @@ export default function Navigation() {
           label="Form Array"
           icon={<BorderColorIcon fontSize="small" />}
         />
-      </List>
+      </List> */}
       <List component="nav" subheader={<ListSubheader component="div">Other</ListSubheader>}>
         <NavigationItem
           to="/demo/dialog"
-          label="Dialog"
+          label="Accessibility Dialog"
           icon={<BorderColorIcon fontSize="small" />}
         />
       </List>

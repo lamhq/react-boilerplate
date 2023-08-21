@@ -17,7 +17,12 @@ export default class DataService {
   }
 
   public async deleteData(id: string) {
-    await wait(1500);
-    return `Data removed: ${id}`;
+    return this.cacheService.getPromise(`delete-item-${id}`, async () => {
+      await wait(1500);
+      if (Math.random() >= 0.5) {
+        throw new Error('Delete data failed');
+      }
+      return `Data removed: ${id}`;
+    });
   }
 }
