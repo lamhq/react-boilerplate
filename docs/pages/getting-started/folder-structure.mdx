@@ -54,45 +54,68 @@ Your project should look like this:
 
 ## Root directory
 
-This project is built from Vite, so the root directory is not
-so different from a Vite project. The most important files
-and directories are:
+This project is built using Vite, therefore the root directory
+is not significantly different from a typical Vite project.
+The crucial files and directories are as follows:
 
-- `index.html`: the main HTML file that acts as the
+- `index.html`: the main HTML file that serves as the
 [entry point](https://vitejs.dev/guide/#index-html-and-project-root) for your application.
-- `vite.config.ts`: [configuration file](https://vitejs.dev/config/#configuring-vite)
-for Vite project.
-- `.github/`: contain Github Workflow configuration files
-and pull request template for this project.
-- `.vscode/`: contain VS Code's setting and launch configuration
-to run & debug the project.
-- `cypress/`: contain end-to-end test files using Cypress framework.
-- `docs/`: contain source code of project documentation website.
-- `src/`: contain project's source code and configuration.
+- `vite.config.ts`: the [configuration file](https://vitejs.dev/config/#configuring-vite)
+for the Vite project.
+- `.github/`: contains configuration files for GitHub Workflow and a pull request template for this project.
+- `.vscode/`: contains VS Code's settings and launch configurations for running and debugging the project.
+- `cypress/`: contains end-to-end test files using the Cypress framework.
+- `docs/`: contains the source code for the project's documentation website.
+- `src/`: contains the project's source code and configuration.
 
 
 ## `src` directory
 
-This is where development process takes place. You can add your code files to
-implement features, fix bugs or change the application's configuration,
-routing and theme's settings.
+This is where you put your code files to implement features and fix bugs.
 
-The top directories in the `src` directory are divided into modules,
-the self-contained piece of code that performs specific functions or provides a
-certain set of features. The existing modules are:
-
-- `common`: provide frequently used APIs, utility functions, type definitions, ...
-for almost React projects. Everything that can be reused between projects
-(no business-related) will be placed there.
-- `configuration`: module that contain code and uitilities for working with
-application's config.
-- `di`: provide APIs for Dependency Injection feature. It allow injecting service
-class intances to React components, auto initialization of service's dependencies.
-- `error-handler`: provide a pattern for handling errors in React applications in
-a centralized-place. It can catch and handle errors in React render code
-or even in even handlers or callback functions.
-- `demo`: contain example codes of common web development techniques:
-lazy loading, authentication, data fetching, data mutation, pagination, ...
+Important files:
+- `config.ts`: contains the application's configuration.
+It defines parameters and values that you can use in your code through the config API.
+- `main.tsx`: this file serves as the entry point for the application.
+It contains the main code for setting up and rendering the React root component.
+- `router`: this is where all pages and their routes are defined.
+- `theme.ts`: contains the configuration of the current theme.
 
 
-## Module directories
+## Module directory
+
+The top directories in the `src` directory are divided into **modules**.
+These modules are self-contained pieces of code that perform specific functions
+or provide a certain set of features. The existing modules are:
+
+- `common`: provides frequently used APIs, utility functions, and type definitions
+for almost all React projects. Anything that can be reused between projects
+(not related to business-specific code) will be placed here.
+- `configuration`: contains code and utilities for working with the application's configuration.
+- `di`: provides APIs for the Dependency Injection feature.
+It allows injecting service class instances into React components
+and automates initialization of the services' dependencies.
+- `error-handler`: provides a pattern for handling errors in React applications
+in a centralized place. It can catch and handle errors in React render code
+as well as event handlers or callback functions.
+- `demo`: contains example code that demonstrates common web development techniques
+such as lazy loading, authentication, data fetching, data mutation, pagination, and more.
+
+
+The following text has been corrected:
+
+The code inside a module is organized into different categories based on type:
+
+- `atoms/`, `molecules/`, `organisms/`, `templates/`, `pages/`: These are categories of components
+that follow the [Atomic Design methodology](https://bradfrost.com/blog/post/atomic-web-design/).
+- `hocs/`: contains the code for higher-order components.
+- `hooks/`: contains React hook code.
+- `contexts/`: contains the code for declaring React contexts.
+- `types/`: contains Typescript interface or type definition code.
+- `utils/`: contains utility functions that are used throughout the project.
+- Feel free to add your own category if it's not in the list above...
+
+Though it's not required, there may be an `index.ts` file in the module's root diretory.
+This file export code of the current module for outside use.
+It provides a cleaner and simpler way for external modules or files
+to import and use the functionality within that module.
