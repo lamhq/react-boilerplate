@@ -1,3 +1,124 @@
-# Welcome to Nextra
+---
+title: Template for React Web
+---
 
-Hello, world!
+import Link from 'next/link'
+import styles from './index.module.css'
+
+
+# React Boilerplate
+
+## Overview
+
+A starter repository that provides the essential setup
+and code snippets for React Single Page Application projects.
+
+<Link className={styles.cta} href="/getting-started/setup">Get started <span>→</span></Link>
+
+
+## Why another React Boilerplate?
+
+There are so many React Boilerplates out there that provide
+great support and more features than this project, but they often:
+
+- Provide a lot of features and add dependencies that you don't need.
+You must either check each dependency to know if you need it
+or come with a lot of unused dependencies that slow down
+the installation process.
+- Lack customization options by abstracting many things.
+When it comes to customization, digging in reveals a lot of
+complexity that is difficult to understand.
+- Have a long learning curve and extensive documentation.
+
+This project aims to be lightweight, easy to customize and
+understand. It strives to provide a great development experience
+and assists developers in quickly jumping in and starting work
+without worrying about standards, workflow processes, or principles.
+
+
+## Features
+
+- Built up from **[Vite](https://vitejs.dev/)** which has a faster build time, a dev server with extremely fast Hot Module Replacement, and many other great [benefits](https://vitejs.dev/guide/features.html).
+- **TypeScript** ready.
+- Configured **path alias** for clean import path.
+- **Well-organized** and extendable code structure.
+- Support **dependency injection** that bings easy testing with mocking, loose coupling, flexibility, reusability.
+- Lightweight and reusable **data fetching** pattern with React Suspense.
+- Pre-configured **linter** (ESLint) for React Typescript code standard.
+- **IDE** (VS Code) configuration for easy running and debugging the application.
+- Configured **unit test** runner (Jest) and **end-to-end test** framework (cypress).
+- Contains **example codes** for common web development techniques: lazy loading, authentication, data fetching, data mutation, pagination, unit test, end-to-end test...
+- **Automated check** for commit message and branch name on commit.
+- Include **CI/CD** setup using GitHub Actions that automatically runs unit tests, end-to-end tests, and linter checks on pull requests.
+- Manage software releases with **semantic versioning**, including auto-generated version numbers and changelogs.
+- **Deploy** to runtime environments by approval in the GitHub UI.
+- Lean **development workflow** and **branching strategy** for agile development (base on trunk-based development).
+
+
+## Requirements
+
+- Node.js version 16 or higher
+- Package manager: yarn v1
+- IDE: work best with VSCode
+
+
+## Tech stack
+
+- Application type: Single-page web application
+- Language: React v18 with Typescript v4
+- UI Framework: Material UI v5
+- Routing: React Router v6
+- Form library: React Hook Form
+- Unit test runner: Jest v29
+- End-to-end test framework: cypress v12
+- Linter: ESLint
+- CI/CD platform: Github Actions
+
+
+## Reference
+
+If you're curious about how to setup the codebase from scratch,
+here're some guides to follow:
+
+Create initial code:
+
+- https://vitejs.dev/guide/
+
+Set up Git hook:
+
+- https://typicode.github.io/husky/#/?id=automatic-recommended
+- https://commitlint.js.org/#/guides-local-setup?id=guide-local-setup
+- https://www.npmjs.com/package/git-branch-is
+
+Code Linter:
+
+- https://typescript-eslint.io/getting-started/
+- https://www.npmjs.com/package/eslint-config-airbnb
+- https://www.npmjs.com/package/eslint-config-airbnb-typescript
+
+Code Formatter:
+- https://prettier.io/docs/en/integrating-with-linters.html
+- https://github.com/prettier/eslint-plugin-prettier#recommended-configuration
+
+Routing:
+
+- https://reactrouter.com/en/main/start/concepts
+
+Unit Test:
+
+- https://jestjs.io/docs/getting-started
+- https://kulshekhar.github.io/ts-jest/docs/
+- https://www.npmjs.com/package/jest-mock-extended
+- https://testing-library.com/docs/react-testing-library/intro/
+- https://github.com/testing-library/react-hooks-testing-library
+- https://jestjs.io/docs/tutorial-jquery
+
+End-to-end Test:
+
+- https://docs.cypress.io/guides/getting-started/installing-cypress
+- https://docs.cypress.io/guides/tooling/typescript-support
+
+CICD:
+
+- https://github.com/google-github-actions/release-please-action
+

@@ -1,0 +1,23 @@
+{
+  "*": {
+    "type": "page"
+  },
+  "index": {
+    "display": "hidden",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
+  "getting-started": {
+    "title": "Getting Started"
+  },
+  "development": {
+    "title": "Development"
+  },
+  "testing": {
+    "title": "Testing"
+  },
+  "deployment": {
+    "title": "Deployment"
+  }
+}

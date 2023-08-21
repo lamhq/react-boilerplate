@@ -1,0 +1,8 @@
+{
+  "release": {
+    "title": "Release"
+  },
+  "deploy": {
+    "title": "Deploy"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "setup": {
+    "title": "Setup"
+  },
+  "quick-start": {
+    "title": "Quick Start"
+  },
+  "folder-structure": {
+    "title": "Folder Structure"
+  },
+  "scripts": {
+    "title": "Available Scripts"
+  }
+}

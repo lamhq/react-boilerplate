@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "description": "Documentation for React Boilerplate project",
   "scripts": {
-    "dev": "next",
+    "dev": "next dev -p 3003",
     "build": "next build",
     "start": "next start"
   },
-  "author": "lamhq",
-  "license": "ISC",
   "dependencies": {
     "next": "^13.4.13",
     "nextra": "^2.10.0",
