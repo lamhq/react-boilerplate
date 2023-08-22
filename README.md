@@ -21,8 +21,11 @@ Additionally, there are demos and examples that illustrate different techniques 
 
 Each demo is self-contained in a single code file, lightweight, and easy to understand.
 
+You can take a look at the live demo [here](https://react-boilerplate.lamhq.com/).
+
 
 ## Documentation
 
-You can find detailed instructions on using this boilerplate and many tips in its [documentation](https://react-boilerplate-docs.vercel.app/).
+You can find detailed instructions on using this boilerplate and many tips in
+its [documentation](https://react-boilerplate-docs.lamhq.com/).
 
