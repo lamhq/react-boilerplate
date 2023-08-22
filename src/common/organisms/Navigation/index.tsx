@@ -23,18 +23,6 @@ export default function Navigation() {
 
       <Divider />
 
-      <List component="nav" subheader={<ListSubheader component="div">Lazy Loading</ListSubheader>}>
-        <NavigationItem
-          to="/demo/lazy-load-image-1"
-          label="Intersection API"
-          icon={<ImageIcon fontSize="small" />}
-        />
-        <NavigationItem
-          to="/demo/lazy-load-image-2"
-          label="HTML Lazy Attribute"
-          icon={<LandscapeIcon fontSize="small" />}
-        />
-      </List>
       <List
         component="nav"
         subheader={<ListSubheader component="div">Data Fetching</ListSubheader>}
@@ -69,6 +57,18 @@ export default function Navigation() {
           label="Add to Cart"
           icon={<BorderColorIcon fontSize="small" />}
         /> */}
+      </List>
+      <List component="nav" subheader={<ListSubheader component="div">Lazy Loading</ListSubheader>}>
+        <NavigationItem
+          to="/demo/lazy-load-image-1"
+          label="Intersection API"
+          icon={<ImageIcon fontSize="small" />}
+        />
+        <NavigationItem
+          to="/demo/lazy-load-image-2"
+          label="HTML Lazy Attribute"
+          icon={<LandscapeIcon fontSize="small" />}
+        />
       </List>
       {/* <List
         component="nav"
