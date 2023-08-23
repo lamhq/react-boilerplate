@@ -124,11 +124,11 @@ Here's how you use dependency injection in this project:
 ```tsx filename="UserProfilePage.tsx" showLineNumbers copy {1,2,6}
 import UserService from '../../services/UserService';
 import { useService } from '@/di';
-import asyncData from '@/common/utils/asyncData';
+import getResolveValue from '@/common/utils/getResolveValue';
 
 function UserProfilePage() {
   const userService = useService(UserService);
-  const data = asyncData(userService.getProfile());
+  const data = getResolveValue(userService.getProfile());
   return <div>{user!.name}</div>;
 }
 ```
@@ -140,7 +140,7 @@ Explanation:
 - (6): we retrieve the service instance by calling the `useService` hook with the service class name as parameter.
 
 <Callout type="info">
-If you're curious, in line (7) we call the `getProfile` method on `userService`. It returns a promise that resolves to user profile data. The `asyncData` function handles the asynchronous resolution of the promise and sets the resolved value to the `data` variable.
+If you're curious, in line (7) we call the `getProfile` method on `userService`. It returns a promise that resolves to user profile data. The `getResolveValue` function handles the asynchronous resolution of the promise and sets the resolved value to the `data` variable.
 </Callout>
 
 <Callout type="info">

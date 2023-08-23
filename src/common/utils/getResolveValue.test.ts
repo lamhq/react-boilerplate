@@ -1,6 +1,6 @@
-import asyncData, { StatefulPromise } from './asyncData';
+import getResolveValue, { StatefulPromise } from './getResolveValue';
 
-describe('asyncData', () => {
+describe('getResolveValue', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -15,7 +15,7 @@ describe('asyncData', () => {
     const p: StatefulPromise<string> = Promise.resolve(resolveVal);
 
     // should throw a promise if status is `pending`
-    expect(() => asyncData(p)).toThrow();
+    expect(() => getResolveValue(p)).toThrow();
 
     // should set status to `pending` if status is missing
     expect(p.status).toBe('pending');
@@ -34,7 +34,7 @@ describe('asyncData', () => {
     });
 
     // should throw a promise if status is `pending`
-    expect(() => asyncData(p)).toThrow();
+    expect(() => getResolveValue(p)).toThrow();
 
     // should set status to `pending` if status is missing
     expect(p.status).toBe('pending');
@@ -55,7 +55,7 @@ describe('asyncData', () => {
     p.status = 'pending';
 
     try {
-      asyncData(p);
+      getResolveValue(p);
     } catch (error) {
       expect(error).toBe(p);
     }
@@ -66,7 +66,7 @@ describe('asyncData', () => {
     const p: StatefulPromise<string> = Promise.resolve(val);
     p.status = 'fulfilled';
     p.value = val;
-    expect(asyncData(p)).toBe(val);
+    expect(getResolveValue(p)).toBe(val);
   });
 
   it('should throw rejected value if the promise is rejected', () => {
@@ -75,6 +75,6 @@ describe('asyncData', () => {
     p.status = 'rejected';
     p.error = err;
 
-    expect(() => asyncData(p)).toThrow(err);
+    expect(() => getResolveValue(p)).toThrow(err);
   });
 });
