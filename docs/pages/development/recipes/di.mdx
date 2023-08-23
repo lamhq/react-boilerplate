@@ -1,0 +1,149 @@
+import { Callout } from 'nextra/components'
+
+# Dependency Injection
+
+## The problem
+
+In traditional React projects, we may place business code inside components or hooks. While there is nothing wrong with this approach, as the code grows in complexity and scale, it becomes less readable and harder to maintain, particularly when we want to reuse the logic between components.
+
+*Let say we have a component that fetch the user profile data from a backend API server on load. It might need a http client to perform AJAX request to the API.*
+
+*The http client might need an access token to prepare the authentication header for the request to access the protected API endpoint.*
+
+*The code may look like this:*
+
+```jsx
+import React, { useState, useEffect } from 'react';
+import { createHttpService } from 'utils/http';
+
+function UserProfile() {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const accessToken = window.localStorage.getItem('token');
+        const httpClient = createHttpService({ header: `Bearer ${}`});
+        const response = await httpClient.get('https://api.example.com/user/profile');
+        setUser(response.json());
+      } catch (error) {
+        // handle http error
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>{user!.name}</div>
+  );
+}
+```
+
+This is just an example, where you can use `axios`, `swr`, `react-query` for fetching data. However, in the code above, we manually initiate the dependencies (create the http client and retrieve the access token from `localStorage`). This makes the component complex and increases coupling.
+
+Now, let's imagine that you need to integrate a caching method for deduplicating requests, which introduces a new dependency to your code: the cache service. In order to simplify the component's code, you can extract the `fetchData` code into a separate file. However, you will still need to initialize all the required dependencies.
+
+
+## Solution
+
+Here are my suggestions (guidelines):
+- Components should only contain code required for rendering and handling events. Other code should be encapsulated into external modules that can be imported for use.
+- Dependencies should be initialized in a central place and provided by a dependency injection (DI) container.
+
+The above example can be rewritten as follows:
+
+```jsx
+import React, { useState, useEffect } from 'react';
+import { HttpService } from 'utils/http';
+import { container } from 'tsyringe';
+
+function UserProfile() {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const httpService = container.resolve(HttpService);
+        const response = await httpService.get('https://api.example.com/user/profile');
+        setUser(response.json());
+      } catch (error) {
+        // handle http error
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>{user!.name}</div>
+  );
+}
+```
+
+Now we import a DI container from the `tsyringe` library and utilize it to retrieve the required dependency (in this instance, the HTTP service). The component does not have to create an instance of the HTTP service or be aware of its dependencies; it merely requests what it needs from the DI container.
+
+<Callout type="info">
+A service is a class that contains business logic and handles data manipulation, validation, and other operations. It is responsible for handling complex operations and interacting with external systems or databases.
+</Callout>
+
+The http service is an instance of the `HttpService` class. Its implementation may resemble the following:
+
+```ts
+import { singleton, inject } from "tsyringe";
+import CacheService from '@/common/services/CacheService';
+
+@singleton()
+export default class HttpService {
+  constructor(
+    private readonly cacheService: CacheService,
+    @inject("ACCESS_TOKEN") private readonly token: string
+  ) {}
+
+  public get(url) {
+    // ...
+  }
+
+  // ...other methods
+}
+```
+
+The `HttpService` can depend on other services or values, and those dependencies will be provided by DI container at runtime, with proper setup:
+
+```ts
+container.register("ACCESS_TOKEN", {useValue: window.localStorage.getItem('token') });
+```
+
+<Callout type="info">
+While not strictly necessary, dependency injection can bring many benefits to your React project, especially as it grows in complexity and scale. It promotes modularization, reusability, testability, and maintains better separation of concerns.
+</Callout>
+
+
+## Usage
+
+Here's how you use dependency injection in this project:
+
+```tsx filename="UserProfilePage.tsx" showLineNumbers copy {1,2,6}
+import UserService from '../../services/UserService';
+import { useService } from '@/di';
+import asyncData from '@/common/utils/asyncData';
+
+function UserProfilePage() {
+  const userService = useService(UserService);
+  const data = asyncData(userService.getProfile());
+  return <div>{user!.name}</div>;
+}
+```
+
+Explanation:
+
+- (1): we import the service class from its definition file.
+- (2): we import a custom hook `useService` from `di` module.
+- (6): we retrieve the service instance by calling the `useService` hook with the service class name as parameter.
+
+<Callout type="info">
+If you're curious, in line (7) we call the `getProfile` method on `userService`. It returns a promise that resolves to user profile data. The `asyncData` function handles the asynchronous resolution of the promise and sets the resolved value to the `data` variable.
+</Callout>
+
+<Callout type="info">
+- Instead of class injection, you can also use [interface injection](https://github.com/microsoft/tsyringe#example-with-interfaces).
+- The `useService` hook accept an [Injection Token](https://github.com/microsoft/tsyringe#injection-token) as its parameter.
+</Callout>
