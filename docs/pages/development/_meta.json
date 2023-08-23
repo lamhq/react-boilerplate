@@ -1,5 +1,8 @@
 {
   "dev-workflow": {
     "title": "Development Workflow"
+  },
+  "recipes": {
+    "title": "Recipes"
   }
 }

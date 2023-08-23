@@ -16,7 +16,7 @@ export interface StatefulPromise<T> extends Promise<T> {
  * @throws if the promise is not resolved, throw the promise.
  * @throws if the promise is rejected, throw the rejected value.
  */
-export default function asyncData<T>(promise: StatefulPromise<T>) {
+export default function getResolveValue<T>(promise: StatefulPromise<T>) {
   // update promise's attributes when resolved/rejected
   if (!promise.status) {
     /* eslint-disable no-param-reassign */
