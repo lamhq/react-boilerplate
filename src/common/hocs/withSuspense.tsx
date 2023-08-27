@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { ComponentType, Suspense } from 'react';
 
 import LoadingFallback from '../atoms/LoadingFallback';
 
@@ -8,7 +8,7 @@ import LoadingFallback from '../atoms/LoadingFallback';
  * @returns React.ReactNode
  */
 export default function withSuspense<T extends JSX.IntrinsicAttributes>(
-  Component: React.ComponentType<T>
+  Component: ComponentType<T>
 ) {
   function WithSuspense(props: T) {
     return (

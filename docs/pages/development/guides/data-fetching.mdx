@@ -1,0 +1,51 @@
+import { Callout } from 'nextra/components'
+
+# Data fetching
+
+## Requirements
+
+Suppose we have a component that needs to retrieve data from a backend API service upon loading.
+
+While the data is being fetched, we would like to show a spinner to indicate to the user that data is still being loaded.
+
+Once the data has been retrieved, it will be used to present content to the user.
+
+If an error occurs during the data retrieval process, a fallback UI will be shown to the user, allowing them to reload the component.
+
+To gain a better understanding of how data fetching functions, please refer to the Data Fetching demo.
+
+
+## Usage
+
+Here's how you do data fetching in your component:
+
+```tsx filename="UserProfilePage.tsx" showLineNumbers copy {3, 8, 14}
+import UserService from '../../services/UserService';
+import { useService } from '@/di';
+import getResolveValue from '@/common/utils/getResolveValue';
+import LoadingFallback from '@/common/atoms/LoadingFallback';
+
+export default function UserProfilePage() {
+  const userService = useService(UserService);
+  const data = getResolveValue(userService.getProfile());
+  return <div>{user!.name}</div>;
+}
+
+export default function App() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <UserProfilePage />
+    </Suspense>
+  )
+}
+```
+
+Explanation:
+
+Here we have the `<UserProfilePage>` component that fetch data on load.
+
+We import the `getResolveValue` function. It accepts a promise as parameter and return the promise's resolved value (3).
+
+We call the `getProfile` method of `userService` and retrieve a promise that resolves to user profile data. Then we pass the promise as an argument to `getResolveValue` function. It returns user profile data and store it to the `data` variable (8).
+
+In other to display a spinner when data is fetching, in the parent component `<App>`, we wrap it in React `<Suspense>` component (14).
