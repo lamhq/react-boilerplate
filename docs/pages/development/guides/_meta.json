@@ -1,0 +1,23 @@
+{
+  "dependency-injection": {
+    "title": "Dependency Injection"
+  },
+  "data-fetching": {
+    "title": "Data Fetching"
+  },
+  "data-mutation": {
+    "title": "Data Mutation"
+  },
+  "error-handling": {
+    "title": "Error Handling"
+  },
+  "authentication": {
+    "title": "Authentication"
+  },
+  "configuration": {
+    "title": "Configuration API"
+  },
+  "layout": {
+    "title": "Layout"
+  }
+}
