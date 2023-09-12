@@ -10,8 +10,8 @@
   "scripts": {
     "dev": "vite --port 3001",
     "build": "tsc && vite build",
-    "preview": "yarn build && vite preview",
-    "lint": "eslint \"src/**/*.ts?(x)\" && tsc --noemit",
+    "preview": "npm run build && vite preview",
+    "lint": "eslint \"src/**/*.ts?(x)\"",
     "test": "jest --watch",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
