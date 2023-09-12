@@ -20,7 +20,7 @@ export default {
   docsRepositoryBase: 'https://github.com/lamhq/react-boilerplate/tree/master/docs',
   useNextSeoProps() {
     return {
-      titleTemplate: '%s – React Boilerplate'
+      titleTemplate: '%s - React Boilerplate'
     }
   },
   navigation: {
