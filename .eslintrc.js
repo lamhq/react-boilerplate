@@ -25,6 +25,7 @@ module.exports = {
     'airbnb-typescript',
     'airbnb/hooks',
     'plugin:prettier/recommended',
+    'plugin:storybook/recommended',
   ],
   env: {
     browser: true,
