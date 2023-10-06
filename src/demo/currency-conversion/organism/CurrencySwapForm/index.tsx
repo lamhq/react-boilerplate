@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
+import useLoadingState from '@/common/hooks/useLoadingState';
 import convert from '../../utils/convert';
 import InputField from '../InputField';
-import useLoadingState from '@/common/hooks/useLoadingState';
 
 export default function CurrencySwapForm() {
   const [inputAmt, setInputAmt] = useState<number>(0);

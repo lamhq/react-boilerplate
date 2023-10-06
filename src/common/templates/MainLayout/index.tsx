@@ -40,8 +40,7 @@ export default function MainLayout({ children }: PropsWithChildren) {
             sx={{ mr: 2, display: { sm: 'none' }, boxShadow: 'none' }}
             onClick={handleSidebarToggle}
             aria-label="open drawer"
-            color="inherit"
-          >
+            color="inherit">
             <MenuIcon />
           </IconButton>
 
@@ -73,8 +72,7 @@ export default function MainLayout({ children }: PropsWithChildren) {
           sx={{
             display: { xs: 'block', sm: 'none' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: sidebarWidth },
-          }}
-        >
+          }}>
           {drawerContent}
         </Drawer>
 
@@ -85,8 +83,7 @@ export default function MainLayout({ children }: PropsWithChildren) {
             display: { xs: 'none', sm: 'block' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: sidebarWidth },
           }}
-          open
-        >
+          open>
           {drawerContent}
         </Drawer>
       </Box>

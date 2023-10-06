@@ -13,7 +13,7 @@ export default function AuthProvider({ children }: PropsWithChildren) {
   // prettier-ignore
   const { auth: { authStateName } } = useConfig();
   const [authState, setAuthState] = useState<AuthState | undefined>(() =>
-    getInitialAuthState(authStateName)
+    getInitialAuthState(authStateName),
   );
   const authService = useService(AuthService);
   useSyncLocalStorage(authStateName, authState);
@@ -23,7 +23,7 @@ export default function AuthProvider({ children }: PropsWithChildren) {
       user: authState,
       isAuthenticated: !!authState,
     }),
-    [authState]
+    [authState],
   );
 
   const authActionsContextValue = useMemo(() => {

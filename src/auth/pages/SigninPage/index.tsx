@@ -72,7 +72,7 @@ export default function SigninPage() {
               setError(
                 field as keyof SigninFormModel,
                 { message: msg as string },
-                { shouldFocus: true }
+                { shouldFocus: true },
               );
             });
           }
@@ -80,8 +80,8 @@ export default function SigninPage() {
           throw error;
         }
       },
-      [login, from, navigate, setError]
-    )
+      [login, from, navigate, setError],
+    ),
   );
 
   return (
@@ -152,8 +152,7 @@ export default function SigninPage() {
           startIcon={<ChevronRightOutlinedIcon />}
           fullWidth
           variant="contained"
-          sx={{ mt: 3, mb: 2 }}
-        >
+          sx={{ mt: 3, mb: 2 }}>
           Continue
         </LoadingButton>
       </Box>

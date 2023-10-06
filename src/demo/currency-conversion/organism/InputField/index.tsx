@@ -37,7 +37,7 @@ export default function InputField({
           onChange={handleAmtChange}
           id={id}
           type="number"
-          className="flex-auto bg-transparent text-4xl outline-none w-1
+          className="w-1 flex-auto bg-transparent text-4xl outline-none
             [appearance:textfield]
             [&::-webkit-inner-spin-button]:appearance-none
             [&::-webkit-outer-spin-button]:appearance-none"

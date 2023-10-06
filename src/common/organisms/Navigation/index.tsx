@@ -25,8 +25,7 @@ export default function Navigation() {
 
       <List
         component="nav"
-        subheader={<ListSubheader component="div">Data Fetching</ListSubheader>}
-      >
+        subheader={<ListSubheader component="div">Data Fetching</ListSubheader>}>
         <NavigationItem
           to="/demo/data-fetching"
           label="Single Item"
@@ -45,8 +44,7 @@ export default function Navigation() {
       </List>
       <List
         component="nav"
-        subheader={<ListSubheader component="div">Data Mutation</ListSubheader>}
-      >
+        subheader={<ListSubheader component="div">Data Mutation</ListSubheader>}>
         <NavigationItem
           to="/demo/data-mutation"
           label="Delete Operation"

@@ -18,7 +18,7 @@ export default function useLoadingState<P extends unknown[], R>(asyncFn: AsyncFn
         }
       }
     },
-    [setLoading, asyncFn]
+    [setLoading, asyncFn],
   );
 
   useEffect(() => {

@@ -13,7 +13,7 @@ describe('HomePage', () => {
     render(<HomePage />);
 
     const codeExamplesDescription = screen.getByText(
-      /This project contains various code examples for a typical Single Page Application./i
+      /This project contains various code examples for a typical Single Page Application./i,
     );
     expect(codeExamplesDescription).toBeInTheDocument();
   });
@@ -22,7 +22,7 @@ describe('HomePage', () => {
     render(<HomePage />);
 
     const navigationTip = screen.getByText(
-      /Try out the examples by navigating the menu on left side. Enjoy!/i
+      /Try out the examples by navigating the menu on left side. Enjoy!/i,
     );
     expect(navigationTip).toBeInTheDocument();
   });

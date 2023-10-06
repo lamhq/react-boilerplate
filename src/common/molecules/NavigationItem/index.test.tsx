@@ -16,7 +16,7 @@ describe('NavigationItem', () => {
     {
       initialEntries: ['/', '/home'],
       initialIndex: 1, // start at "/home"
-    }
+    },
   );
 
   it('should render navigation item', () => {

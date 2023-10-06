@@ -28,7 +28,7 @@ describe('MainLayout', () => {
       {
         initialEntries: ['/', '/home'],
         initialIndex: 1, // start at "/home"
-      }
+      },
     );
     const { getByRole } = render(<RouterProvider router={router} />);
     expect(getByRole('heading', { name: content })).toBeInTheDocument();

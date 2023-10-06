@@ -37,8 +37,7 @@ export default function UserMenu() {
           horizontal: 'right',
         }}
         open={Boolean(anchorElUser)}
-        onClick={handleCloseUserMenu}
-      >
+        onClick={handleCloseUserMenu}>
         <SignoutMenuItem />
       </Menu>
     </Box>

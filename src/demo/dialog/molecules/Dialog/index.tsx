@@ -27,7 +27,7 @@ function useCancelHandler(dialogRef: MutableRefObject<HTMLDialogElement | null>)
 function useClickHandler(
   dialogRef: MutableRefObject<HTMLDialogElement | null>,
   contentRef: MutableRefObject<HTMLDivElement | null>,
-  onClose: DialogProps['onClose']
+  onClose: DialogProps['onClose'],
 ) {
   useEffect(() => {
     const contentEl = contentRef.current;
@@ -51,7 +51,7 @@ function useClickHandler(
  */
 function useEscapeHandler(
   dialogRef: MutableRefObject<HTMLDialogElement | null>,
-  onClose: DialogProps['onClose']
+  onClose: DialogProps['onClose'],
 ) {
   useEffect(() => {
     const dialogEl = dialogRef.current;
