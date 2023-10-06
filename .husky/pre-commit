@@ -1,8 +1,8 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# check branch name
+# check branch name to follow correct format
 npx git-branch-is -r '^(feature|fix)/[a-z\-\d\.]+$'
 
-# lint stagged files with eslint
+# run eslint on stagged files
 yarn lint-staged
