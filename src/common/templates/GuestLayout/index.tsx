@@ -12,8 +12,7 @@ export default function GuestLayout({ children }: PropsWithChildren) {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-        }}
-      >
+        }}>
         {children}
       </Box>
     </Container>

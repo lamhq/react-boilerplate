@@ -18,7 +18,7 @@ describe('useLoadingState', () => {
           setTimeout(() => {
             rs('result');
           }, 10000);
-        })
+        }),
     );
     // Render the hook with the mocked async function
     const { result } = renderHook(() => useLoadingState(asyncFn));

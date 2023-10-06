@@ -1,6 +1,6 @@
 import { singleton } from 'tsyringe';
 import { RequestError } from '@/error-handler';
-import wait from '@/common/utils/wait';
+import delay from '@/common/utils/delay';
 import AccessToken from '../types/AccessToken';
 
 /**
@@ -15,7 +15,7 @@ export default class AuthService {
    * @throw RequestError to indicate login failed
    */
   public async login(email: string, password: string, remember = false): Promise<AccessToken> {
-    await wait(1500);
+    await delay(1500);
     if (email === 'admin@example.com' && password === '123123') {
       // when `remember` is `true`,
       //  the server should return a http cookie
@@ -40,7 +40,7 @@ export default class AuthService {
   }
 
   public async logout(): Promise<void> {
-    await wait(500);
+    await delay(500);
     return Promise.resolve();
   }
 }

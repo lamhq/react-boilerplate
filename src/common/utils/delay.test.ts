@@ -1,4 +1,4 @@
-import wait from './wait';
+import delay from './delay';
 
 describe('wait', () => {
   beforeEach(() => {
@@ -12,14 +12,14 @@ describe('wait', () => {
 
   it('should resolves after the specified delay', () => {
     const callback = jest.fn();
-    const delay = 100;
-    wait(delay).finally(() => {
+    const ms = 100;
+    delay(ms).finally(() => {
       callback();
     });
     expect(callback).not.toBeCalled();
 
     // fast-forward timer in promise
-    jest.advanceTimersByTime(delay);
+    jest.advanceTimersByTime(ms);
 
     // put the assertion into the event loop
     // so the callback can be called after timeout

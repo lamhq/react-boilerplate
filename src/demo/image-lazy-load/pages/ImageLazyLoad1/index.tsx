@@ -23,7 +23,7 @@ function useIntersectionObserver(images: HTMLImageElement[]) {
           }
         });
       },
-      { rootMargin: '100px' }
+      { rootMargin: '100px' },
     );
 
     images.forEach((element) => observer.observe(element));

@@ -4,8 +4,7 @@ import Img from '../../atoms/Img';
 function ImageGallery({ images }: { images: string[] }) {
   return (
     <Box
-      sx={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', mt: 50 }}
-    >
+      sx={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', mt: 50 }}>
       {images.map((image) => (
         <Img key={image} src={image} loading="lazy" alt="" />
       ))}

@@ -13,7 +13,7 @@ describe('Navigation', () => {
     {
       initialEntries: ['/', '/home'],
       initialIndex: 1, // start at "/home"
-    }
+    },
   );
 
   it('should renders home navigation item correctly', () => {

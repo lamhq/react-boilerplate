@@ -21,8 +21,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <SnackbarProvider
       maxSnack={1}
       autoHideDuration={8000}
-      anchorOrigin={{ horizontal: 'center', vertical: 'top' }}
-    >
+      anchorOrigin={{ horizontal: 'center', vertical: 'top' }}>
       <DIProvider container={container}>
         <ConfigProvider config={config}>
           <AuthProvider>
@@ -34,5 +33,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         </ConfigProvider>
       </DIProvider>
     </SnackbarProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

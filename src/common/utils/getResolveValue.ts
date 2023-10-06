@@ -29,7 +29,7 @@ export default function getResolveValue<T>(promise: StatefulPromise<T>) {
       (reason: Error) => {
         promise.status = 'rejected';
         promise.error = reason;
-      }
+      },
     );
     /* eslint-enable */
   }

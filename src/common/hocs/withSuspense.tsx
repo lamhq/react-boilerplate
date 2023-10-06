@@ -8,7 +8,7 @@ import LoadingFallback from '../atoms/LoadingFallback';
  * @returns React.ReactNode
  */
 export default function withSuspense<T extends JSX.IntrinsicAttributes>(
-  Component: React.ComponentType<T>
+  Component: React.ComponentType<T>,
 ) {
   function WithSuspense(props: T) {
     return (

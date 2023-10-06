@@ -18,7 +18,7 @@ function DeleteButton({ itemId }: { itemId: string }) {
     useCallback(async () => {
       await dataService.deleteData(itemId);
       enqueueSnackbar('Item deleted', { variant: 'success', autoHideDuration: 2000 });
-    }, [itemId, dataService, enqueueSnackbar])
+    }, [itemId, dataService, enqueueSnackbar]),
   );
   const [isLoading, execDelete] = useLoadingState(deleteData);
 
@@ -36,8 +36,7 @@ function DeleteButton({ itemId }: { itemId: string }) {
       loadingPosition="start"
       startIcon={<DeleteIcon />}
       variant="contained"
-      color="error"
-    >
+      color="error">
       Delete
     </LoadingButton>
   );
