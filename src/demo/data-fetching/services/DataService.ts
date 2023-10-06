@@ -1,6 +1,6 @@
 import { singleton } from 'tsyringe';
 import CacheService from '@/common/services/CacheService';
-import wait from '@/common/utils/wait';
+import delay from '@/common/utils/delay';
 
 @singleton()
 export default class DataService {
@@ -8,7 +8,7 @@ export default class DataService {
 
   public getData(): Promise<string> {
     return this.cacheService.getPromise('profile', async () => {
-      await wait(1500);
+      await delay(1500);
       if (Math.random() >= 0.5) {
         throw new Error('Fetch data failed');
       }
@@ -18,7 +18,7 @@ export default class DataService {
 
   public async deleteData(id: string) {
     return this.cacheService.getPromise(`delete-item-${id}`, async () => {
-      await wait(1500);
+      await delay(1500);
       if (Math.random() >= 0.5) {
         throw new Error('Delete data failed');
       }
